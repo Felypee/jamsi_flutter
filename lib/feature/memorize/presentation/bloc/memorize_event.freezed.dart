@@ -15,7 +15,52 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$MemorizeEvent {}
+mixin _$MemorizeEvent {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function(Memorize data) saveWord,
+    required TResult Function(Memorize data) editWord,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function(Memorize data)? saveWord,
+    TResult? Function(Memorize data)? editWord,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function(Memorize data)? saveWord,
+    TResult Function(Memorize data)? editWord,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_Memorize value) $default, {
+    required TResult Function(MemorizeSave value) saveWord,
+    required TResult Function(MemorizeEdit value) editWord,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_Memorize value)? $default, {
+    TResult? Function(MemorizeSave value)? saveWord,
+    TResult? Function(MemorizeEdit value)? editWord,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_Memorize value)? $default, {
+    TResult Function(MemorizeSave value)? saveWord,
+    TResult Function(MemorizeEdit value)? editWord,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+}
 
 /// @nodoc
 abstract class $MemorizeEventCopyWith<$Res> {
@@ -36,25 +81,25 @@ class _$MemorizeEventCopyWithImpl<$Res, $Val extends MemorizeEvent>
 }
 
 /// @nodoc
-abstract class _$$_MemorizeEventCopyWith<$Res> {
-  factory _$$_MemorizeEventCopyWith(
-          _$_MemorizeEvent value, $Res Function(_$_MemorizeEvent) then) =
-      __$$_MemorizeEventCopyWithImpl<$Res>;
+abstract class _$$_MemorizeCopyWith<$Res> {
+  factory _$$_MemorizeCopyWith(
+          _$_Memorize value, $Res Function(_$_Memorize) then) =
+      __$$_MemorizeCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class __$$_MemorizeEventCopyWithImpl<$Res>
-    extends _$MemorizeEventCopyWithImpl<$Res, _$_MemorizeEvent>
-    implements _$$_MemorizeEventCopyWith<$Res> {
-  __$$_MemorizeEventCopyWithImpl(
-      _$_MemorizeEvent _value, $Res Function(_$_MemorizeEvent) _then)
+class __$$_MemorizeCopyWithImpl<$Res>
+    extends _$MemorizeEventCopyWithImpl<$Res, _$_Memorize>
+    implements _$$_MemorizeCopyWith<$Res> {
+  __$$_MemorizeCopyWithImpl(
+      _$_Memorize _value, $Res Function(_$_Memorize) _then)
       : super(_value, _then);
 }
 
 /// @nodoc
 
-class _$_MemorizeEvent implements _MemorizeEvent {
-  _$_MemorizeEvent();
+class _$_Memorize implements _Memorize {
+  const _$_Memorize();
 
   @override
   String toString() {
@@ -64,13 +109,379 @@ class _$_MemorizeEvent implements _MemorizeEvent {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$_MemorizeEvent);
+        (other.runtimeType == runtimeType && other is _$_Memorize);
   }
 
   @override
   int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function(Memorize data) saveWord,
+    required TResult Function(Memorize data) editWord,
+  }) {
+    return $default();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function(Memorize data)? saveWord,
+    TResult? Function(Memorize data)? editWord,
+  }) {
+    return $default?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function(Memorize data)? saveWord,
+    TResult Function(Memorize data)? editWord,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_Memorize value) $default, {
+    required TResult Function(MemorizeSave value) saveWord,
+    required TResult Function(MemorizeEdit value) editWord,
+  }) {
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_Memorize value)? $default, {
+    TResult? Function(MemorizeSave value)? saveWord,
+    TResult? Function(MemorizeEdit value)? editWord,
+  }) {
+    return $default?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_Memorize value)? $default, {
+    TResult Function(MemorizeSave value)? saveWord,
+    TResult Function(MemorizeEdit value)? editWord,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
 }
 
-abstract class _MemorizeEvent implements MemorizeEvent {
-  factory _MemorizeEvent() = _$_MemorizeEvent;
+abstract class _Memorize implements MemorizeEvent {
+  const factory _Memorize() = _$_Memorize;
+}
+
+/// @nodoc
+abstract class _$$MemorizeSaveCopyWith<$Res> {
+  factory _$$MemorizeSaveCopyWith(
+          _$MemorizeSave value, $Res Function(_$MemorizeSave) then) =
+      __$$MemorizeSaveCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Memorize data});
+
+  $MemorizeCopyWith<$Res> get data;
+}
+
+/// @nodoc
+class __$$MemorizeSaveCopyWithImpl<$Res>
+    extends _$MemorizeEventCopyWithImpl<$Res, _$MemorizeSave>
+    implements _$$MemorizeSaveCopyWith<$Res> {
+  __$$MemorizeSaveCopyWithImpl(
+      _$MemorizeSave _value, $Res Function(_$MemorizeSave) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$MemorizeSave(
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Memorize,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MemorizeCopyWith<$Res> get data {
+    return $MemorizeCopyWith<$Res>(_value.data, (value) {
+      return _then(_value.copyWith(data: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$MemorizeSave implements MemorizeSave {
+  _$MemorizeSave({required this.data});
+
+  @override
+  final Memorize data;
+
+  @override
+  String toString() {
+    return 'MemorizeEvent.saveWord(data: $data)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$MemorizeSave &&
+            (identical(other.data, data) || other.data == data));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, data);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$MemorizeSaveCopyWith<_$MemorizeSave> get copyWith =>
+      __$$MemorizeSaveCopyWithImpl<_$MemorizeSave>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function(Memorize data) saveWord,
+    required TResult Function(Memorize data) editWord,
+  }) {
+    return saveWord(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function(Memorize data)? saveWord,
+    TResult? Function(Memorize data)? editWord,
+  }) {
+    return saveWord?.call(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function(Memorize data)? saveWord,
+    TResult Function(Memorize data)? editWord,
+    required TResult orElse(),
+  }) {
+    if (saveWord != null) {
+      return saveWord(data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_Memorize value) $default, {
+    required TResult Function(MemorizeSave value) saveWord,
+    required TResult Function(MemorizeEdit value) editWord,
+  }) {
+    return saveWord(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_Memorize value)? $default, {
+    TResult? Function(MemorizeSave value)? saveWord,
+    TResult? Function(MemorizeEdit value)? editWord,
+  }) {
+    return saveWord?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_Memorize value)? $default, {
+    TResult Function(MemorizeSave value)? saveWord,
+    TResult Function(MemorizeEdit value)? editWord,
+    required TResult orElse(),
+  }) {
+    if (saveWord != null) {
+      return saveWord(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class MemorizeSave implements MemorizeEvent {
+  factory MemorizeSave({required final Memorize data}) = _$MemorizeSave;
+
+  Memorize get data;
+  @JsonKey(ignore: true)
+  _$$MemorizeSaveCopyWith<_$MemorizeSave> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$MemorizeEditCopyWith<$Res> {
+  factory _$$MemorizeEditCopyWith(
+          _$MemorizeEdit value, $Res Function(_$MemorizeEdit) then) =
+      __$$MemorizeEditCopyWithImpl<$Res>;
+  @useResult
+  $Res call({Memorize data});
+
+  $MemorizeCopyWith<$Res> get data;
+}
+
+/// @nodoc
+class __$$MemorizeEditCopyWithImpl<$Res>
+    extends _$MemorizeEventCopyWithImpl<$Res, _$MemorizeEdit>
+    implements _$$MemorizeEditCopyWith<$Res> {
+  __$$MemorizeEditCopyWithImpl(
+      _$MemorizeEdit _value, $Res Function(_$MemorizeEdit) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$MemorizeEdit(
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as Memorize,
+    ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $MemorizeCopyWith<$Res> get data {
+    return $MemorizeCopyWith<$Res>(_value.data, (value) {
+      return _then(_value.copyWith(data: value));
+    });
+  }
+}
+
+/// @nodoc
+
+class _$MemorizeEdit implements MemorizeEdit {
+  _$MemorizeEdit({required this.data});
+
+  @override
+  final Memorize data;
+
+  @override
+  String toString() {
+    return 'MemorizeEvent.editWord(data: $data)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$MemorizeEdit &&
+            (identical(other.data, data) || other.data == data));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, data);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$MemorizeEditCopyWith<_$MemorizeEdit> get copyWith =>
+      __$$MemorizeEditCopyWithImpl<_$MemorizeEdit>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function(Memorize data) saveWord,
+    required TResult Function(Memorize data) editWord,
+  }) {
+    return editWord(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function(Memorize data)? saveWord,
+    TResult? Function(Memorize data)? editWord,
+  }) {
+    return editWord?.call(data);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function(Memorize data)? saveWord,
+    TResult Function(Memorize data)? editWord,
+    required TResult orElse(),
+  }) {
+    if (editWord != null) {
+      return editWord(data);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_Memorize value) $default, {
+    required TResult Function(MemorizeSave value) saveWord,
+    required TResult Function(MemorizeEdit value) editWord,
+  }) {
+    return editWord(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_Memorize value)? $default, {
+    TResult? Function(MemorizeSave value)? saveWord,
+    TResult? Function(MemorizeEdit value)? editWord,
+  }) {
+    return editWord?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_Memorize value)? $default, {
+    TResult Function(MemorizeSave value)? saveWord,
+    TResult Function(MemorizeEdit value)? editWord,
+    required TResult orElse(),
+  }) {
+    if (editWord != null) {
+      return editWord(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class MemorizeEdit implements MemorizeEvent {
+  factory MemorizeEdit({required final Memorize data}) = _$MemorizeEdit;
+
+  Memorize get data;
+  @JsonKey(ignore: true)
+  _$$MemorizeEditCopyWith<_$MemorizeEdit> get copyWith =>
+      throw _privateConstructorUsedError;
 }
