@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:jamsi_flutter/feature/memorize/presentation/bloc/memorize_bloc.dart';
+import 'package:jamsi_flutter/feature/memorize/service/memorize_service.dart';
 import 'package:jamsi_flutter/utils/dio_config.dart';
 import 'package:jamsi_flutter/utils/router.dart';
 import 'package:jamsi_flutter/utils/theme.dart';
@@ -15,15 +18,23 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      title: 'jamsi',
-      theme: jamsiTheme,
-      localizationsDelegates: const [
-        FormBuilderLocalizations.delegate, // Add this line
-        DefaultMaterialLocalizations.delegate,
-        DefaultWidgetsLocalizations.delegate,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<MemorizeBloc>(
+          create: (BuildContext context) =>
+              MemorizeBloc(repo: MemorizeService()),
+        ),
       ],
-      routerConfig: router,
+      child: MaterialApp.router(
+        title: 'jamsi',
+        theme: jamsiTheme,
+        localizationsDelegates: const [
+          FormBuilderLocalizations.delegate, // Add this line
+          DefaultMaterialLocalizations.delegate,
+          DefaultWidgetsLocalizations.delegate,
+        ],
+        routerConfig: router,
+      ),
     );
   }
 }
