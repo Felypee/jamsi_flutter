@@ -32,7 +32,6 @@ class _CreateWordState extends State<CreateWord> {
         context.select((MemorizeBloc bloc) => bloc.state.memorizeStatus)
             as MemorizeStatus;
 
-    debugPrint("Status ${status.name}");
     return Scaffold(
       body: Stack(
         children: [

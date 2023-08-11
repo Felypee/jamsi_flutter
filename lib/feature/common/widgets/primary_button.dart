@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton(
@@ -26,7 +27,10 @@ class PrimaryButton extends StatelessWidget {
         height: height ?? size.height * 0.06,
         child: ElevatedButton(
           style: const ButtonStyle(),
-          onPressed: onPressed,
+          onPressed: () {
+            HapticFeedback.mediumImpact();
+            onPressed();
+          },
           child: Text(
             title,
           ),
