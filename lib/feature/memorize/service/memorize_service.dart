@@ -7,9 +7,14 @@ import 'package:jamsi_flutter/utils/dio_config.dart';
 
 class MemorizeService extends MemorizeRepo {
   @override
-  Future<Either<HttpAppError, bool>> saveWord(Memorize data) async {
+  Future<Either<HttpAppError, bool>> saveWord(Memorize data, int userId) async {
     try {
-      final response = await DioClient.dio.post('/words', data: {});
+      final response = await DioClient.dio.post('/words', data: {
+        "userId": userId,
+        "word": data.word,
+        "category": data.category,
+        "wordLimit": data.times
+      });
       return const Right(true);
     } on DioException catch (error) {
       if (error.response != null) {

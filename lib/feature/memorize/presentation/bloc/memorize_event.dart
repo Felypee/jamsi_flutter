@@ -8,6 +8,7 @@ part 'memorize_event.freezed.dart';
 @freezed
 class MemorizeEvent {
   const factory MemorizeEvent() = _Memorize;
-  factory MemorizeEvent.saveWord({required Memorize data}) = MemorizeSave;
+  factory MemorizeEvent.saveWord(
+      {required Memorize data, required int userId}) = MemorizeSave;
   factory MemorizeEvent.editWord({required Memorize data}) = MemorizeEdit;
 }

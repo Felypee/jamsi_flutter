@@ -19,21 +19,21 @@ mixin _$MemorizeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
-    required TResult Function(Memorize data) saveWord,
+    required TResult Function(Memorize data, int userId) saveWord,
     required TResult Function(Memorize data) editWord,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function()? $default, {
-    TResult? Function(Memorize data)? saveWord,
+    TResult? Function(Memorize data, int userId)? saveWord,
     TResult? Function(Memorize data)? editWord,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
-    TResult Function(Memorize data)? saveWord,
+    TResult Function(Memorize data, int userId)? saveWord,
     TResult Function(Memorize data)? editWord,
     required TResult orElse(),
   }) =>
@@ -119,7 +119,7 @@ class _$_Memorize implements _Memorize {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
-    required TResult Function(Memorize data) saveWord,
+    required TResult Function(Memorize data, int userId) saveWord,
     required TResult Function(Memorize data) editWord,
   }) {
     return $default();
@@ -129,7 +129,7 @@ class _$_Memorize implements _Memorize {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function()? $default, {
-    TResult? Function(Memorize data)? saveWord,
+    TResult? Function(Memorize data, int userId)? saveWord,
     TResult? Function(Memorize data)? editWord,
   }) {
     return $default?.call();
@@ -139,7 +139,7 @@ class _$_Memorize implements _Memorize {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
-    TResult Function(Memorize data)? saveWord,
+    TResult Function(Memorize data, int userId)? saveWord,
     TResult Function(Memorize data)? editWord,
     required TResult orElse(),
   }) {
@@ -194,7 +194,7 @@ abstract class _$$MemorizeSaveCopyWith<$Res> {
           _$MemorizeSave value, $Res Function(_$MemorizeSave) then) =
       __$$MemorizeSaveCopyWithImpl<$Res>;
   @useResult
-  $Res call({Memorize data});
+  $Res call({Memorize data, int userId});
 
   $MemorizeCopyWith<$Res> get data;
 }
@@ -211,12 +211,17 @@ class __$$MemorizeSaveCopyWithImpl<$Res>
   @override
   $Res call({
     Object? data = null,
+    Object? userId = null,
   }) {
     return _then(_$MemorizeSave(
       data: null == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
               as Memorize,
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int,
     ));
   }
 
@@ -232,14 +237,16 @@ class __$$MemorizeSaveCopyWithImpl<$Res>
 /// @nodoc
 
 class _$MemorizeSave implements MemorizeSave {
-  _$MemorizeSave({required this.data});
+  _$MemorizeSave({required this.data, required this.userId});
 
   @override
   final Memorize data;
+  @override
+  final int userId;
 
   @override
   String toString() {
-    return 'MemorizeEvent.saveWord(data: $data)';
+    return 'MemorizeEvent.saveWord(data: $data, userId: $userId)';
   }
 
   @override
@@ -247,11 +254,12 @@ class _$MemorizeSave implements MemorizeSave {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$MemorizeSave &&
-            (identical(other.data, data) || other.data == data));
+            (identical(other.data, data) || other.data == data) &&
+            (identical(other.userId, userId) || other.userId == userId));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, data);
+  int get hashCode => Object.hash(runtimeType, data, userId);
 
   @JsonKey(ignore: true)
   @override
@@ -263,32 +271,32 @@ class _$MemorizeSave implements MemorizeSave {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
-    required TResult Function(Memorize data) saveWord,
+    required TResult Function(Memorize data, int userId) saveWord,
     required TResult Function(Memorize data) editWord,
   }) {
-    return saveWord(data);
+    return saveWord(data, userId);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function()? $default, {
-    TResult? Function(Memorize data)? saveWord,
+    TResult? Function(Memorize data, int userId)? saveWord,
     TResult? Function(Memorize data)? editWord,
   }) {
-    return saveWord?.call(data);
+    return saveWord?.call(data, userId);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
-    TResult Function(Memorize data)? saveWord,
+    TResult Function(Memorize data, int userId)? saveWord,
     TResult Function(Memorize data)? editWord,
     required TResult orElse(),
   }) {
     if (saveWord != null) {
-      return saveWord(data);
+      return saveWord(data, userId);
     }
     return orElse();
   }
@@ -329,9 +337,12 @@ class _$MemorizeSave implements MemorizeSave {
 }
 
 abstract class MemorizeSave implements MemorizeEvent {
-  factory MemorizeSave({required final Memorize data}) = _$MemorizeSave;
+  factory MemorizeSave(
+      {required final Memorize data,
+      required final int userId}) = _$MemorizeSave;
 
   Memorize get data;
+  int get userId;
   @JsonKey(ignore: true)
   _$$MemorizeSaveCopyWith<_$MemorizeSave> get copyWith =>
       throw _privateConstructorUsedError;
@@ -412,7 +423,7 @@ class _$MemorizeEdit implements MemorizeEdit {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
-    required TResult Function(Memorize data) saveWord,
+    required TResult Function(Memorize data, int userId) saveWord,
     required TResult Function(Memorize data) editWord,
   }) {
     return editWord(data);
@@ -422,7 +433,7 @@ class _$MemorizeEdit implements MemorizeEdit {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function()? $default, {
-    TResult? Function(Memorize data)? saveWord,
+    TResult? Function(Memorize data, int userId)? saveWord,
     TResult? Function(Memorize data)? editWord,
   }) {
     return editWord?.call(data);
@@ -432,7 +443,7 @@ class _$MemorizeEdit implements MemorizeEdit {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
-    TResult Function(Memorize data)? saveWord,
+    TResult Function(Memorize data, int userId)? saveWord,
     TResult Function(Memorize data)? editWord,
     required TResult orElse(),
   }) {
