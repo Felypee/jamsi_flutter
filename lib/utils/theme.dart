@@ -7,19 +7,24 @@ final ThemeData jamsiTheme = ThemeData(
   indicatorColor: const Color(0xFF7BE7ED),
   scaffoldBackgroundColor: const Color(0xFF2F2963),
   textTheme: const TextTheme(
-    titleMedium: TextStyle(
-        fontSize: 16,
-        color: Color(
-          0xFFC4A77D,
-        ),
-        fontWeight: FontWeight.w200),
-    bodyMedium: TextStyle(
-        fontSize: 16,
-        color: Color(
-          0xFFC4A77D,
-        ),
-        fontWeight: FontWeight.w200),
-  ),
+      titleMedium: TextStyle(
+          fontSize: 18,
+          color: Color(
+            0xFFC4A77D,
+          ),
+          fontWeight: FontWeight.w400),
+      bodyMedium: TextStyle(
+          fontSize: 16,
+          color: Color(
+            0xFFC4A77D,
+          ),
+          fontWeight: FontWeight.w200),
+      bodySmall: TextStyle(
+          fontSize: 16,
+          color: Color(
+            0xFFC4A77D,
+          ),
+          fontWeight: FontWeight.w200)),
   appBarTheme: AppBarTheme(
       color: const Color(0xFF7BE7ED),
       iconTheme: const IconThemeData(
@@ -49,7 +54,7 @@ final ThemeData jamsiTheme = ThemeData(
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
       fillColor: const Color(0xFF454372),
-      labelStyle: const TextStyle(fontSize: 16, color: Color(0xFFC4A77D)),
+      labelStyle: const TextStyle(fontSize: 18, color: Color(0xFFC4A77D)),
       errorStyle: const TextStyle(
         fontSize: 10,
         color: Colors.red,

@@ -62,11 +62,10 @@ class _CreateWordState extends State<CreateWord> {
                       TranslateAnimation(
                         milliseconds: 400,
                         child: FormBuilderTextField(
-                          keyboardType: TextInputType.name,
+                          textCapitalization: TextCapitalization.sentences,
+                          keyboardType: TextInputType.text,
                           name: "palabra",
                           autovalidateMode: AutovalidateMode.onUserInteraction,
-                          style: const TextStyle(
-                              fontSize: 16, color: Color(0xFF390050)),
                           decoration: const InputDecoration(
                               hintText: "Ingresa la palabra"),
                           validator: FormBuilderValidators.compose([
@@ -117,8 +116,6 @@ class _CreateWordState extends State<CreateWord> {
                           keyboardType: TextInputType.number,
                           name: "veces",
                           autovalidateMode: AutovalidateMode.onUserInteraction,
-                          style: const TextStyle(
-                              fontSize: 16, color: Color(0xFF390050)),
                           decoration: const InputDecoration(
                               hintText: "Cuántas veces a la semana"),
                           validator: FormBuilderValidators.compose([
@@ -143,8 +140,8 @@ class _CreateWordState extends State<CreateWord> {
                                             category: _formKey.currentState!
                                                 .value["categoría"],
                                             times: int.parse(_formKey
-                                                .currentState!
-                                                .value["veces"]))));
+                                                .currentState!.value["veces"])),
+                                        userId: 2));
                               }
                             }),
                       )

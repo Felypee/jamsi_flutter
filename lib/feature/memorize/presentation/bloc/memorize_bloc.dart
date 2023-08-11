@@ -14,7 +14,7 @@ class MemorizeBloc extends Bloc<MemorizeEvent, MemorizeState> {
 
   Future<void> _saveWord(MemorizeSave event, emit) async {
     emit(state.copyWith(memorizeStatus: MemorizeStatus.loading));
-    final result = await repo.saveWord(event.data);
+    final result = await repo.saveWord(event.data, event.userId);
     result.fold((error) {
       debugPrint("Error ${error.message}");
       emit(state.copyWith(memorizeStatus: MemorizeStatus.failure));
