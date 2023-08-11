@@ -8,7 +8,7 @@ import 'package:jamsi_flutter/utils/router.dart';
 import 'package:jamsi_flutter/utils/theme.dart';
 
 void main() {
-  DioClient.configure("localhost:3000");
+  DioClient.configure("http://192.168.0.4:3000");
   runApp(const MyApp());
 }
 
