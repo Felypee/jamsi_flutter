@@ -25,6 +25,8 @@ dependencies:
   keyboard_actions: ^4.2.0
   lottie: ^2.6.0
   either_dart: ^1.0.0
+  flutter_svg: ^2.0.7
+  auto_size_text: ^3.0.0
 
 
 dev_dependencies:
@@ -35,8 +37,10 @@ dev_dependencies:
 
 
 flutter:
+  uses-material-design: true
   # To add assets to your application, add an assets section, like this:
   assets:
+    - assets/
     - assets/json/
 
 
