@@ -27,12 +27,14 @@ class SecondaryButton extends StatelessWidget {
         child: ElevatedButton(
           style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(Colors.white),
+              overlayColor: MaterialStateProperty.all(
+                  Theme.of(context).primaryColor.withOpacity(0.5)),
               shape: MaterialStateProperty.all(RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20)))),
           onPressed: onPressed,
           child: Text(
             title,
-            style: TextStyle(color: Theme.of(context).secondaryHeaderColor),
+            style: TextStyle(color: Theme.of(context).primaryColor),
           ),
         ));
   }
