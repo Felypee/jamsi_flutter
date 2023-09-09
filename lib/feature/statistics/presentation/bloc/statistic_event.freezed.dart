@@ -16,42 +16,43 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$StatisticEvent {
-  int get userId => throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
     required TResult Function(int userId) getStatistics,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
     TResult? Function(int userId)? getStatistics,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
     TResult Function(int userId)? getStatistics,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
+  TResult map<TResult extends Object?>(
+    TResult Function(_StatisticEvent value) $default, {
     required TResult Function(GetStatistics value) getStatistics,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_StatisticEvent value)? $default, {
     TResult? Function(GetStatistics value)? getStatistics,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_StatisticEvent value)? $default, {
     TResult Function(GetStatistics value)? getStatistics,
     required TResult orElse(),
   }) =>
-      throw _privateConstructorUsedError;
-
-  @JsonKey(ignore: true)
-  $StatisticEventCopyWith<StatisticEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -60,8 +61,6 @@ abstract class $StatisticEventCopyWith<$Res> {
   factory $StatisticEventCopyWith(
           StatisticEvent value, $Res Function(StatisticEvent) then) =
       _$StatisticEventCopyWithImpl<$Res, StatisticEvent>;
-  @useResult
-  $Res call({int userId});
 }
 
 /// @nodoc
@@ -73,28 +72,115 @@ class _$StatisticEventCopyWithImpl<$Res, $Val extends StatisticEvent>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? userId = null,
-  }) {
-    return _then(_value.copyWith(
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
-  }
 }
 
 /// @nodoc
-abstract class _$$GetStatisticsCopyWith<$Res>
-    implements $StatisticEventCopyWith<$Res> {
+abstract class _$$_StatisticEventCopyWith<$Res> {
+  factory _$$_StatisticEventCopyWith(
+          _$_StatisticEvent value, $Res Function(_$_StatisticEvent) then) =
+      __$$_StatisticEventCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$_StatisticEventCopyWithImpl<$Res>
+    extends _$StatisticEventCopyWithImpl<$Res, _$_StatisticEvent>
+    implements _$$_StatisticEventCopyWith<$Res> {
+  __$$_StatisticEventCopyWithImpl(
+      _$_StatisticEvent _value, $Res Function(_$_StatisticEvent) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$_StatisticEvent implements _StatisticEvent {
+  const _$_StatisticEvent();
+
+  @override
+  String toString() {
+    return 'StatisticEvent()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$_StatisticEvent);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function(int userId) getStatistics,
+  }) {
+    return $default();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function(int userId)? getStatistics,
+  }) {
+    return $default?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function(int userId)? getStatistics,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_StatisticEvent value) $default, {
+    required TResult Function(GetStatistics value) getStatistics,
+  }) {
+    return $default(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_StatisticEvent value)? $default, {
+    TResult? Function(GetStatistics value)? getStatistics,
+  }) {
+    return $default?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_StatisticEvent value)? $default, {
+    TResult Function(GetStatistics value)? getStatistics,
+    required TResult orElse(),
+  }) {
+    if ($default != null) {
+      return $default(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _StatisticEvent implements StatisticEvent {
+  const factory _StatisticEvent() = _$_StatisticEvent;
+}
+
+/// @nodoc
+abstract class _$$GetStatisticsCopyWith<$Res> {
   factory _$$GetStatisticsCopyWith(
           _$GetStatistics value, $Res Function(_$GetStatistics) then) =
       __$$GetStatisticsCopyWithImpl<$Res>;
-  @override
   @useResult
   $Res call({int userId});
 }
@@ -153,7 +239,8 @@ class _$GetStatistics implements GetStatistics {
 
   @override
   @optionalTypeArgs
-  TResult when<TResult extends Object?>({
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
     required TResult Function(int userId) getStatistics,
   }) {
     return getStatistics(userId);
@@ -161,7 +248,8 @@ class _$GetStatistics implements GetStatistics {
 
   @override
   @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
     TResult? Function(int userId)? getStatistics,
   }) {
     return getStatistics?.call(userId);
@@ -169,7 +257,8 @@ class _$GetStatistics implements GetStatistics {
 
   @override
   @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
     TResult Function(int userId)? getStatistics,
     required TResult orElse(),
   }) {
@@ -181,7 +270,8 @@ class _$GetStatistics implements GetStatistics {
 
   @override
   @optionalTypeArgs
-  TResult map<TResult extends Object?>({
+  TResult map<TResult extends Object?>(
+    TResult Function(_StatisticEvent value) $default, {
     required TResult Function(GetStatistics value) getStatistics,
   }) {
     return getStatistics(this);
@@ -189,7 +279,8 @@ class _$GetStatistics implements GetStatistics {
 
   @override
   @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_StatisticEvent value)? $default, {
     TResult? Function(GetStatistics value)? getStatistics,
   }) {
     return getStatistics?.call(this);
@@ -197,7 +288,8 @@ class _$GetStatistics implements GetStatistics {
 
   @override
   @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_StatisticEvent value)? $default, {
     TResult Function(GetStatistics value)? getStatistics,
     required TResult orElse(),
   }) {
@@ -211,9 +303,7 @@ class _$GetStatistics implements GetStatistics {
 abstract class GetStatistics implements StatisticEvent {
   const factory GetStatistics({required final int userId}) = _$GetStatistics;
 
-  @override
   int get userId;
-  @override
   @JsonKey(ignore: true)
   _$$GetStatisticsCopyWith<_$GetStatistics> get copyWith =>
       throw _privateConstructorUsedError;

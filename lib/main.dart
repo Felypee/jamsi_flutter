@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
-import 'package:jamsi_flutter/feature/memorize/presentation/bloc/memorize_bloc.dart';
-import 'package:jamsi_flutter/feature/memorize/service/memorize_service.dart';
+import 'package:jamsi_flutter/firebase_options.dart';
 import 'package:jamsi_flutter/utils/dio_config.dart';
 import 'package:jamsi_flutter/utils/router.dart';
 import 'package:jamsi_flutter/utils/theme.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
   DioClient.configure("http://192.168.0.4:3000");
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
@@ -19,11 +23,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
-        BlocProvider<MemorizeBloc>(
-          create: (BuildContext context) =>
-              MemorizeBloc(repo: MemorizeService()),
-        ),
+      providers: const [
+        // BlocProvider<MemorizeBloc>(
+        //   create: (BuildContext context) =>
+        //       MemorizeBloc(repo: MemorizeService()),
+        // ),
       ],
       child: MaterialApp.router(
         title: 'jamsi',
