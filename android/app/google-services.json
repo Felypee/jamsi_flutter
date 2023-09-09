@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "635647124648",
+    "project_id": "jamsi-e156e",
+    "storage_bucket": "jamsi-e156e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:635647124648:android:cdf4294ce25e60613e8e9d",
+        "android_client_info": {
+          "package_name": "com.example.jamsi_flutter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlddS0dopFH_Vf-HDvPi4U-S4xE6d2j6Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
