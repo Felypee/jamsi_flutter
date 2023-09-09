@@ -19,6 +19,9 @@ mixin _$AuthenticationEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
+    required TResult Function(
+            BuildContext context, AuthenticationUserModel user)
+        updateAuthUser,
     required TResult Function(BuildContext context, String email) verifyEmail,
     required TResult Function(BuildContext context, String email)
         sendToVerifyEmail,
@@ -41,6 +44,8 @@ mixin _$AuthenticationEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function()? $default, {
+    TResult? Function(BuildContext context, AuthenticationUserModel user)?
+        updateAuthUser,
     TResult? Function(BuildContext context, String email)? verifyEmail,
     TResult? Function(BuildContext context, String email)? sendToVerifyEmail,
     TResult? Function(BuildContext context, String phone)? verifyPhone,
@@ -59,6 +64,8 @@ mixin _$AuthenticationEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
+    TResult Function(BuildContext context, AuthenticationUserModel user)?
+        updateAuthUser,
     TResult Function(BuildContext context, String email)? verifyEmail,
     TResult Function(BuildContext context, String email)? sendToVerifyEmail,
     TResult Function(BuildContext context, String phone)? verifyPhone,
@@ -78,6 +85,7 @@ mixin _$AuthenticationEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_Authentication value) $default, {
+    required TResult Function(AuthUser value) updateAuthUser,
     required TResult Function(AuthVerifyEmail value) verifyEmail,
     required TResult Function(AuthSendToVerifyEmail value) sendToVerifyEmail,
     required TResult Function(AuthVerifyPhone value) verifyPhone,
@@ -95,6 +103,7 @@ mixin _$AuthenticationEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_Authentication value)? $default, {
+    TResult? Function(AuthUser value)? updateAuthUser,
     TResult? Function(AuthVerifyEmail value)? verifyEmail,
     TResult? Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult? Function(AuthVerifyPhone value)? verifyPhone,
@@ -111,6 +120,7 @@ mixin _$AuthenticationEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_Authentication value)? $default, {
+    TResult Function(AuthUser value)? updateAuthUser,
     TResult Function(AuthVerifyEmail value)? verifyEmail,
     TResult Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult Function(AuthVerifyPhone value)? verifyPhone,
@@ -184,6 +194,9 @@ class _$_Authentication implements _Authentication {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
+    required TResult Function(
+            BuildContext context, AuthenticationUserModel user)
+        updateAuthUser,
     required TResult Function(BuildContext context, String email) verifyEmail,
     required TResult Function(BuildContext context, String email)
         sendToVerifyEmail,
@@ -209,6 +222,8 @@ class _$_Authentication implements _Authentication {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function()? $default, {
+    TResult? Function(BuildContext context, AuthenticationUserModel user)?
+        updateAuthUser,
     TResult? Function(BuildContext context, String email)? verifyEmail,
     TResult? Function(BuildContext context, String email)? sendToVerifyEmail,
     TResult? Function(BuildContext context, String phone)? verifyPhone,
@@ -230,6 +245,8 @@ class _$_Authentication implements _Authentication {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
+    TResult Function(BuildContext context, AuthenticationUserModel user)?
+        updateAuthUser,
     TResult Function(BuildContext context, String email)? verifyEmail,
     TResult Function(BuildContext context, String email)? sendToVerifyEmail,
     TResult Function(BuildContext context, String phone)? verifyPhone,
@@ -255,6 +272,7 @@ class _$_Authentication implements _Authentication {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_Authentication value) $default, {
+    required TResult Function(AuthUser value) updateAuthUser,
     required TResult Function(AuthVerifyEmail value) verifyEmail,
     required TResult Function(AuthSendToVerifyEmail value) sendToVerifyEmail,
     required TResult Function(AuthVerifyPhone value) verifyPhone,
@@ -275,6 +293,7 @@ class _$_Authentication implements _Authentication {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_Authentication value)? $default, {
+    TResult? Function(AuthUser value)? updateAuthUser,
     TResult? Function(AuthVerifyEmail value)? verifyEmail,
     TResult? Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult? Function(AuthVerifyPhone value)? verifyPhone,
@@ -294,6 +313,7 @@ class _$_Authentication implements _Authentication {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_Authentication value)? $default, {
+    TResult Function(AuthUser value)? updateAuthUser,
     TResult Function(AuthVerifyEmail value)? verifyEmail,
     TResult Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult Function(AuthVerifyPhone value)? verifyPhone,
@@ -316,6 +336,230 @@ class _$_Authentication implements _Authentication {
 
 abstract class _Authentication implements AuthenticationEvent {
   const factory _Authentication() = _$_Authentication;
+}
+
+/// @nodoc
+abstract class _$$AuthUserCopyWith<$Res> {
+  factory _$$AuthUserCopyWith(
+          _$AuthUser value, $Res Function(_$AuthUser) then) =
+      __$$AuthUserCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BuildContext context, AuthenticationUserModel user});
+}
+
+/// @nodoc
+class __$$AuthUserCopyWithImpl<$Res>
+    extends _$AuthenticationEventCopyWithImpl<$Res, _$AuthUser>
+    implements _$$AuthUserCopyWith<$Res> {
+  __$$AuthUserCopyWithImpl(_$AuthUser _value, $Res Function(_$AuthUser) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? context = null,
+    Object? user = null,
+  }) {
+    return _then(_$AuthUser(
+      null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+      null == user
+          ? _value.user
+          : user // ignore: cast_nullable_to_non_nullable
+              as AuthenticationUserModel,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AuthUser implements AuthUser {
+  _$AuthUser(this.context, this.user);
+
+  @override
+  final BuildContext context;
+  @override
+  final AuthenticationUserModel user;
+
+  @override
+  String toString() {
+    return 'AuthenticationEvent.updateAuthUser(context: $context, user: $user)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AuthUser &&
+            (identical(other.context, context) || other.context == context) &&
+            (identical(other.user, user) || other.user == user));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, context, user);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AuthUserCopyWith<_$AuthUser> get copyWith =>
+      __$$AuthUserCopyWithImpl<_$AuthUser>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function(
+            BuildContext context, AuthenticationUserModel user)
+        updateAuthUser,
+    required TResult Function(BuildContext context, String email) verifyEmail,
+    required TResult Function(BuildContext context, String email)
+        sendToVerifyEmail,
+    required TResult Function(BuildContext context, String phone) verifyPhone,
+    required TResult Function(
+            BuildContext context, String email, String password)
+        registerUser,
+    required TResult Function(
+            BuildContext context, String email, String password)
+        login,
+    required TResult Function(BuildContext context, String userId) logout,
+    required TResult Function() loginWithGoogle,
+    required TResult Function() logintWithFacebook,
+    required TResult Function() loginWithApple,
+    required TResult Function(String code) resetPassword,
+    required TResult Function(BuildContext context, String email)
+        sendToResetPassword,
+  }) {
+    return updateAuthUser(context, user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function(BuildContext context, AuthenticationUserModel user)?
+        updateAuthUser,
+    TResult? Function(BuildContext context, String email)? verifyEmail,
+    TResult? Function(BuildContext context, String email)? sendToVerifyEmail,
+    TResult? Function(BuildContext context, String phone)? verifyPhone,
+    TResult? Function(BuildContext context, String email, String password)?
+        registerUser,
+    TResult? Function(BuildContext context, String email, String password)?
+        login,
+    TResult? Function(BuildContext context, String userId)? logout,
+    TResult? Function()? loginWithGoogle,
+    TResult? Function()? logintWithFacebook,
+    TResult? Function()? loginWithApple,
+    TResult? Function(String code)? resetPassword,
+    TResult? Function(BuildContext context, String email)? sendToResetPassword,
+  }) {
+    return updateAuthUser?.call(context, user);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function(BuildContext context, AuthenticationUserModel user)?
+        updateAuthUser,
+    TResult Function(BuildContext context, String email)? verifyEmail,
+    TResult Function(BuildContext context, String email)? sendToVerifyEmail,
+    TResult Function(BuildContext context, String phone)? verifyPhone,
+    TResult Function(BuildContext context, String email, String password)?
+        registerUser,
+    TResult Function(BuildContext context, String email, String password)?
+        login,
+    TResult Function(BuildContext context, String userId)? logout,
+    TResult Function()? loginWithGoogle,
+    TResult Function()? logintWithFacebook,
+    TResult Function()? loginWithApple,
+    TResult Function(String code)? resetPassword,
+    TResult Function(BuildContext context, String email)? sendToResetPassword,
+    required TResult orElse(),
+  }) {
+    if (updateAuthUser != null) {
+      return updateAuthUser(context, user);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_Authentication value) $default, {
+    required TResult Function(AuthUser value) updateAuthUser,
+    required TResult Function(AuthVerifyEmail value) verifyEmail,
+    required TResult Function(AuthSendToVerifyEmail value) sendToVerifyEmail,
+    required TResult Function(AuthVerifyPhone value) verifyPhone,
+    required TResult Function(AuthRegisterUser value) registerUser,
+    required TResult Function(AuthLogin value) login,
+    required TResult Function(AuthLogout value) logout,
+    required TResult Function(AuthWithGoogle value) loginWithGoogle,
+    required TResult Function(AuthWithFacebook value) logintWithFacebook,
+    required TResult Function(AuthWithApple value) loginWithApple,
+    required TResult Function(AuthResetPassword value) resetPassword,
+    required TResult Function(AuthSendToResetPassword value)
+        sendToResetPassword,
+  }) {
+    return updateAuthUser(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_Authentication value)? $default, {
+    TResult? Function(AuthUser value)? updateAuthUser,
+    TResult? Function(AuthVerifyEmail value)? verifyEmail,
+    TResult? Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
+    TResult? Function(AuthVerifyPhone value)? verifyPhone,
+    TResult? Function(AuthRegisterUser value)? registerUser,
+    TResult? Function(AuthLogin value)? login,
+    TResult? Function(AuthLogout value)? logout,
+    TResult? Function(AuthWithGoogle value)? loginWithGoogle,
+    TResult? Function(AuthWithFacebook value)? logintWithFacebook,
+    TResult? Function(AuthWithApple value)? loginWithApple,
+    TResult? Function(AuthResetPassword value)? resetPassword,
+    TResult? Function(AuthSendToResetPassword value)? sendToResetPassword,
+  }) {
+    return updateAuthUser?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_Authentication value)? $default, {
+    TResult Function(AuthUser value)? updateAuthUser,
+    TResult Function(AuthVerifyEmail value)? verifyEmail,
+    TResult Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
+    TResult Function(AuthVerifyPhone value)? verifyPhone,
+    TResult Function(AuthRegisterUser value)? registerUser,
+    TResult Function(AuthLogin value)? login,
+    TResult Function(AuthLogout value)? logout,
+    TResult Function(AuthWithGoogle value)? loginWithGoogle,
+    TResult Function(AuthWithFacebook value)? logintWithFacebook,
+    TResult Function(AuthWithApple value)? loginWithApple,
+    TResult Function(AuthResetPassword value)? resetPassword,
+    TResult Function(AuthSendToResetPassword value)? sendToResetPassword,
+    required TResult orElse(),
+  }) {
+    if (updateAuthUser != null) {
+      return updateAuthUser(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AuthUser implements AuthenticationEvent {
+  factory AuthUser(
+          final BuildContext context, final AuthenticationUserModel user) =
+      _$AuthUser;
+
+  BuildContext get context;
+  AuthenticationUserModel get user;
+  @JsonKey(ignore: true)
+  _$$AuthUserCopyWith<_$AuthUser> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -391,6 +635,9 @@ class _$AuthVerifyEmail implements AuthVerifyEmail {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
+    required TResult Function(
+            BuildContext context, AuthenticationUserModel user)
+        updateAuthUser,
     required TResult Function(BuildContext context, String email) verifyEmail,
     required TResult Function(BuildContext context, String email)
         sendToVerifyEmail,
@@ -416,6 +663,8 @@ class _$AuthVerifyEmail implements AuthVerifyEmail {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function()? $default, {
+    TResult? Function(BuildContext context, AuthenticationUserModel user)?
+        updateAuthUser,
     TResult? Function(BuildContext context, String email)? verifyEmail,
     TResult? Function(BuildContext context, String email)? sendToVerifyEmail,
     TResult? Function(BuildContext context, String phone)? verifyPhone,
@@ -437,6 +686,8 @@ class _$AuthVerifyEmail implements AuthVerifyEmail {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
+    TResult Function(BuildContext context, AuthenticationUserModel user)?
+        updateAuthUser,
     TResult Function(BuildContext context, String email)? verifyEmail,
     TResult Function(BuildContext context, String email)? sendToVerifyEmail,
     TResult Function(BuildContext context, String phone)? verifyPhone,
@@ -462,6 +713,7 @@ class _$AuthVerifyEmail implements AuthVerifyEmail {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_Authentication value) $default, {
+    required TResult Function(AuthUser value) updateAuthUser,
     required TResult Function(AuthVerifyEmail value) verifyEmail,
     required TResult Function(AuthSendToVerifyEmail value) sendToVerifyEmail,
     required TResult Function(AuthVerifyPhone value) verifyPhone,
@@ -482,6 +734,7 @@ class _$AuthVerifyEmail implements AuthVerifyEmail {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_Authentication value)? $default, {
+    TResult? Function(AuthUser value)? updateAuthUser,
     TResult? Function(AuthVerifyEmail value)? verifyEmail,
     TResult? Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult? Function(AuthVerifyPhone value)? verifyPhone,
@@ -501,6 +754,7 @@ class _$AuthVerifyEmail implements AuthVerifyEmail {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_Authentication value)? $default, {
+    TResult Function(AuthUser value)? updateAuthUser,
     TResult Function(AuthVerifyEmail value)? verifyEmail,
     TResult Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult Function(AuthVerifyPhone value)? verifyPhone,
@@ -606,6 +860,9 @@ class _$AuthSendToVerifyEmail implements AuthSendToVerifyEmail {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
+    required TResult Function(
+            BuildContext context, AuthenticationUserModel user)
+        updateAuthUser,
     required TResult Function(BuildContext context, String email) verifyEmail,
     required TResult Function(BuildContext context, String email)
         sendToVerifyEmail,
@@ -631,6 +888,8 @@ class _$AuthSendToVerifyEmail implements AuthSendToVerifyEmail {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function()? $default, {
+    TResult? Function(BuildContext context, AuthenticationUserModel user)?
+        updateAuthUser,
     TResult? Function(BuildContext context, String email)? verifyEmail,
     TResult? Function(BuildContext context, String email)? sendToVerifyEmail,
     TResult? Function(BuildContext context, String phone)? verifyPhone,
@@ -652,6 +911,8 @@ class _$AuthSendToVerifyEmail implements AuthSendToVerifyEmail {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
+    TResult Function(BuildContext context, AuthenticationUserModel user)?
+        updateAuthUser,
     TResult Function(BuildContext context, String email)? verifyEmail,
     TResult Function(BuildContext context, String email)? sendToVerifyEmail,
     TResult Function(BuildContext context, String phone)? verifyPhone,
@@ -677,6 +938,7 @@ class _$AuthSendToVerifyEmail implements AuthSendToVerifyEmail {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_Authentication value) $default, {
+    required TResult Function(AuthUser value) updateAuthUser,
     required TResult Function(AuthVerifyEmail value) verifyEmail,
     required TResult Function(AuthSendToVerifyEmail value) sendToVerifyEmail,
     required TResult Function(AuthVerifyPhone value) verifyPhone,
@@ -697,6 +959,7 @@ class _$AuthSendToVerifyEmail implements AuthSendToVerifyEmail {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_Authentication value)? $default, {
+    TResult? Function(AuthUser value)? updateAuthUser,
     TResult? Function(AuthVerifyEmail value)? verifyEmail,
     TResult? Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult? Function(AuthVerifyPhone value)? verifyPhone,
@@ -716,6 +979,7 @@ class _$AuthSendToVerifyEmail implements AuthSendToVerifyEmail {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_Authentication value)? $default, {
+    TResult Function(AuthUser value)? updateAuthUser,
     TResult Function(AuthVerifyEmail value)? verifyEmail,
     TResult Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult Function(AuthVerifyPhone value)? verifyPhone,
@@ -820,6 +1084,9 @@ class _$AuthVerifyPhone implements AuthVerifyPhone {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
+    required TResult Function(
+            BuildContext context, AuthenticationUserModel user)
+        updateAuthUser,
     required TResult Function(BuildContext context, String email) verifyEmail,
     required TResult Function(BuildContext context, String email)
         sendToVerifyEmail,
@@ -845,6 +1112,8 @@ class _$AuthVerifyPhone implements AuthVerifyPhone {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function()? $default, {
+    TResult? Function(BuildContext context, AuthenticationUserModel user)?
+        updateAuthUser,
     TResult? Function(BuildContext context, String email)? verifyEmail,
     TResult? Function(BuildContext context, String email)? sendToVerifyEmail,
     TResult? Function(BuildContext context, String phone)? verifyPhone,
@@ -866,6 +1135,8 @@ class _$AuthVerifyPhone implements AuthVerifyPhone {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
+    TResult Function(BuildContext context, AuthenticationUserModel user)?
+        updateAuthUser,
     TResult Function(BuildContext context, String email)? verifyEmail,
     TResult Function(BuildContext context, String email)? sendToVerifyEmail,
     TResult Function(BuildContext context, String phone)? verifyPhone,
@@ -891,6 +1162,7 @@ class _$AuthVerifyPhone implements AuthVerifyPhone {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_Authentication value) $default, {
+    required TResult Function(AuthUser value) updateAuthUser,
     required TResult Function(AuthVerifyEmail value) verifyEmail,
     required TResult Function(AuthSendToVerifyEmail value) sendToVerifyEmail,
     required TResult Function(AuthVerifyPhone value) verifyPhone,
@@ -911,6 +1183,7 @@ class _$AuthVerifyPhone implements AuthVerifyPhone {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_Authentication value)? $default, {
+    TResult? Function(AuthUser value)? updateAuthUser,
     TResult? Function(AuthVerifyEmail value)? verifyEmail,
     TResult? Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult? Function(AuthVerifyPhone value)? verifyPhone,
@@ -930,6 +1203,7 @@ class _$AuthVerifyPhone implements AuthVerifyPhone {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_Authentication value)? $default, {
+    TResult Function(AuthUser value)? updateAuthUser,
     TResult Function(AuthVerifyEmail value)? verifyEmail,
     TResult Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult Function(AuthVerifyPhone value)? verifyPhone,
@@ -1043,6 +1317,9 @@ class _$AuthRegisterUser implements AuthRegisterUser {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
+    required TResult Function(
+            BuildContext context, AuthenticationUserModel user)
+        updateAuthUser,
     required TResult Function(BuildContext context, String email) verifyEmail,
     required TResult Function(BuildContext context, String email)
         sendToVerifyEmail,
@@ -1068,6 +1345,8 @@ class _$AuthRegisterUser implements AuthRegisterUser {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function()? $default, {
+    TResult? Function(BuildContext context, AuthenticationUserModel user)?
+        updateAuthUser,
     TResult? Function(BuildContext context, String email)? verifyEmail,
     TResult? Function(BuildContext context, String email)? sendToVerifyEmail,
     TResult? Function(BuildContext context, String phone)? verifyPhone,
@@ -1089,6 +1368,8 @@ class _$AuthRegisterUser implements AuthRegisterUser {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
+    TResult Function(BuildContext context, AuthenticationUserModel user)?
+        updateAuthUser,
     TResult Function(BuildContext context, String email)? verifyEmail,
     TResult Function(BuildContext context, String email)? sendToVerifyEmail,
     TResult Function(BuildContext context, String phone)? verifyPhone,
@@ -1114,6 +1395,7 @@ class _$AuthRegisterUser implements AuthRegisterUser {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_Authentication value) $default, {
+    required TResult Function(AuthUser value) updateAuthUser,
     required TResult Function(AuthVerifyEmail value) verifyEmail,
     required TResult Function(AuthSendToVerifyEmail value) sendToVerifyEmail,
     required TResult Function(AuthVerifyPhone value) verifyPhone,
@@ -1134,6 +1416,7 @@ class _$AuthRegisterUser implements AuthRegisterUser {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_Authentication value)? $default, {
+    TResult? Function(AuthUser value)? updateAuthUser,
     TResult? Function(AuthVerifyEmail value)? verifyEmail,
     TResult? Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult? Function(AuthVerifyPhone value)? verifyPhone,
@@ -1153,6 +1436,7 @@ class _$AuthRegisterUser implements AuthRegisterUser {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_Authentication value)? $default, {
+    TResult Function(AuthUser value)? updateAuthUser,
     TResult Function(AuthVerifyEmail value)? verifyEmail,
     TResult Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult Function(AuthVerifyPhone value)? verifyPhone,
@@ -1267,6 +1551,9 @@ class _$AuthLogin implements AuthLogin {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
+    required TResult Function(
+            BuildContext context, AuthenticationUserModel user)
+        updateAuthUser,
     required TResult Function(BuildContext context, String email) verifyEmail,
     required TResult Function(BuildContext context, String email)
         sendToVerifyEmail,
@@ -1292,6 +1579,8 @@ class _$AuthLogin implements AuthLogin {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function()? $default, {
+    TResult? Function(BuildContext context, AuthenticationUserModel user)?
+        updateAuthUser,
     TResult? Function(BuildContext context, String email)? verifyEmail,
     TResult? Function(BuildContext context, String email)? sendToVerifyEmail,
     TResult? Function(BuildContext context, String phone)? verifyPhone,
@@ -1313,6 +1602,8 @@ class _$AuthLogin implements AuthLogin {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
+    TResult Function(BuildContext context, AuthenticationUserModel user)?
+        updateAuthUser,
     TResult Function(BuildContext context, String email)? verifyEmail,
     TResult Function(BuildContext context, String email)? sendToVerifyEmail,
     TResult Function(BuildContext context, String phone)? verifyPhone,
@@ -1338,6 +1629,7 @@ class _$AuthLogin implements AuthLogin {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_Authentication value) $default, {
+    required TResult Function(AuthUser value) updateAuthUser,
     required TResult Function(AuthVerifyEmail value) verifyEmail,
     required TResult Function(AuthSendToVerifyEmail value) sendToVerifyEmail,
     required TResult Function(AuthVerifyPhone value) verifyPhone,
@@ -1358,6 +1650,7 @@ class _$AuthLogin implements AuthLogin {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_Authentication value)? $default, {
+    TResult? Function(AuthUser value)? updateAuthUser,
     TResult? Function(AuthVerifyEmail value)? verifyEmail,
     TResult? Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult? Function(AuthVerifyPhone value)? verifyPhone,
@@ -1377,6 +1670,7 @@ class _$AuthLogin implements AuthLogin {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_Authentication value)? $default, {
+    TResult Function(AuthUser value)? updateAuthUser,
     TResult Function(AuthVerifyEmail value)? verifyEmail,
     TResult Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult Function(AuthVerifyPhone value)? verifyPhone,
@@ -1482,6 +1776,9 @@ class _$AuthLogout implements AuthLogout {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
+    required TResult Function(
+            BuildContext context, AuthenticationUserModel user)
+        updateAuthUser,
     required TResult Function(BuildContext context, String email) verifyEmail,
     required TResult Function(BuildContext context, String email)
         sendToVerifyEmail,
@@ -1507,6 +1804,8 @@ class _$AuthLogout implements AuthLogout {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function()? $default, {
+    TResult? Function(BuildContext context, AuthenticationUserModel user)?
+        updateAuthUser,
     TResult? Function(BuildContext context, String email)? verifyEmail,
     TResult? Function(BuildContext context, String email)? sendToVerifyEmail,
     TResult? Function(BuildContext context, String phone)? verifyPhone,
@@ -1528,6 +1827,8 @@ class _$AuthLogout implements AuthLogout {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
+    TResult Function(BuildContext context, AuthenticationUserModel user)?
+        updateAuthUser,
     TResult Function(BuildContext context, String email)? verifyEmail,
     TResult Function(BuildContext context, String email)? sendToVerifyEmail,
     TResult Function(BuildContext context, String phone)? verifyPhone,
@@ -1553,6 +1854,7 @@ class _$AuthLogout implements AuthLogout {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_Authentication value) $default, {
+    required TResult Function(AuthUser value) updateAuthUser,
     required TResult Function(AuthVerifyEmail value) verifyEmail,
     required TResult Function(AuthSendToVerifyEmail value) sendToVerifyEmail,
     required TResult Function(AuthVerifyPhone value) verifyPhone,
@@ -1573,6 +1875,7 @@ class _$AuthLogout implements AuthLogout {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_Authentication value)? $default, {
+    TResult? Function(AuthUser value)? updateAuthUser,
     TResult? Function(AuthVerifyEmail value)? verifyEmail,
     TResult? Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult? Function(AuthVerifyPhone value)? verifyPhone,
@@ -1592,6 +1895,7 @@ class _$AuthLogout implements AuthLogout {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_Authentication value)? $default, {
+    TResult Function(AuthUser value)? updateAuthUser,
     TResult Function(AuthVerifyEmail value)? verifyEmail,
     TResult Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult Function(AuthVerifyPhone value)? verifyPhone,
@@ -1662,6 +1966,9 @@ class _$AuthWithGoogle implements AuthWithGoogle {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
+    required TResult Function(
+            BuildContext context, AuthenticationUserModel user)
+        updateAuthUser,
     required TResult Function(BuildContext context, String email) verifyEmail,
     required TResult Function(BuildContext context, String email)
         sendToVerifyEmail,
@@ -1687,6 +1994,8 @@ class _$AuthWithGoogle implements AuthWithGoogle {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function()? $default, {
+    TResult? Function(BuildContext context, AuthenticationUserModel user)?
+        updateAuthUser,
     TResult? Function(BuildContext context, String email)? verifyEmail,
     TResult? Function(BuildContext context, String email)? sendToVerifyEmail,
     TResult? Function(BuildContext context, String phone)? verifyPhone,
@@ -1708,6 +2017,8 @@ class _$AuthWithGoogle implements AuthWithGoogle {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
+    TResult Function(BuildContext context, AuthenticationUserModel user)?
+        updateAuthUser,
     TResult Function(BuildContext context, String email)? verifyEmail,
     TResult Function(BuildContext context, String email)? sendToVerifyEmail,
     TResult Function(BuildContext context, String phone)? verifyPhone,
@@ -1733,6 +2044,7 @@ class _$AuthWithGoogle implements AuthWithGoogle {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_Authentication value) $default, {
+    required TResult Function(AuthUser value) updateAuthUser,
     required TResult Function(AuthVerifyEmail value) verifyEmail,
     required TResult Function(AuthSendToVerifyEmail value) sendToVerifyEmail,
     required TResult Function(AuthVerifyPhone value) verifyPhone,
@@ -1753,6 +2065,7 @@ class _$AuthWithGoogle implements AuthWithGoogle {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_Authentication value)? $default, {
+    TResult? Function(AuthUser value)? updateAuthUser,
     TResult? Function(AuthVerifyEmail value)? verifyEmail,
     TResult? Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult? Function(AuthVerifyPhone value)? verifyPhone,
@@ -1772,6 +2085,7 @@ class _$AuthWithGoogle implements AuthWithGoogle {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_Authentication value)? $default, {
+    TResult Function(AuthUser value)? updateAuthUser,
     TResult Function(AuthVerifyEmail value)? verifyEmail,
     TResult Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult Function(AuthVerifyPhone value)? verifyPhone,
@@ -1835,6 +2149,9 @@ class _$AuthWithFacebook implements AuthWithFacebook {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
+    required TResult Function(
+            BuildContext context, AuthenticationUserModel user)
+        updateAuthUser,
     required TResult Function(BuildContext context, String email) verifyEmail,
     required TResult Function(BuildContext context, String email)
         sendToVerifyEmail,
@@ -1860,6 +2177,8 @@ class _$AuthWithFacebook implements AuthWithFacebook {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function()? $default, {
+    TResult? Function(BuildContext context, AuthenticationUserModel user)?
+        updateAuthUser,
     TResult? Function(BuildContext context, String email)? verifyEmail,
     TResult? Function(BuildContext context, String email)? sendToVerifyEmail,
     TResult? Function(BuildContext context, String phone)? verifyPhone,
@@ -1881,6 +2200,8 @@ class _$AuthWithFacebook implements AuthWithFacebook {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
+    TResult Function(BuildContext context, AuthenticationUserModel user)?
+        updateAuthUser,
     TResult Function(BuildContext context, String email)? verifyEmail,
     TResult Function(BuildContext context, String email)? sendToVerifyEmail,
     TResult Function(BuildContext context, String phone)? verifyPhone,
@@ -1906,6 +2227,7 @@ class _$AuthWithFacebook implements AuthWithFacebook {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_Authentication value) $default, {
+    required TResult Function(AuthUser value) updateAuthUser,
     required TResult Function(AuthVerifyEmail value) verifyEmail,
     required TResult Function(AuthSendToVerifyEmail value) sendToVerifyEmail,
     required TResult Function(AuthVerifyPhone value) verifyPhone,
@@ -1926,6 +2248,7 @@ class _$AuthWithFacebook implements AuthWithFacebook {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_Authentication value)? $default, {
+    TResult? Function(AuthUser value)? updateAuthUser,
     TResult? Function(AuthVerifyEmail value)? verifyEmail,
     TResult? Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult? Function(AuthVerifyPhone value)? verifyPhone,
@@ -1945,6 +2268,7 @@ class _$AuthWithFacebook implements AuthWithFacebook {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_Authentication value)? $default, {
+    TResult Function(AuthUser value)? updateAuthUser,
     TResult Function(AuthVerifyEmail value)? verifyEmail,
     TResult Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult Function(AuthVerifyPhone value)? verifyPhone,
@@ -2008,6 +2332,9 @@ class _$AuthWithApple implements AuthWithApple {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
+    required TResult Function(
+            BuildContext context, AuthenticationUserModel user)
+        updateAuthUser,
     required TResult Function(BuildContext context, String email) verifyEmail,
     required TResult Function(BuildContext context, String email)
         sendToVerifyEmail,
@@ -2033,6 +2360,8 @@ class _$AuthWithApple implements AuthWithApple {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function()? $default, {
+    TResult? Function(BuildContext context, AuthenticationUserModel user)?
+        updateAuthUser,
     TResult? Function(BuildContext context, String email)? verifyEmail,
     TResult? Function(BuildContext context, String email)? sendToVerifyEmail,
     TResult? Function(BuildContext context, String phone)? verifyPhone,
@@ -2054,6 +2383,8 @@ class _$AuthWithApple implements AuthWithApple {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
+    TResult Function(BuildContext context, AuthenticationUserModel user)?
+        updateAuthUser,
     TResult Function(BuildContext context, String email)? verifyEmail,
     TResult Function(BuildContext context, String email)? sendToVerifyEmail,
     TResult Function(BuildContext context, String phone)? verifyPhone,
@@ -2079,6 +2410,7 @@ class _$AuthWithApple implements AuthWithApple {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_Authentication value) $default, {
+    required TResult Function(AuthUser value) updateAuthUser,
     required TResult Function(AuthVerifyEmail value) verifyEmail,
     required TResult Function(AuthSendToVerifyEmail value) sendToVerifyEmail,
     required TResult Function(AuthVerifyPhone value) verifyPhone,
@@ -2099,6 +2431,7 @@ class _$AuthWithApple implements AuthWithApple {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_Authentication value)? $default, {
+    TResult? Function(AuthUser value)? updateAuthUser,
     TResult? Function(AuthVerifyEmail value)? verifyEmail,
     TResult? Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult? Function(AuthVerifyPhone value)? verifyPhone,
@@ -2118,6 +2451,7 @@ class _$AuthWithApple implements AuthWithApple {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_Authentication value)? $default, {
+    TResult Function(AuthUser value)? updateAuthUser,
     TResult Function(AuthVerifyEmail value)? verifyEmail,
     TResult Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult Function(AuthVerifyPhone value)? verifyPhone,
@@ -2207,6 +2541,9 @@ class _$AuthResetPassword implements AuthResetPassword {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
+    required TResult Function(
+            BuildContext context, AuthenticationUserModel user)
+        updateAuthUser,
     required TResult Function(BuildContext context, String email) verifyEmail,
     required TResult Function(BuildContext context, String email)
         sendToVerifyEmail,
@@ -2232,6 +2569,8 @@ class _$AuthResetPassword implements AuthResetPassword {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function()? $default, {
+    TResult? Function(BuildContext context, AuthenticationUserModel user)?
+        updateAuthUser,
     TResult? Function(BuildContext context, String email)? verifyEmail,
     TResult? Function(BuildContext context, String email)? sendToVerifyEmail,
     TResult? Function(BuildContext context, String phone)? verifyPhone,
@@ -2253,6 +2592,8 @@ class _$AuthResetPassword implements AuthResetPassword {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
+    TResult Function(BuildContext context, AuthenticationUserModel user)?
+        updateAuthUser,
     TResult Function(BuildContext context, String email)? verifyEmail,
     TResult Function(BuildContext context, String email)? sendToVerifyEmail,
     TResult Function(BuildContext context, String phone)? verifyPhone,
@@ -2278,6 +2619,7 @@ class _$AuthResetPassword implements AuthResetPassword {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_Authentication value) $default, {
+    required TResult Function(AuthUser value) updateAuthUser,
     required TResult Function(AuthVerifyEmail value) verifyEmail,
     required TResult Function(AuthSendToVerifyEmail value) sendToVerifyEmail,
     required TResult Function(AuthVerifyPhone value) verifyPhone,
@@ -2298,6 +2640,7 @@ class _$AuthResetPassword implements AuthResetPassword {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_Authentication value)? $default, {
+    TResult? Function(AuthUser value)? updateAuthUser,
     TResult? Function(AuthVerifyEmail value)? verifyEmail,
     TResult? Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult? Function(AuthVerifyPhone value)? verifyPhone,
@@ -2317,6 +2660,7 @@ class _$AuthResetPassword implements AuthResetPassword {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_Authentication value)? $default, {
+    TResult Function(AuthUser value)? updateAuthUser,
     TResult Function(AuthVerifyEmail value)? verifyEmail,
     TResult Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult Function(AuthVerifyPhone value)? verifyPhone,
@@ -2420,6 +2764,9 @@ class _$AuthSendToResetPassword implements AuthSendToResetPassword {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
+    required TResult Function(
+            BuildContext context, AuthenticationUserModel user)
+        updateAuthUser,
     required TResult Function(BuildContext context, String email) verifyEmail,
     required TResult Function(BuildContext context, String email)
         sendToVerifyEmail,
@@ -2445,6 +2792,8 @@ class _$AuthSendToResetPassword implements AuthSendToResetPassword {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function()? $default, {
+    TResult? Function(BuildContext context, AuthenticationUserModel user)?
+        updateAuthUser,
     TResult? Function(BuildContext context, String email)? verifyEmail,
     TResult? Function(BuildContext context, String email)? sendToVerifyEmail,
     TResult? Function(BuildContext context, String phone)? verifyPhone,
@@ -2466,6 +2815,8 @@ class _$AuthSendToResetPassword implements AuthSendToResetPassword {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
+    TResult Function(BuildContext context, AuthenticationUserModel user)?
+        updateAuthUser,
     TResult Function(BuildContext context, String email)? verifyEmail,
     TResult Function(BuildContext context, String email)? sendToVerifyEmail,
     TResult Function(BuildContext context, String phone)? verifyPhone,
@@ -2491,6 +2842,7 @@ class _$AuthSendToResetPassword implements AuthSendToResetPassword {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_Authentication value) $default, {
+    required TResult Function(AuthUser value) updateAuthUser,
     required TResult Function(AuthVerifyEmail value) verifyEmail,
     required TResult Function(AuthSendToVerifyEmail value) sendToVerifyEmail,
     required TResult Function(AuthVerifyPhone value) verifyPhone,
@@ -2511,6 +2863,7 @@ class _$AuthSendToResetPassword implements AuthSendToResetPassword {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_Authentication value)? $default, {
+    TResult? Function(AuthUser value)? updateAuthUser,
     TResult? Function(AuthVerifyEmail value)? verifyEmail,
     TResult? Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult? Function(AuthVerifyPhone value)? verifyPhone,
@@ -2530,6 +2883,7 @@ class _$AuthSendToResetPassword implements AuthSendToResetPassword {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_Authentication value)? $default, {
+    TResult Function(AuthUser value)? updateAuthUser,
     TResult Function(AuthVerifyEmail value)? verifyEmail,
     TResult Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult Function(AuthVerifyPhone value)? verifyPhone,

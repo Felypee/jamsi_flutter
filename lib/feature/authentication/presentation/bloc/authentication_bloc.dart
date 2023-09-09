@@ -8,6 +8,7 @@ class AuthenticationBloc
   AuthenticationRepo repo;
   AuthenticationBloc({required this.repo})
       : super(const AuthenticationState()) {
+    on<AuthUser>(_updateAuthUser);
     on<AuthVerifyEmail>(_verifyEmail);
     on<AuthVerifyPhone>(_verifyPhone);
     on<AuthRegisterUser>(_registerUser);
@@ -19,6 +20,22 @@ class AuthenticationBloc
     on<AuthResetPassword>(_resetPassword);
     on<AuthSendToVerifyEmail>(_sendToVerifyEmail);
     on<AuthSendToResetPassword>(_sendToResetPassword);
+  }
+
+  Future<void> _updateAuthUser(AuthUser event, emit) async {
+    if (state.authenticationUser == null) {
+      emit(state.copyWith(authenticationUser: event.user));
+    } else {
+      emit(state.copyWith(
+          authenticationUser: state.authenticationUser!.copyWith(
+        name: event.user.name,
+        surname: event.user.surname,
+        password: event.user.password,
+        steps: event.user.steps,
+        verifiedEmail: event.user.verifiedEmail,
+        verifiedPhone: event.user.verifiedPhone,
+      )));
+    }
   }
 
   Future<void> _verifyEmail(AuthVerifyEmail event, emit) async {

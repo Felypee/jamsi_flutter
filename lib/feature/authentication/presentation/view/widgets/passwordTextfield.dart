@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:form_builder_validators/form_builder_validators.dart';
 
 class PasswordTextfield extends StatefulWidget {
   const PasswordTextfield({
@@ -16,7 +17,7 @@ class _PasswordTextfieldState extends State<PasswordTextfield> {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return FormBuilderTextField(
-      name: "contraseña",
+      name: "Contraseña",
       obscureText: hidePassword,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       style: Theme.of(context).textTheme.bodyMedium,
@@ -38,9 +39,9 @@ class _PasswordTextfieldState extends State<PasswordTextfield> {
                     Icons.visibility_off_outlined,
                   ),
           )),
-      // validator: FormBuilderValidators.compose([
-      //   FormBuilderValidators.required(errorText: "Campo requerido"),
-      // ]),
+      validator: FormBuilderValidators.compose([
+        FormBuilderValidators.required(errorText: "Campo requerido"),
+      ]),
     );
   }
 }

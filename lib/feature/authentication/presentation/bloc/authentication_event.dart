@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:jamsi_flutter/feature/authentication/domain/authentication_user_model.dart';
 part 'authentication_event.freezed.dart';
 
 ///Run 'flutter pub run build_runner build or fvm flutter pub run build_runner build' to generate required files
@@ -8,7 +9,8 @@ part 'authentication_event.freezed.dart';
 @freezed
 class AuthenticationEvent {
   const factory AuthenticationEvent() = _Authentication;
-
+  factory AuthenticationEvent.updateAuthUser(
+      BuildContext context, AuthenticationUserModel user) = AuthUser;
   factory AuthenticationEvent.verifyEmail(BuildContext context, String email) =
       AuthVerifyEmail;
   factory AuthenticationEvent.sendToVerifyEmail(

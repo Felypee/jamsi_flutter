@@ -17,9 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$AuthenticationState {
   dynamic get authenticationStatus => throw _privateConstructorUsedError;
-  String? get word => throw _privateConstructorUsedError;
-  String? get category => throw _privateConstructorUsedError;
-  int? get times => throw _privateConstructorUsedError;
+  AuthenticationUserModel? get authenticationUser =>
+      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $AuthenticationStateCopyWith<AuthenticationState> get copyWith =>
@@ -34,9 +33,7 @@ abstract class $AuthenticationStateCopyWith<$Res> {
   @useResult
   $Res call(
       {dynamic authenticationStatus,
-      String? word,
-      String? category,
-      int? times});
+      AuthenticationUserModel? authenticationUser});
 }
 
 /// @nodoc
@@ -53,27 +50,17 @@ class _$AuthenticationStateCopyWithImpl<$Res, $Val extends AuthenticationState>
   @override
   $Res call({
     Object? authenticationStatus = freezed,
-    Object? word = freezed,
-    Object? category = freezed,
-    Object? times = freezed,
+    Object? authenticationUser = freezed,
   }) {
     return _then(_value.copyWith(
       authenticationStatus: freezed == authenticationStatus
           ? _value.authenticationStatus
           : authenticationStatus // ignore: cast_nullable_to_non_nullable
               as dynamic,
-      word: freezed == word
-          ? _value.word
-          : word // ignore: cast_nullable_to_non_nullable
-              as String?,
-      category: freezed == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as String?,
-      times: freezed == times
-          ? _value.times
-          : times // ignore: cast_nullable_to_non_nullable
-              as int?,
+      authenticationUser: freezed == authenticationUser
+          ? _value.authenticationUser
+          : authenticationUser // ignore: cast_nullable_to_non_nullable
+              as AuthenticationUserModel?,
     ) as $Val);
   }
 }
@@ -88,9 +75,7 @@ abstract class _$$_AuthenticationStateCopyWith<$Res>
   @useResult
   $Res call(
       {dynamic authenticationStatus,
-      String? word,
-      String? category,
-      int? times});
+      AuthenticationUserModel? authenticationUser});
 }
 
 /// @nodoc
@@ -105,26 +90,16 @@ class __$$_AuthenticationStateCopyWithImpl<$Res>
   @override
   $Res call({
     Object? authenticationStatus = freezed,
-    Object? word = freezed,
-    Object? category = freezed,
-    Object? times = freezed,
+    Object? authenticationUser = freezed,
   }) {
     return _then(_$_AuthenticationState(
       authenticationStatus: freezed == authenticationStatus
           ? _value.authenticationStatus!
           : authenticationStatus,
-      word: freezed == word
-          ? _value.word
-          : word // ignore: cast_nullable_to_non_nullable
-              as String?,
-      category: freezed == category
-          ? _value.category
-          : category // ignore: cast_nullable_to_non_nullable
-              as String?,
-      times: freezed == times
-          ? _value.times
-          : times // ignore: cast_nullable_to_non_nullable
-              as int?,
+      authenticationUser: freezed == authenticationUser
+          ? _value.authenticationUser
+          : authenticationUser // ignore: cast_nullable_to_non_nullable
+              as AuthenticationUserModel?,
     ));
   }
 }
@@ -134,23 +109,17 @@ class __$$_AuthenticationStateCopyWithImpl<$Res>
 class _$_AuthenticationState implements _AuthenticationState {
   const _$_AuthenticationState(
       {this.authenticationStatus = AuthenticationStatus.initial,
-      this.word,
-      this.category,
-      this.times});
+      this.authenticationUser});
 
   @override
   @JsonKey()
   final dynamic authenticationStatus;
   @override
-  final String? word;
-  @override
-  final String? category;
-  @override
-  final int? times;
+  final AuthenticationUserModel? authenticationUser;
 
   @override
   String toString() {
-    return 'AuthenticationState(authenticationStatus: $authenticationStatus, word: $word, category: $category, times: $times)';
+    return 'AuthenticationState(authenticationStatus: $authenticationStatus, authenticationUser: $authenticationUser)';
   }
 
   @override
@@ -160,19 +129,15 @@ class _$_AuthenticationState implements _AuthenticationState {
             other is _$_AuthenticationState &&
             const DeepCollectionEquality()
                 .equals(other.authenticationStatus, authenticationStatus) &&
-            (identical(other.word, word) || other.word == word) &&
-            (identical(other.category, category) ||
-                other.category == category) &&
-            (identical(other.times, times) || other.times == times));
+            (identical(other.authenticationUser, authenticationUser) ||
+                other.authenticationUser == authenticationUser));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(authenticationStatus),
-      word,
-      category,
-      times);
+      authenticationUser);
 
   @JsonKey(ignore: true)
   @override
@@ -184,19 +149,14 @@ class _$_AuthenticationState implements _AuthenticationState {
 
 abstract class _AuthenticationState implements AuthenticationState {
   const factory _AuthenticationState(
-      {final dynamic authenticationStatus,
-      final String? word,
-      final String? category,
-      final int? times}) = _$_AuthenticationState;
+          {final dynamic authenticationStatus,
+          final AuthenticationUserModel? authenticationUser}) =
+      _$_AuthenticationState;
 
   @override
   dynamic get authenticationStatus;
   @override
-  String? get word;
-  @override
-  String? get category;
-  @override
-  int? get times;
+  AuthenticationUserModel? get authenticationUser;
   @override
   @JsonKey(ignore: true)
   _$$_AuthenticationStateCopyWith<_$_AuthenticationState> get copyWith =>
