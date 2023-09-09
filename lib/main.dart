@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:jamsi_flutter/feature/authentication/presentation/bloc/authentication_bloc.dart';
+import 'package:jamsi_flutter/feature/authentication/service/authentication_service.dart';
 import 'package:jamsi_flutter/firebase_options.dart';
 import 'package:jamsi_flutter/utils/dio_config.dart';
 import 'package:jamsi_flutter/utils/router.dart';
@@ -23,11 +25,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: const [
-        // BlocProvider<MemorizeBloc>(
-        //   create: (BuildContext context) =>
-        //       MemorizeBloc(repo: MemorizeService()),
-        // ),
+      providers: [
+        BlocProvider<AuthenticationBloc>(
+          create: (BuildContext context) =>
+              AuthenticationBloc(repo: FirebaseService()),
+        ),
       ],
       child: MaterialApp.router(
         title: 'jamsi',
