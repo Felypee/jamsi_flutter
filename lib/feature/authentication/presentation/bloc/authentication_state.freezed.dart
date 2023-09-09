@@ -15,31 +15,34 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-mixin _$MemorizeState {
-  dynamic get memorizeStatus => throw _privateConstructorUsedError;
+mixin _$AuthenticationState {
+  dynamic get authenticationStatus => throw _privateConstructorUsedError;
   String? get word => throw _privateConstructorUsedError;
   String? get category => throw _privateConstructorUsedError;
   int? get times => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $MemorizeStateCopyWith<MemorizeState> get copyWith =>
+  $AuthenticationStateCopyWith<AuthenticationState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $MemorizeStateCopyWith<$Res> {
-  factory $MemorizeStateCopyWith(
-          MemorizeState value, $Res Function(MemorizeState) then) =
-      _$MemorizeStateCopyWithImpl<$Res, MemorizeState>;
+abstract class $AuthenticationStateCopyWith<$Res> {
+  factory $AuthenticationStateCopyWith(
+          AuthenticationState value, $Res Function(AuthenticationState) then) =
+      _$AuthenticationStateCopyWithImpl<$Res, AuthenticationState>;
   @useResult
   $Res call(
-      {dynamic memorizeStatus, String? word, String? category, int? times});
+      {dynamic authenticationStatus,
+      String? word,
+      String? category,
+      int? times});
 }
 
 /// @nodoc
-class _$MemorizeStateCopyWithImpl<$Res, $Val extends MemorizeState>
-    implements $MemorizeStateCopyWith<$Res> {
-  _$MemorizeStateCopyWithImpl(this._value, this._then);
+class _$AuthenticationStateCopyWithImpl<$Res, $Val extends AuthenticationState>
+    implements $AuthenticationStateCopyWith<$Res> {
+  _$AuthenticationStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -49,15 +52,15 @@ class _$MemorizeStateCopyWithImpl<$Res, $Val extends MemorizeState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? memorizeStatus = freezed,
+    Object? authenticationStatus = freezed,
     Object? word = freezed,
     Object? category = freezed,
     Object? times = freezed,
   }) {
     return _then(_value.copyWith(
-      memorizeStatus: freezed == memorizeStatus
-          ? _value.memorizeStatus
-          : memorizeStatus // ignore: cast_nullable_to_non_nullable
+      authenticationStatus: freezed == authenticationStatus
+          ? _value.authenticationStatus
+          : authenticationStatus // ignore: cast_nullable_to_non_nullable
               as dynamic,
       word: freezed == word
           ? _value.word
@@ -76,36 +79,40 @@ class _$MemorizeStateCopyWithImpl<$Res, $Val extends MemorizeState>
 }
 
 /// @nodoc
-abstract class _$$_MemorizeStateCopyWith<$Res>
-    implements $MemorizeStateCopyWith<$Res> {
-  factory _$$_MemorizeStateCopyWith(
-          _$_MemorizeState value, $Res Function(_$_MemorizeState) then) =
-      __$$_MemorizeStateCopyWithImpl<$Res>;
+abstract class _$$_AuthenticationStateCopyWith<$Res>
+    implements $AuthenticationStateCopyWith<$Res> {
+  factory _$$_AuthenticationStateCopyWith(_$_AuthenticationState value,
+          $Res Function(_$_AuthenticationState) then) =
+      __$$_AuthenticationStateCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {dynamic memorizeStatus, String? word, String? category, int? times});
+      {dynamic authenticationStatus,
+      String? word,
+      String? category,
+      int? times});
 }
 
 /// @nodoc
-class __$$_MemorizeStateCopyWithImpl<$Res>
-    extends _$MemorizeStateCopyWithImpl<$Res, _$_MemorizeState>
-    implements _$$_MemorizeStateCopyWith<$Res> {
-  __$$_MemorizeStateCopyWithImpl(
-      _$_MemorizeState _value, $Res Function(_$_MemorizeState) _then)
+class __$$_AuthenticationStateCopyWithImpl<$Res>
+    extends _$AuthenticationStateCopyWithImpl<$Res, _$_AuthenticationState>
+    implements _$$_AuthenticationStateCopyWith<$Res> {
+  __$$_AuthenticationStateCopyWithImpl(_$_AuthenticationState _value,
+      $Res Function(_$_AuthenticationState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? memorizeStatus = freezed,
+    Object? authenticationStatus = freezed,
     Object? word = freezed,
     Object? category = freezed,
     Object? times = freezed,
   }) {
-    return _then(_$_MemorizeState(
-      memorizeStatus:
-          freezed == memorizeStatus ? _value.memorizeStatus! : memorizeStatus,
+    return _then(_$_AuthenticationState(
+      authenticationStatus: freezed == authenticationStatus
+          ? _value.authenticationStatus!
+          : authenticationStatus,
       word: freezed == word
           ? _value.word
           : word // ignore: cast_nullable_to_non_nullable
@@ -124,16 +131,16 @@ class __$$_MemorizeStateCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_MemorizeState implements _MemorizeState {
-  const _$_MemorizeState(
-      {this.memorizeStatus = MemorizeStatus.initial,
+class _$_AuthenticationState implements _AuthenticationState {
+  const _$_AuthenticationState(
+      {this.authenticationStatus = AuthenticationStatus.initial,
       this.word,
       this.category,
       this.times});
 
   @override
   @JsonKey()
-  final dynamic memorizeStatus;
+  final dynamic authenticationStatus;
   @override
   final String? word;
   @override
@@ -143,16 +150,16 @@ class _$_MemorizeState implements _MemorizeState {
 
   @override
   String toString() {
-    return 'MemorizeState(memorizeStatus: $memorizeStatus, word: $word, category: $category, times: $times)';
+    return 'AuthenticationState(authenticationStatus: $authenticationStatus, word: $word, category: $category, times: $times)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_MemorizeState &&
+            other is _$_AuthenticationState &&
             const DeepCollectionEquality()
-                .equals(other.memorizeStatus, memorizeStatus) &&
+                .equals(other.authenticationStatus, authenticationStatus) &&
             (identical(other.word, word) || other.word == word) &&
             (identical(other.category, category) ||
                 other.category == category) &&
@@ -162,7 +169,7 @@ class _$_MemorizeState implements _MemorizeState {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      const DeepCollectionEquality().hash(memorizeStatus),
+      const DeepCollectionEquality().hash(authenticationStatus),
       word,
       category,
       times);
@@ -170,19 +177,20 @@ class _$_MemorizeState implements _MemorizeState {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_MemorizeStateCopyWith<_$_MemorizeState> get copyWith =>
-      __$$_MemorizeStateCopyWithImpl<_$_MemorizeState>(this, _$identity);
+  _$$_AuthenticationStateCopyWith<_$_AuthenticationState> get copyWith =>
+      __$$_AuthenticationStateCopyWithImpl<_$_AuthenticationState>(
+          this, _$identity);
 }
 
-abstract class _MemorizeState implements MemorizeState {
-  const factory _MemorizeState(
-      {final dynamic memorizeStatus,
+abstract class _AuthenticationState implements AuthenticationState {
+  const factory _AuthenticationState(
+      {final dynamic authenticationStatus,
       final String? word,
       final String? category,
-      final int? times}) = _$_MemorizeState;
+      final int? times}) = _$_AuthenticationState;
 
   @override
-  dynamic get memorizeStatus;
+  dynamic get authenticationStatus;
   @override
   String? get word;
   @override
@@ -191,6 +199,6 @@ abstract class _MemorizeState implements MemorizeState {
   int? get times;
   @override
   @JsonKey(ignore: true)
-  _$$_MemorizeStateCopyWith<_$_MemorizeState> get copyWith =>
+  _$$_AuthenticationStateCopyWith<_$_AuthenticationState> get copyWith =>
       throw _privateConstructorUsedError;
 }

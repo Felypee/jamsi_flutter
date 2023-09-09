@@ -1,18 +1,18 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-part 'memorize_state.freezed.dart';
+part 'authentication_state.freezed.dart';
 
 ///Run 'flutter pub run build_runner build or fvm flutter pub run build_runner build' to generate required files
 ///
 ///
 ///
-enum MemorizeStatus { initial, loading, success, failure }
+enum AuthenticationStatus { initial, loading, success, failure }
 
 @freezed
-class MemorizeState with _$MemorizeState {
-  const factory MemorizeState({
-    @Default(MemorizeStatus.initial) memorizeStatus,
+class AuthenticationState with _$AuthenticationState {
+  const factory AuthenticationState({
+    @Default(AuthenticationStatus.initial) authenticationStatus,
     String? word,
     String? category,
     int? times,
-  }) = _MemorizeState;
+  }) = _AuthenticationState;
 }
