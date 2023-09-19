@@ -6,16 +6,17 @@ import 'package:jamsi_flutter/feature/exercise/presentation/bloc/exercise_state.
 class ExerciseBloc extends Bloc<ExerciseEvent, ExerciseState> {
   ExerciseRepo repo;
   ExerciseBloc({required this.repo}) : super(const ExerciseState()) {
-    on<GetExercise>(_getExercise);
+    on<GetExercises>(_getExercises);
   }
 
-  Future<void> _getExercise(GetExercise event, emit) async {
+  Future<void> _getExercises(GetExercises event, emit) async {
     emit(state.copyWith(exerciseStatus: ExerciseStatus.loading));
-    final result = await repo.getExercise(event.userId);
-    result.fold((error) {
-      emit(state.copyWith(exerciseStatus: ExerciseStatus.failure));
-    }, (success) {
-      emit(state.copyWith(exerciseStatus: ExerciseStatus.success));
-    });
+
+    final activityList = event.userWordList.map((userWord) {
+      return userWord.activityList[userWord.wordActivityIndex];
+    }).toList();
+
+    emit(state.copyWith(
+        exerciseStatus: ExerciseStatus.success, exerciseList: activityList));
   }
 }

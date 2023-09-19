@@ -9,7 +9,7 @@ abstract class AuthenticationRepo {
     String email,
   );
   Future<Either<HttpAppError, bool>> verifyPhone(
-    String phone,
+    String phoneCode,
   );
 
   Future<Either<HttpAppError, bool>> sendToverifyPhone(

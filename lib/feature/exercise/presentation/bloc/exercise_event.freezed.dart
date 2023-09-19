@@ -19,38 +19,38 @@ mixin _$ExerciseEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
-    required TResult Function(int userId) getUserWords,
+    required TResult Function(List<UserWordModel> userWordList) getExercises,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function()? $default, {
-    TResult? Function(int userId)? getUserWords,
+    TResult? Function(List<UserWordModel> userWordList)? getExercises,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
-    TResult Function(int userId)? getUserWords,
+    TResult Function(List<UserWordModel> userWordList)? getExercises,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_Exercise value) $default, {
-    required TResult Function(GetExercise value) getUserWords,
+    required TResult Function(GetExercises value) getExercises,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_Exercise value)? $default, {
-    TResult? Function(GetExercise value)? getUserWords,
+    TResult? Function(GetExercises value)? getExercises,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_Exercise value)? $default, {
-    TResult Function(GetExercise value)? getUserWords,
+    TResult Function(GetExercises value)? getExercises,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -113,7 +113,7 @@ class _$_Exercise implements _Exercise {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
-    required TResult Function(int userId) getUserWords,
+    required TResult Function(List<UserWordModel> userWordList) getExercises,
   }) {
     return $default();
   }
@@ -122,7 +122,7 @@ class _$_Exercise implements _Exercise {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function()? $default, {
-    TResult? Function(int userId)? getUserWords,
+    TResult? Function(List<UserWordModel> userWordList)? getExercises,
   }) {
     return $default?.call();
   }
@@ -131,7 +131,7 @@ class _$_Exercise implements _Exercise {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
-    TResult Function(int userId)? getUserWords,
+    TResult Function(List<UserWordModel> userWordList)? getExercises,
     required TResult orElse(),
   }) {
     if ($default != null) {
@@ -144,7 +144,7 @@ class _$_Exercise implements _Exercise {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_Exercise value) $default, {
-    required TResult Function(GetExercise value) getUserWords,
+    required TResult Function(GetExercises value) getExercises,
   }) {
     return $default(this);
   }
@@ -153,7 +153,7 @@ class _$_Exercise implements _Exercise {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_Exercise value)? $default, {
-    TResult? Function(GetExercise value)? getUserWords,
+    TResult? Function(GetExercises value)? getExercises,
   }) {
     return $default?.call(this);
   }
@@ -162,7 +162,7 @@ class _$_Exercise implements _Exercise {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_Exercise value)? $default, {
-    TResult Function(GetExercise value)? getUserWords,
+    TResult Function(GetExercises value)? getExercises,
     required TResult orElse(),
   }) {
     if ($default != null) {
@@ -177,93 +177,101 @@ abstract class _Exercise implements ExerciseEvent {
 }
 
 /// @nodoc
-abstract class _$$GetExerciseCopyWith<$Res> {
-  factory _$$GetExerciseCopyWith(
-          _$GetExercise value, $Res Function(_$GetExercise) then) =
-      __$$GetExerciseCopyWithImpl<$Res>;
+abstract class _$$GetExercisesCopyWith<$Res> {
+  factory _$$GetExercisesCopyWith(
+          _$GetExercises value, $Res Function(_$GetExercises) then) =
+      __$$GetExercisesCopyWithImpl<$Res>;
   @useResult
-  $Res call({int userId});
+  $Res call({List<UserWordModel> userWordList});
 }
 
 /// @nodoc
-class __$$GetExerciseCopyWithImpl<$Res>
-    extends _$ExerciseEventCopyWithImpl<$Res, _$GetExercise>
-    implements _$$GetExerciseCopyWith<$Res> {
-  __$$GetExerciseCopyWithImpl(
-      _$GetExercise _value, $Res Function(_$GetExercise) _then)
+class __$$GetExercisesCopyWithImpl<$Res>
+    extends _$ExerciseEventCopyWithImpl<$Res, _$GetExercises>
+    implements _$$GetExercisesCopyWith<$Res> {
+  __$$GetExercisesCopyWithImpl(
+      _$GetExercises _value, $Res Function(_$GetExercises) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? userId = null,
+    Object? userWordList = null,
   }) {
-    return _then(_$GetExercise(
-      userId: null == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as int,
+    return _then(_$GetExercises(
+      userWordList: null == userWordList
+          ? _value._userWordList
+          : userWordList // ignore: cast_nullable_to_non_nullable
+              as List<UserWordModel>,
     ));
   }
 }
 
 /// @nodoc
 
-class _$GetExercise implements GetExercise {
-  _$GetExercise({required this.userId});
+class _$GetExercises implements GetExercises {
+  _$GetExercises({required final List<UserWordModel> userWordList})
+      : _userWordList = userWordList;
 
+  final List<UserWordModel> _userWordList;
   @override
-  final int userId;
+  List<UserWordModel> get userWordList {
+    if (_userWordList is EqualUnmodifiableListView) return _userWordList;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_userWordList);
+  }
 
   @override
   String toString() {
-    return 'ExerciseEvent.getUserWords(userId: $userId)';
+    return 'ExerciseEvent.getExercises(userWordList: $userWordList)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$GetExercise &&
-            (identical(other.userId, userId) || other.userId == userId));
+            other is _$GetExercises &&
+            const DeepCollectionEquality()
+                .equals(other._userWordList, _userWordList));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, userId);
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_userWordList));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$GetExerciseCopyWith<_$GetExercise> get copyWith =>
-      __$$GetExerciseCopyWithImpl<_$GetExercise>(this, _$identity);
+  _$$GetExercisesCopyWith<_$GetExercises> get copyWith =>
+      __$$GetExercisesCopyWithImpl<_$GetExercises>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
-    required TResult Function(int userId) getUserWords,
+    required TResult Function(List<UserWordModel> userWordList) getExercises,
   }) {
-    return getUserWords(userId);
+    return getExercises(userWordList);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function()? $default, {
-    TResult? Function(int userId)? getUserWords,
+    TResult? Function(List<UserWordModel> userWordList)? getExercises,
   }) {
-    return getUserWords?.call(userId);
+    return getExercises?.call(userWordList);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
-    TResult Function(int userId)? getUserWords,
+    TResult Function(List<UserWordModel> userWordList)? getExercises,
     required TResult orElse(),
   }) {
-    if (getUserWords != null) {
-      return getUserWords(userId);
+    if (getExercises != null) {
+      return getExercises(userWordList);
     }
     return orElse();
   }
@@ -272,39 +280,40 @@ class _$GetExercise implements GetExercise {
   @optionalTypeArgs
   TResult map<TResult extends Object?>(
     TResult Function(_Exercise value) $default, {
-    required TResult Function(GetExercise value) getUserWords,
+    required TResult Function(GetExercises value) getExercises,
   }) {
-    return getUserWords(this);
+    return getExercises(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_Exercise value)? $default, {
-    TResult? Function(GetExercise value)? getUserWords,
+    TResult? Function(GetExercises value)? getExercises,
   }) {
-    return getUserWords?.call(this);
+    return getExercises?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_Exercise value)? $default, {
-    TResult Function(GetExercise value)? getUserWords,
+    TResult Function(GetExercises value)? getExercises,
     required TResult orElse(),
   }) {
-    if (getUserWords != null) {
-      return getUserWords(this);
+    if (getExercises != null) {
+      return getExercises(this);
     }
     return orElse();
   }
 }
 
-abstract class GetExercise implements ExerciseEvent {
-  factory GetExercise({required final int userId}) = _$GetExercise;
+abstract class GetExercises implements ExerciseEvent {
+  factory GetExercises({required final List<UserWordModel> userWordList}) =
+      _$GetExercises;
 
-  int get userId;
+  List<UserWordModel> get userWordList;
   @JsonKey(ignore: true)
-  _$$GetExerciseCopyWith<_$GetExercise> get copyWith =>
+  _$$GetExercisesCopyWith<_$GetExercises> get copyWith =>
       throw _privateConstructorUsedError;
 }

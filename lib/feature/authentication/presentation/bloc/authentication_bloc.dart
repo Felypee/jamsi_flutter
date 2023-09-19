@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:jamsi_flutter/feature/authentication/domain/authentication_repo.dart';
 import 'package:jamsi_flutter/feature/authentication/presentation/bloc/authentication_event.dart';
 import 'package:jamsi_flutter/feature/authentication/presentation/bloc/authentication_state.dart';
+import 'package:go_router/go_router.dart';
 
 class AuthenticationBloc
     extends Bloc<AuthenticationEvent, AuthenticationState> {
@@ -19,7 +20,9 @@ class AuthenticationBloc
     on<AuthWithApple>(_withApple);
     on<AuthResetPassword>(_resetPassword);
     on<AuthSendToVerifyEmail>(_sendToVerifyEmail);
+    on<AuthSendToVerifyPhone>(_sendToVerifyPhone);
     on<AuthSendToResetPassword>(_sendToResetPassword);
+    on<AuthSetStatus>(_setStatus);
   }
 
   Future<void> _updateAuthUser(AuthUser event, emit) async {
@@ -40,21 +43,26 @@ class AuthenticationBloc
 
   Future<void> _verifyEmail(AuthVerifyEmail event, emit) async {
     emit(state.copyWith(authenticationStatus: AuthenticationStatus.loading));
-    final result = await repo.verifyEmail(event.email);
+    final result = await repo.verifyEmail(event.emailCode);
     result.fold((error) {
       emit(state.copyWith(authenticationStatus: AuthenticationStatus.failure));
     }, (success) {
-      emit(state.copyWith(authenticationStatus: AuthenticationStatus.success));
+      if (success) {
+        emit(
+            state.copyWith(authenticationStatus: AuthenticationStatus.success));
+        event.goToPage();
+      }
     });
   }
 
   Future<void> _verifyPhone(AuthVerifyPhone event, emit) async {
     emit(state.copyWith(authenticationStatus: AuthenticationStatus.loading));
-    final result = await repo.verifyPhone(event.phone);
+    final result = await repo.verifyPhone(event.phoneCode);
     result.fold((error) {
       emit(state.copyWith(authenticationStatus: AuthenticationStatus.failure));
     }, (success) {
       emit(state.copyWith(authenticationStatus: AuthenticationStatus.success));
+      event.context.push("/userWords");
     });
   }
 
@@ -65,16 +73,25 @@ class AuthenticationBloc
       emit(state.copyWith(authenticationStatus: AuthenticationStatus.failure));
     }, (success) {
       emit(state.copyWith(authenticationStatus: AuthenticationStatus.success));
+
+      event.goToPage();
     });
   }
 
   Future<void> _login(AuthLogin event, emit) async {
     emit(state.copyWith(authenticationStatus: AuthenticationStatus.loading));
     final result = await repo.login(event.email, event.password);
+
     result.fold((error) {
       emit(state.copyWith(authenticationStatus: AuthenticationStatus.failure));
+      if (error.message == "email_not_verified") {
+        event.context.go("/verifyEmail", extra: {"email": event.email});
+      }
     }, (success) {
-      emit(state.copyWith(authenticationStatus: AuthenticationStatus.success));
+      emit(state.copyWith(
+        authenticationStatus: AuthenticationStatus.success,
+      ));
+      event.onDone();
     });
   }
 
@@ -135,6 +152,17 @@ class AuthenticationBloc
       emit(state.copyWith(authenticationStatus: AuthenticationStatus.failure));
     }, (success) {
       emit(state.copyWith(authenticationStatus: AuthenticationStatus.success));
+      event.goToPage();
+    });
+  }
+
+  Future<void> _sendToVerifyPhone(AuthSendToVerifyPhone event, emit) async {
+    emit(state.copyWith(authenticationStatus: AuthenticationStatus.loading));
+    final result = await repo.sendToverifyPhone(event.phone);
+    result.fold((error) {
+      emit(state.copyWith(authenticationStatus: AuthenticationStatus.failure));
+    }, (success) {
+      emit(state.copyWith(authenticationStatus: AuthenticationStatus.success));
     });
   }
 
@@ -146,5 +174,10 @@ class AuthenticationBloc
     }, (success) {
       emit(state.copyWith(authenticationStatus: AuthenticationStatus.success));
     });
+  }
+
+  Future<void> _setStatus(AuthSetStatus event, emit) async {
+    if (event.status == state.authenticationStatus) return;
+    emit(state.copyWith(authenticationStatus: event.status));
   }
 }

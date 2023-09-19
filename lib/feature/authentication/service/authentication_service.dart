@@ -10,12 +10,21 @@ class FirebaseService extends AuthenticationRepo {
   Future<Either<HttpAppError, bool>> login(
       String email, String password) async {
     try {
-      final result = FirebaseAuth.instance
+      await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
-      return const Right(true);
+
+      final verifiedEmail =
+          FirebaseAuth.instance.currentUser?.emailVerified ?? false;
+      if (verifiedEmail) {
+        return const Right(true);
+      }
+      return const Left(HttpAppError(message: "email_not_verified"));
     } on FirebaseAuthException catch (e) {
       debugPrint("Error Login: $e");
       return Left(HttpAppError(message: e.message ?? ""));
+    } catch (e) {
+      debugPrint("Error Login: unknow_error");
+      return const Left(HttpAppError(message: "unknow_error"));
     }
   }
 
@@ -78,12 +87,15 @@ class FirebaseService extends AuthenticationRepo {
   Future<Either<HttpAppError, bool>> registerUser(
       String email, String password) async {
     try {
-      final result = FirebaseAuth.instance
+      final result = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
       return const Right(true);
     } on FirebaseAuthException catch (e) {
-      debugPrint("Error Login: $e");
-      return Left(HttpAppError(message: e.message ?? ""));
+      if (e.code == "email-already-in-use" &&
+          FirebaseAuth.instance.currentUser?.emailVerified == false) {
+        return const Right(true);
+      }
+      return Left(HttpAppError(message: e.code));
     }
   }
 
@@ -100,27 +112,25 @@ class FirebaseService extends AuthenticationRepo {
 
   @override
   Future<Either<HttpAppError, bool>> verifyEmail(String emailCode) async {
-    //It is not needed for firebase
     try {
-      return const Right(true);
+      if (FirebaseAuth.instance.currentUser != null) {
+        await FirebaseAuth.instance.currentUser!.reload();
+        debugPrint(
+            "Email verified ${FirebaseAuth.instance.currentUser!.emailVerified}");
+        return Right(FirebaseAuth.instance.currentUser!.emailVerified);
+      }
+      return const Left(HttpAppError(message: "NO_CURRENT_USER"));
     } on FirebaseAuthException catch (e) {
       return Left(HttpAppError(message: e.message ?? ""));
     }
   }
 
   @override
-  Future<Either<HttpAppError, bool>> verifyPhone(String phone) async {
+  Future<Either<HttpAppError, bool>> verifyPhone(String phoneCode) async {
+    //It is not needed for firebase
     try {
-      final result = await FirebaseAuth.instance.verifyPhoneNumber(
-        phoneNumber: phone,
-        verificationCompleted: (PhoneAuthCredential credential) {},
-        verificationFailed: (FirebaseAuthException e) {},
-        codeSent: (String verificationId, int? resendToken) {},
-        codeAutoRetrievalTimeout: (String verificationId) {},
-      );
       return const Right(true);
     } on FirebaseAuthException catch (e) {
-      debugPrint("Error Login: $e");
       return Left(HttpAppError(message: e.message ?? ""));
     }
   }
@@ -129,7 +139,20 @@ class FirebaseService extends AuthenticationRepo {
   Future<Either<HttpAppError, bool>> sendToVerifyEmail(String email) async {
     //It is not needed for firebase
     try {
-      return const Right(true);
+      if (FirebaseAuth.instance.currentUser != null) {
+        await FirebaseAuth.instance.setLanguageCode('es');
+        var actionCodeSettings = ActionCodeSettings(
+          dynamicLinkDomain: "jamsi.page.link",
+          androidPackageName: "com.feligo.jamsi",
+          iOSBundleId: "com.feligo.jamsi",
+          url: "https://jamsi.page.link/emailVerification",
+        );
+
+        FirebaseAuth.instance.currentUser!
+            .sendEmailVerification(actionCodeSettings);
+        return const Right(true);
+      }
+      return const Left(HttpAppError(message: "NO_CURRENT_USER"));
     } on FirebaseAuthException catch (e) {
       return Left(HttpAppError(message: e.message ?? ""));
     }
@@ -150,10 +173,27 @@ class FirebaseService extends AuthenticationRepo {
 
   @override
   Future<Either<HttpAppError, bool>> sendToverifyPhone(String phone) async {
-    //It is not needed for firebase
+    debugPrint("Phone Auth $phone");
     try {
+      await FirebaseAuth.instance.verifyPhoneNumber(
+        phoneNumber: phone,
+        verificationCompleted: (PhoneAuthCredential credential) {
+          debugPrint("verificationCompleted $credential");
+          FirebaseAuth.instance.signInWithCredential(credential);
+        },
+        verificationFailed: (FirebaseAuthException e) {
+          debugPrint("failed $e");
+        },
+        codeSent: (String verificationId, int? resendToken) {
+          debugPrint("codeSent $verificationId");
+        },
+        codeAutoRetrievalTimeout: (String verificationId) {
+          debugPrint("codeAutoRetrievalTimeout $verificationId");
+        },
+      );
       return const Right(true);
     } on FirebaseAuthException catch (e) {
+      debugPrint("Error Login: $e");
       return Left(HttpAppError(message: e.message ?? ""));
     }
   }

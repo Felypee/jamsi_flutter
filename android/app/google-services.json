@@ -7,12 +7,17 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:635647124648:android:cdf4294ce25e60613e8e9d",
+        "mobilesdk_app_id": "1:635647124648:android:cbffd9aa7ad719763e8e9d",
         "android_client_info": {
-          "package_name": "com.example.jamsi_flutter"
+          "package_name": "com.feligo.jamsi"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "635647124648-9uk6jqfekvq5vepvqjvv2cpme2mf0e9s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAlddS0dopFH_Vf-HDvPi4U-S4xE6d2j6Q"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "635647124648-9uk6jqfekvq5vepvqjvv2cpme2mf0e9s.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "635647124648-3quoj6nhh8n645dvqp51k0pdll7np1l9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.jamsiFlutter"
+              }
+            }
+          ]
         }
       }
     }

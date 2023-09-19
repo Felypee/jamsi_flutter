@@ -13,6 +13,7 @@ enum NewWordStatus { initial, loading, success, failure }
 class NewWordState with _$NewWordState {
   const factory NewWordState({
     @Default(NewWordStatus.initial) newWordStatus,
-    @Default([]) List<NewWordModel> newWordList,
+    @Default([]) List<NewWordModel?> newWordList,
+    @Default([]) List<NewWordModel?> wordsAdded,
   }) = _NewWordState;
 }

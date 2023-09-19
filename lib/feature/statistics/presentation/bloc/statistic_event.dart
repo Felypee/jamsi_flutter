@@ -9,4 +9,10 @@ class StatisticEvent {
   const factory StatisticEvent() = _StatisticEvent;
   const factory StatisticEvent.getStatistics({required int userId}) =
       GetStatistics;
+  const factory StatisticEvent.addWordStatistic({
+    required String word,
+    required String category,
+    required DateTime date,
+    required bool success,
+  }) = AddWordStatistic;
 }
