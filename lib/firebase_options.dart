@@ -51,7 +51,7 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions android = FirebaseOptions(
     apiKey: 'AIzaSyAlddS0dopFH_Vf-HDvPi4U-S4xE6d2j6Q',
-    appId: '1:635647124648:android:cdf4294ce25e60613e8e9d',
+    appId: '1:635647124648:android:cbffd9aa7ad719763e8e9d',
     messagingSenderId: '635647124648',
     projectId: 'jamsi-e156e',
     storageBucket: 'jamsi-e156e.appspot.com',
@@ -59,10 +59,12 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyDQT6B04G2McCJQJrdwPd2YYGaYwIVglWw',
-    appId: '1:635647124648:ios:351e18534cc80a343e8e9d',
+    appId: '1:635647124648:ios:25da47bd1a8e5bb13e8e9d',
     messagingSenderId: '635647124648',
     projectId: 'jamsi-e156e',
     storageBucket: 'jamsi-e156e.appspot.com',
-    iosBundleId: 'com.example.jamsiFlutter',
+    androidClientId: '635647124648-1eaerrpmfl41eq3lend5c24t6bfjbe18.apps.googleusercontent.com',
+    iosClientId: '635647124648-je2qtvmnkevih23s68hla3ejfnhchvdc.apps.googleusercontent.com',
+    iosBundleId: 'com.feligo.jamsi',
   );
 }

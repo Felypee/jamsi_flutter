@@ -8,4 +8,7 @@ part 'user_word_event.freezed.dart';
 class UserWordEvent {
   const factory UserWordEvent() = _UserWord;
   factory UserWordEvent.getUserWords({required int userId}) = GetUserWords;
+  factory UserWordEvent.getNextUserWords({required int userId}) =
+      GetNextUserWords;
+  factory UserWordEvent.updateWord({required String wordId}) = UpdateWord;
 }

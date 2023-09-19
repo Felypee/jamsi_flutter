@@ -20,18 +20,24 @@ mixin _$UserWordEvent {
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
     required TResult Function(int userId) getUserWords,
+    required TResult Function(int userId) getNextUserWords,
+    required TResult Function(String wordId) updateWord,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function()? $default, {
     TResult? Function(int userId)? getUserWords,
+    TResult? Function(int userId)? getNextUserWords,
+    TResult? Function(String wordId)? updateWord,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
     TResult Function(int userId)? getUserWords,
+    TResult Function(int userId)? getNextUserWords,
+    TResult Function(String wordId)? updateWord,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +45,24 @@ mixin _$UserWordEvent {
   TResult map<TResult extends Object?>(
     TResult Function(_UserWord value) $default, {
     required TResult Function(GetUserWords value) getUserWords,
+    required TResult Function(GetNextUserWords value) getNextUserWords,
+    required TResult Function(UpdateWord value) updateWord,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_UserWord value)? $default, {
     TResult? Function(GetUserWords value)? getUserWords,
+    TResult? Function(GetNextUserWords value)? getNextUserWords,
+    TResult? Function(UpdateWord value)? updateWord,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_UserWord value)? $default, {
     TResult Function(GetUserWords value)? getUserWords,
+    TResult Function(GetNextUserWords value)? getNextUserWords,
+    TResult Function(UpdateWord value)? updateWord,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +126,8 @@ class _$_UserWord implements _UserWord {
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
     required TResult Function(int userId) getUserWords,
+    required TResult Function(int userId) getNextUserWords,
+    required TResult Function(String wordId) updateWord,
   }) {
     return $default();
   }
@@ -123,6 +137,8 @@ class _$_UserWord implements _UserWord {
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function()? $default, {
     TResult? Function(int userId)? getUserWords,
+    TResult? Function(int userId)? getNextUserWords,
+    TResult? Function(String wordId)? updateWord,
   }) {
     return $default?.call();
   }
@@ -132,6 +148,8 @@ class _$_UserWord implements _UserWord {
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
     TResult Function(int userId)? getUserWords,
+    TResult Function(int userId)? getNextUserWords,
+    TResult Function(String wordId)? updateWord,
     required TResult orElse(),
   }) {
     if ($default != null) {
@@ -145,6 +163,8 @@ class _$_UserWord implements _UserWord {
   TResult map<TResult extends Object?>(
     TResult Function(_UserWord value) $default, {
     required TResult Function(GetUserWords value) getUserWords,
+    required TResult Function(GetNextUserWords value) getNextUserWords,
+    required TResult Function(UpdateWord value) updateWord,
   }) {
     return $default(this);
   }
@@ -154,6 +174,8 @@ class _$_UserWord implements _UserWord {
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_UserWord value)? $default, {
     TResult? Function(GetUserWords value)? getUserWords,
+    TResult? Function(GetNextUserWords value)? getNextUserWords,
+    TResult? Function(UpdateWord value)? updateWord,
   }) {
     return $default?.call(this);
   }
@@ -163,6 +185,8 @@ class _$_UserWord implements _UserWord {
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_UserWord value)? $default, {
     TResult Function(GetUserWords value)? getUserWords,
+    TResult Function(GetNextUserWords value)? getNextUserWords,
+    TResult Function(UpdateWord value)? updateWord,
     required TResult orElse(),
   }) {
     if ($default != null) {
@@ -242,6 +266,8 @@ class _$GetUserWords implements GetUserWords {
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
     required TResult Function(int userId) getUserWords,
+    required TResult Function(int userId) getNextUserWords,
+    required TResult Function(String wordId) updateWord,
   }) {
     return getUserWords(userId);
   }
@@ -251,6 +277,8 @@ class _$GetUserWords implements GetUserWords {
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function()? $default, {
     TResult? Function(int userId)? getUserWords,
+    TResult? Function(int userId)? getNextUserWords,
+    TResult? Function(String wordId)? updateWord,
   }) {
     return getUserWords?.call(userId);
   }
@@ -260,6 +288,8 @@ class _$GetUserWords implements GetUserWords {
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
     TResult Function(int userId)? getUserWords,
+    TResult Function(int userId)? getNextUserWords,
+    TResult Function(String wordId)? updateWord,
     required TResult orElse(),
   }) {
     if (getUserWords != null) {
@@ -273,6 +303,8 @@ class _$GetUserWords implements GetUserWords {
   TResult map<TResult extends Object?>(
     TResult Function(_UserWord value) $default, {
     required TResult Function(GetUserWords value) getUserWords,
+    required TResult Function(GetNextUserWords value) getNextUserWords,
+    required TResult Function(UpdateWord value) updateWord,
   }) {
     return getUserWords(this);
   }
@@ -282,6 +314,8 @@ class _$GetUserWords implements GetUserWords {
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_UserWord value)? $default, {
     TResult? Function(GetUserWords value)? getUserWords,
+    TResult? Function(GetNextUserWords value)? getNextUserWords,
+    TResult? Function(UpdateWord value)? updateWord,
   }) {
     return getUserWords?.call(this);
   }
@@ -291,6 +325,8 @@ class _$GetUserWords implements GetUserWords {
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_UserWord value)? $default, {
     TResult Function(GetUserWords value)? getUserWords,
+    TResult Function(GetNextUserWords value)? getNextUserWords,
+    TResult Function(UpdateWord value)? updateWord,
     required TResult orElse(),
   }) {
     if (getUserWords != null) {
@@ -306,5 +342,295 @@ abstract class GetUserWords implements UserWordEvent {
   int get userId;
   @JsonKey(ignore: true)
   _$$GetUserWordsCopyWith<_$GetUserWords> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GetNextUserWordsCopyWith<$Res> {
+  factory _$$GetNextUserWordsCopyWith(
+          _$GetNextUserWords value, $Res Function(_$GetNextUserWords) then) =
+      __$$GetNextUserWordsCopyWithImpl<$Res>;
+  @useResult
+  $Res call({int userId});
+}
+
+/// @nodoc
+class __$$GetNextUserWordsCopyWithImpl<$Res>
+    extends _$UserWordEventCopyWithImpl<$Res, _$GetNextUserWords>
+    implements _$$GetNextUserWordsCopyWith<$Res> {
+  __$$GetNextUserWordsCopyWithImpl(
+      _$GetNextUserWords _value, $Res Function(_$GetNextUserWords) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? userId = null,
+  }) {
+    return _then(_$GetNextUserWords(
+      userId: null == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$GetNextUserWords implements GetNextUserWords {
+  _$GetNextUserWords({required this.userId});
+
+  @override
+  final int userId;
+
+  @override
+  String toString() {
+    return 'UserWordEvent.getNextUserWords(userId: $userId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GetNextUserWords &&
+            (identical(other.userId, userId) || other.userId == userId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, userId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetNextUserWordsCopyWith<_$GetNextUserWords> get copyWith =>
+      __$$GetNextUserWordsCopyWithImpl<_$GetNextUserWords>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function(int userId) getUserWords,
+    required TResult Function(int userId) getNextUserWords,
+    required TResult Function(String wordId) updateWord,
+  }) {
+    return getNextUserWords(userId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function(int userId)? getUserWords,
+    TResult? Function(int userId)? getNextUserWords,
+    TResult? Function(String wordId)? updateWord,
+  }) {
+    return getNextUserWords?.call(userId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function(int userId)? getUserWords,
+    TResult Function(int userId)? getNextUserWords,
+    TResult Function(String wordId)? updateWord,
+    required TResult orElse(),
+  }) {
+    if (getNextUserWords != null) {
+      return getNextUserWords(userId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_UserWord value) $default, {
+    required TResult Function(GetUserWords value) getUserWords,
+    required TResult Function(GetNextUserWords value) getNextUserWords,
+    required TResult Function(UpdateWord value) updateWord,
+  }) {
+    return getNextUserWords(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_UserWord value)? $default, {
+    TResult? Function(GetUserWords value)? getUserWords,
+    TResult? Function(GetNextUserWords value)? getNextUserWords,
+    TResult? Function(UpdateWord value)? updateWord,
+  }) {
+    return getNextUserWords?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_UserWord value)? $default, {
+    TResult Function(GetUserWords value)? getUserWords,
+    TResult Function(GetNextUserWords value)? getNextUserWords,
+    TResult Function(UpdateWord value)? updateWord,
+    required TResult orElse(),
+  }) {
+    if (getNextUserWords != null) {
+      return getNextUserWords(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class GetNextUserWords implements UserWordEvent {
+  factory GetNextUserWords({required final int userId}) = _$GetNextUserWords;
+
+  int get userId;
+  @JsonKey(ignore: true)
+  _$$GetNextUserWordsCopyWith<_$GetNextUserWords> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$UpdateWordCopyWith<$Res> {
+  factory _$$UpdateWordCopyWith(
+          _$UpdateWord value, $Res Function(_$UpdateWord) then) =
+      __$$UpdateWordCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String wordId});
+}
+
+/// @nodoc
+class __$$UpdateWordCopyWithImpl<$Res>
+    extends _$UserWordEventCopyWithImpl<$Res, _$UpdateWord>
+    implements _$$UpdateWordCopyWith<$Res> {
+  __$$UpdateWordCopyWithImpl(
+      _$UpdateWord _value, $Res Function(_$UpdateWord) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? wordId = null,
+  }) {
+    return _then(_$UpdateWord(
+      wordId: null == wordId
+          ? _value.wordId
+          : wordId // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$UpdateWord implements UpdateWord {
+  _$UpdateWord({required this.wordId});
+
+  @override
+  final String wordId;
+
+  @override
+  String toString() {
+    return 'UserWordEvent.updateWord(wordId: $wordId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$UpdateWord &&
+            (identical(other.wordId, wordId) || other.wordId == wordId));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, wordId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$UpdateWordCopyWith<_$UpdateWord> get copyWith =>
+      __$$UpdateWordCopyWithImpl<_$UpdateWord>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function(int userId) getUserWords,
+    required TResult Function(int userId) getNextUserWords,
+    required TResult Function(String wordId) updateWord,
+  }) {
+    return updateWord(wordId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function(int userId)? getUserWords,
+    TResult? Function(int userId)? getNextUserWords,
+    TResult? Function(String wordId)? updateWord,
+  }) {
+    return updateWord?.call(wordId);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function(int userId)? getUserWords,
+    TResult Function(int userId)? getNextUserWords,
+    TResult Function(String wordId)? updateWord,
+    required TResult orElse(),
+  }) {
+    if (updateWord != null) {
+      return updateWord(wordId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_UserWord value) $default, {
+    required TResult Function(GetUserWords value) getUserWords,
+    required TResult Function(GetNextUserWords value) getNextUserWords,
+    required TResult Function(UpdateWord value) updateWord,
+  }) {
+    return updateWord(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_UserWord value)? $default, {
+    TResult? Function(GetUserWords value)? getUserWords,
+    TResult? Function(GetNextUserWords value)? getNextUserWords,
+    TResult? Function(UpdateWord value)? updateWord,
+  }) {
+    return updateWord?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_UserWord value)? $default, {
+    TResult Function(GetUserWords value)? getUserWords,
+    TResult Function(GetNextUserWords value)? getNextUserWords,
+    TResult Function(UpdateWord value)? updateWord,
+    required TResult orElse(),
+  }) {
+    if (updateWord != null) {
+      return updateWord(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UpdateWord implements UserWordEvent {
+  factory UpdateWord({required final String wordId}) = _$UpdateWord;
+
+  String get wordId;
+  @JsonKey(ignore: true)
+  _$$UpdateWordCopyWith<_$UpdateWord> get copyWith =>
       throw _privateConstructorUsedError;
 }

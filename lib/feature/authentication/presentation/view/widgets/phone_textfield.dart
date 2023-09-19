@@ -3,9 +3,11 @@ import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
 
 class PhoneTextfield extends StatelessWidget {
-  const PhoneTextfield({
-    super.key,
-  });
+  const PhoneTextfield(
+      {super.key, this.phoneOnChanged, this.dialCodeOnChanged});
+
+  final Function(String?)? phoneOnChanged;
+  final Function(dynamic)? dialCodeOnChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -13,6 +15,7 @@ class PhoneTextfield extends StatelessWidget {
     return Stack(
       children: [
         FormBuilderTextField(
+          onChanged: phoneOnChanged,
           keyboardType: TextInputType.phone,
           autofillHints: const [AutofillHints.telephoneNumber],
           name: "phone",
@@ -33,10 +36,13 @@ class PhoneTextfield extends StatelessWidget {
           bottom: 0,
           child: SizedBox(
             width: 63,
-            child: FormBuilderDropdown(
+            child: FormBuilderDropdown<String>(
+              onChanged: dialCodeOnChanged,
+              initialValue: "+57",
               items: const [
-                DropdownMenuItem(
+                DropdownMenuItem<String>(
                     alignment: Alignment.center,
+                    value: "+57",
                     child: Text(
                       "+57",
                       textAlign: TextAlign.center,
@@ -47,6 +53,9 @@ class PhoneTextfield extends StatelessWidget {
               name: "dialCode",
               style:
                   Theme.of(context).textTheme.bodySmall!.copyWith(fontSize: 14),
+              validator: FormBuilderValidators.compose([
+                FormBuilderValidators.required(errorText: ""),
+              ]),
               decoration: const InputDecoration(
                 focusedErrorBorder: OutlineInputBorder(
                   borderSide: BorderSide(width: 0, color: Colors.red),
@@ -55,7 +64,7 @@ class PhoneTextfield extends StatelessWidget {
                     bottomLeft: Radius.circular(20),
                   ),
                 ),
-                contentPadding: EdgeInsets.symmetric(vertical: 16),
+                contentPadding: EdgeInsets.symmetric(vertical: 18),
                 errorBorder: OutlineInputBorder(
                   borderSide: BorderSide(width: 0, color: Colors.red),
                   borderRadius: BorderRadius.only(

@@ -1,4 +1,4 @@
-package com.example.jamsi_flutter
+package com.feligo.jamsi
 
 import io.flutter.embedding.android.FlutterActivity
 

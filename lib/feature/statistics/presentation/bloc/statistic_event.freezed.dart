@@ -20,18 +20,26 @@ mixin _$StatisticEvent {
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
     required TResult Function(int userId) getStatistics,
+    required TResult Function(
+            String word, String category, DateTime date, bool success)
+        addWordStatistic,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function()? $default, {
     TResult? Function(int userId)? getStatistics,
+    TResult? Function(
+            String word, String category, DateTime date, bool success)?
+        addWordStatistic,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
     TResult Function(int userId)? getStatistics,
+    TResult Function(String word, String category, DateTime date, bool success)?
+        addWordStatistic,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -39,18 +47,21 @@ mixin _$StatisticEvent {
   TResult map<TResult extends Object?>(
     TResult Function(_StatisticEvent value) $default, {
     required TResult Function(GetStatistics value) getStatistics,
+    required TResult Function(AddWordStatistic value) addWordStatistic,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_StatisticEvent value)? $default, {
     TResult? Function(GetStatistics value)? getStatistics,
+    TResult? Function(AddWordStatistic value)? addWordStatistic,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_StatisticEvent value)? $default, {
     TResult Function(GetStatistics value)? getStatistics,
+    TResult Function(AddWordStatistic value)? addWordStatistic,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -114,6 +125,9 @@ class _$_StatisticEvent implements _StatisticEvent {
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
     required TResult Function(int userId) getStatistics,
+    required TResult Function(
+            String word, String category, DateTime date, bool success)
+        addWordStatistic,
   }) {
     return $default();
   }
@@ -123,6 +137,9 @@ class _$_StatisticEvent implements _StatisticEvent {
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function()? $default, {
     TResult? Function(int userId)? getStatistics,
+    TResult? Function(
+            String word, String category, DateTime date, bool success)?
+        addWordStatistic,
   }) {
     return $default?.call();
   }
@@ -132,6 +149,8 @@ class _$_StatisticEvent implements _StatisticEvent {
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
     TResult Function(int userId)? getStatistics,
+    TResult Function(String word, String category, DateTime date, bool success)?
+        addWordStatistic,
     required TResult orElse(),
   }) {
     if ($default != null) {
@@ -145,6 +164,7 @@ class _$_StatisticEvent implements _StatisticEvent {
   TResult map<TResult extends Object?>(
     TResult Function(_StatisticEvent value) $default, {
     required TResult Function(GetStatistics value) getStatistics,
+    required TResult Function(AddWordStatistic value) addWordStatistic,
   }) {
     return $default(this);
   }
@@ -154,6 +174,7 @@ class _$_StatisticEvent implements _StatisticEvent {
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_StatisticEvent value)? $default, {
     TResult? Function(GetStatistics value)? getStatistics,
+    TResult? Function(AddWordStatistic value)? addWordStatistic,
   }) {
     return $default?.call(this);
   }
@@ -163,6 +184,7 @@ class _$_StatisticEvent implements _StatisticEvent {
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_StatisticEvent value)? $default, {
     TResult Function(GetStatistics value)? getStatistics,
+    TResult Function(AddWordStatistic value)? addWordStatistic,
     required TResult orElse(),
   }) {
     if ($default != null) {
@@ -242,6 +264,9 @@ class _$GetStatistics implements GetStatistics {
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
     required TResult Function(int userId) getStatistics,
+    required TResult Function(
+            String word, String category, DateTime date, bool success)
+        addWordStatistic,
   }) {
     return getStatistics(userId);
   }
@@ -251,6 +276,9 @@ class _$GetStatistics implements GetStatistics {
   TResult? whenOrNull<TResult extends Object?>(
     TResult? Function()? $default, {
     TResult? Function(int userId)? getStatistics,
+    TResult? Function(
+            String word, String category, DateTime date, bool success)?
+        addWordStatistic,
   }) {
     return getStatistics?.call(userId);
   }
@@ -260,6 +288,8 @@ class _$GetStatistics implements GetStatistics {
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
     TResult Function(int userId)? getStatistics,
+    TResult Function(String word, String category, DateTime date, bool success)?
+        addWordStatistic,
     required TResult orElse(),
   }) {
     if (getStatistics != null) {
@@ -273,6 +303,7 @@ class _$GetStatistics implements GetStatistics {
   TResult map<TResult extends Object?>(
     TResult Function(_StatisticEvent value) $default, {
     required TResult Function(GetStatistics value) getStatistics,
+    required TResult Function(AddWordStatistic value) addWordStatistic,
   }) {
     return getStatistics(this);
   }
@@ -282,6 +313,7 @@ class _$GetStatistics implements GetStatistics {
   TResult? mapOrNull<TResult extends Object?>(
     TResult? Function(_StatisticEvent value)? $default, {
     TResult? Function(GetStatistics value)? getStatistics,
+    TResult? Function(AddWordStatistic value)? addWordStatistic,
   }) {
     return getStatistics?.call(this);
   }
@@ -291,6 +323,7 @@ class _$GetStatistics implements GetStatistics {
   TResult maybeMap<TResult extends Object?>(
     TResult Function(_StatisticEvent value)? $default, {
     TResult Function(GetStatistics value)? getStatistics,
+    TResult Function(AddWordStatistic value)? addWordStatistic,
     required TResult orElse(),
   }) {
     if (getStatistics != null) {
@@ -306,5 +339,185 @@ abstract class GetStatistics implements StatisticEvent {
   int get userId;
   @JsonKey(ignore: true)
   _$$GetStatisticsCopyWith<_$GetStatistics> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AddWordStatisticCopyWith<$Res> {
+  factory _$$AddWordStatisticCopyWith(
+          _$AddWordStatistic value, $Res Function(_$AddWordStatistic) then) =
+      __$$AddWordStatisticCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String word, String category, DateTime date, bool success});
+}
+
+/// @nodoc
+class __$$AddWordStatisticCopyWithImpl<$Res>
+    extends _$StatisticEventCopyWithImpl<$Res, _$AddWordStatistic>
+    implements _$$AddWordStatisticCopyWith<$Res> {
+  __$$AddWordStatisticCopyWithImpl(
+      _$AddWordStatistic _value, $Res Function(_$AddWordStatistic) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? word = null,
+    Object? category = null,
+    Object? date = null,
+    Object? success = null,
+  }) {
+    return _then(_$AddWordStatistic(
+      word: null == word
+          ? _value.word
+          : word // ignore: cast_nullable_to_non_nullable
+              as String,
+      category: null == category
+          ? _value.category
+          : category // ignore: cast_nullable_to_non_nullable
+              as String,
+      date: null == date
+          ? _value.date
+          : date // ignore: cast_nullable_to_non_nullable
+              as DateTime,
+      success: null == success
+          ? _value.success
+          : success // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AddWordStatistic implements AddWordStatistic {
+  const _$AddWordStatistic(
+      {required this.word,
+      required this.category,
+      required this.date,
+      required this.success});
+
+  @override
+  final String word;
+  @override
+  final String category;
+  @override
+  final DateTime date;
+  @override
+  final bool success;
+
+  @override
+  String toString() {
+    return 'StatisticEvent.addWordStatistic(word: $word, category: $category, date: $date, success: $success)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AddWordStatistic &&
+            (identical(other.word, word) || other.word == word) &&
+            (identical(other.category, category) ||
+                other.category == category) &&
+            (identical(other.date, date) || other.date == date) &&
+            (identical(other.success, success) || other.success == success));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, word, category, date, success);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AddWordStatisticCopyWith<_$AddWordStatistic> get copyWith =>
+      __$$AddWordStatisticCopyWithImpl<_$AddWordStatistic>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function(int userId) getStatistics,
+    required TResult Function(
+            String word, String category, DateTime date, bool success)
+        addWordStatistic,
+  }) {
+    return addWordStatistic(word, category, date, success);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function(int userId)? getStatistics,
+    TResult? Function(
+            String word, String category, DateTime date, bool success)?
+        addWordStatistic,
+  }) {
+    return addWordStatistic?.call(word, category, date, success);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function(int userId)? getStatistics,
+    TResult Function(String word, String category, DateTime date, bool success)?
+        addWordStatistic,
+    required TResult orElse(),
+  }) {
+    if (addWordStatistic != null) {
+      return addWordStatistic(word, category, date, success);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_StatisticEvent value) $default, {
+    required TResult Function(GetStatistics value) getStatistics,
+    required TResult Function(AddWordStatistic value) addWordStatistic,
+  }) {
+    return addWordStatistic(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_StatisticEvent value)? $default, {
+    TResult? Function(GetStatistics value)? getStatistics,
+    TResult? Function(AddWordStatistic value)? addWordStatistic,
+  }) {
+    return addWordStatistic?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_StatisticEvent value)? $default, {
+    TResult Function(GetStatistics value)? getStatistics,
+    TResult Function(AddWordStatistic value)? addWordStatistic,
+    required TResult orElse(),
+  }) {
+    if (addWordStatistic != null) {
+      return addWordStatistic(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AddWordStatistic implements StatisticEvent {
+  const factory AddWordStatistic(
+      {required final String word,
+      required final String category,
+      required final DateTime date,
+      required final bool success}) = _$AddWordStatistic;
+
+  String get word;
+  String get category;
+  DateTime get date;
+  bool get success;
+  @JsonKey(ignore: true)
+  _$$AddWordStatisticCopyWith<_$AddWordStatistic> get copyWith =>
       throw _privateConstructorUsedError;
 }

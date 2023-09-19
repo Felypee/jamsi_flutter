@@ -23,6 +23,7 @@ Future<bool?> showDetail(BuildContext context,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     verb,

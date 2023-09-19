@@ -4,4 +4,7 @@ import 'package:jamsi_flutter/feature/user_word/domain/user_word_model.dart';
 
 abstract class UserWordRepo {
   Future<Either<HttpAppError, List<UserWordModel>>> getUserWords(int userId);
+  Future<Either<HttpAppError, List<UserWordModel>>> getNextUserWords(
+      int userId);
+  Future<Either<HttpAppError, bool>> updateWord(String wordId);
 }

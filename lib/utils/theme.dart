@@ -7,7 +7,7 @@ final ThemeData jamsiTheme = ThemeData(
   scaffoldBackgroundColor: Colors.white,
   indicatorColor: const Color(0xFF71EB11),
   textTheme: TextTheme(
-      titleLarge: GoogleFonts.mali(
+      titleLarge: GoogleFonts.montserrat(
         textStyle: const TextStyle(
           fontSize: 21,
           color: Colors.black,
@@ -20,14 +20,14 @@ final ThemeData jamsiTheme = ThemeData(
             0xFFC4A77D,
           ),
           fontWeight: FontWeight.w400),
-      bodyMedium: GoogleFonts.mali(
+      bodyMedium: GoogleFonts.montserrat(
         textStyle: const TextStyle(
           fontSize: 18,
           color: Color(0xFFC8C8C8),
           fontWeight: FontWeight.w500,
         ),
       ),
-      bodySmall: GoogleFonts.mali(
+      bodySmall: GoogleFonts.montserrat(
         textStyle: const TextStyle(
           fontSize: 14,
           color: Color(0xFF11A9EB),
@@ -39,7 +39,7 @@ final ThemeData jamsiTheme = ThemeData(
       iconTheme: const IconThemeData(
         color: Color(0xFFC8C8C8),
       ),
-      toolbarTextStyle: GoogleFonts.urbanistTextTheme()
+      toolbarTextStyle: GoogleFonts.montserratTextTheme()
           .copyWith(
               titleLarge: const TextStyle(
             fontSize: 18,
@@ -47,7 +47,7 @@ final ThemeData jamsiTheme = ThemeData(
             color: Color(0xFF7BE7ED),
           ))
           .bodyMedium,
-      titleTextStyle: GoogleFonts.urbanistTextTheme()
+      titleTextStyle: GoogleFonts.montserratTextTheme()
           .copyWith(
               titleLarge: const TextStyle(
             fontSize: 18,
@@ -127,7 +127,7 @@ final ThemeData jamsiTheme = ThemeData(
 
   elevatedButtonTheme: ElevatedButtonThemeData(
     style: ButtonStyle(
-      textStyle: MaterialStateProperty.all(GoogleFonts.mali(
+      textStyle: MaterialStateProperty.all(GoogleFonts.montserrat(
         textStyle: const TextStyle(
           fontSize: 16,
           color: Colors.white,

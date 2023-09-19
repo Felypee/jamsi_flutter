@@ -17,7 +17,8 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$NewWordState {
   dynamic get newWordStatus => throw _privateConstructorUsedError;
-  List<NewWordModel> get newWordList => throw _privateConstructorUsedError;
+  List<NewWordModel?> get newWordList => throw _privateConstructorUsedError;
+  List<NewWordModel?> get wordsAdded => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $NewWordStateCopyWith<NewWordState> get copyWith =>
@@ -30,7 +31,10 @@ abstract class $NewWordStateCopyWith<$Res> {
           NewWordState value, $Res Function(NewWordState) then) =
       _$NewWordStateCopyWithImpl<$Res, NewWordState>;
   @useResult
-  $Res call({dynamic newWordStatus, List<NewWordModel> newWordList});
+  $Res call(
+      {dynamic newWordStatus,
+      List<NewWordModel?> newWordList,
+      List<NewWordModel?> wordsAdded});
 }
 
 /// @nodoc
@@ -48,6 +52,7 @@ class _$NewWordStateCopyWithImpl<$Res, $Val extends NewWordState>
   $Res call({
     Object? newWordStatus = freezed,
     Object? newWordList = null,
+    Object? wordsAdded = null,
   }) {
     return _then(_value.copyWith(
       newWordStatus: freezed == newWordStatus
@@ -57,7 +62,11 @@ class _$NewWordStateCopyWithImpl<$Res, $Val extends NewWordState>
       newWordList: null == newWordList
           ? _value.newWordList
           : newWordList // ignore: cast_nullable_to_non_nullable
-              as List<NewWordModel>,
+              as List<NewWordModel?>,
+      wordsAdded: null == wordsAdded
+          ? _value.wordsAdded
+          : wordsAdded // ignore: cast_nullable_to_non_nullable
+              as List<NewWordModel?>,
     ) as $Val);
   }
 }
@@ -70,7 +79,10 @@ abstract class _$$_NewWordStateCopyWith<$Res>
       __$$_NewWordStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({dynamic newWordStatus, List<NewWordModel> newWordList});
+  $Res call(
+      {dynamic newWordStatus,
+      List<NewWordModel?> newWordList,
+      List<NewWordModel?> wordsAdded});
 }
 
 /// @nodoc
@@ -86,6 +98,7 @@ class __$$_NewWordStateCopyWithImpl<$Res>
   $Res call({
     Object? newWordStatus = freezed,
     Object? newWordList = null,
+    Object? wordsAdded = null,
   }) {
     return _then(_$_NewWordState(
       newWordStatus:
@@ -93,7 +106,11 @@ class __$$_NewWordStateCopyWithImpl<$Res>
       newWordList: null == newWordList
           ? _value._newWordList
           : newWordList // ignore: cast_nullable_to_non_nullable
-              as List<NewWordModel>,
+              as List<NewWordModel?>,
+      wordsAdded: null == wordsAdded
+          ? _value._wordsAdded
+          : wordsAdded // ignore: cast_nullable_to_non_nullable
+              as List<NewWordModel?>,
     ));
   }
 }
@@ -103,24 +120,35 @@ class __$$_NewWordStateCopyWithImpl<$Res>
 class _$_NewWordState implements _NewWordState {
   const _$_NewWordState(
       {this.newWordStatus = NewWordStatus.initial,
-      final List<NewWordModel> newWordList = const []})
-      : _newWordList = newWordList;
+      final List<NewWordModel?> newWordList = const [],
+      final List<NewWordModel?> wordsAdded = const []})
+      : _newWordList = newWordList,
+        _wordsAdded = wordsAdded;
 
   @override
   @JsonKey()
   final dynamic newWordStatus;
-  final List<NewWordModel> _newWordList;
+  final List<NewWordModel?> _newWordList;
   @override
   @JsonKey()
-  List<NewWordModel> get newWordList {
+  List<NewWordModel?> get newWordList {
     if (_newWordList is EqualUnmodifiableListView) return _newWordList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_newWordList);
   }
 
+  final List<NewWordModel?> _wordsAdded;
+  @override
+  @JsonKey()
+  List<NewWordModel?> get wordsAdded {
+    if (_wordsAdded is EqualUnmodifiableListView) return _wordsAdded;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_wordsAdded);
+  }
+
   @override
   String toString() {
-    return 'NewWordState(newWordStatus: $newWordStatus, newWordList: $newWordList)';
+    return 'NewWordState(newWordStatus: $newWordStatus, newWordList: $newWordList, wordsAdded: $wordsAdded)';
   }
 
   @override
@@ -131,14 +159,17 @@ class _$_NewWordState implements _NewWordState {
             const DeepCollectionEquality()
                 .equals(other.newWordStatus, newWordStatus) &&
             const DeepCollectionEquality()
-                .equals(other._newWordList, _newWordList));
+                .equals(other._newWordList, _newWordList) &&
+            const DeepCollectionEquality()
+                .equals(other._wordsAdded, _wordsAdded));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(newWordStatus),
-      const DeepCollectionEquality().hash(_newWordList));
+      const DeepCollectionEquality().hash(_newWordList),
+      const DeepCollectionEquality().hash(_wordsAdded));
 
   @JsonKey(ignore: true)
   @override
@@ -150,12 +181,15 @@ class _$_NewWordState implements _NewWordState {
 abstract class _NewWordState implements NewWordState {
   const factory _NewWordState(
       {final dynamic newWordStatus,
-      final List<NewWordModel> newWordList}) = _$_NewWordState;
+      final List<NewWordModel?> newWordList,
+      final List<NewWordModel?> wordsAdded}) = _$_NewWordState;
 
   @override
   dynamic get newWordStatus;
   @override
-  List<NewWordModel> get newWordList;
+  List<NewWordModel?> get newWordList;
+  @override
+  List<NewWordModel?> get wordsAdded;
   @override
   @JsonKey(ignore: true)
   _$$_NewWordStateCopyWith<_$_NewWordState> get copyWith =>

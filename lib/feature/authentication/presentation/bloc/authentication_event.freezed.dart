@@ -22,15 +22,21 @@ mixin _$AuthenticationEvent {
     required TResult Function(
             BuildContext context, AuthenticationUserModel user)
         updateAuthUser,
-    required TResult Function(BuildContext context, String email) verifyEmail,
-    required TResult Function(BuildContext context, String email)
+    required TResult Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)
+        verifyEmail,
+    required TResult Function(
+            BuildContext context, String email, VoidCallback goToPage)
         sendToVerifyEmail,
-    required TResult Function(BuildContext context, String phone) verifyPhone,
-    required TResult Function(
-            BuildContext context, String email, String password)
+    required TResult Function(BuildContext context, String phoneCode)
+        verifyPhone,
+    required TResult Function(BuildContext context, String phone)
+        sendToVerifyPhone,
+    required TResult Function(BuildContext context, String email,
+            String password, VoidCallback goToPage)
         registerUser,
-    required TResult Function(
-            BuildContext context, String email, String password)
+    required TResult Function(BuildContext context, String email,
+            String password, VoidCallback onDone)
         login,
     required TResult Function(BuildContext context, String userId) logout,
     required TResult Function() loginWithGoogle,
@@ -39,6 +45,8 @@ mixin _$AuthenticationEvent {
     required TResult Function(String code) resetPassword,
     required TResult Function(BuildContext context, String email)
         sendToResetPassword,
+    required TResult Function(BuildContext context, AuthenticationStatus status)
+        setAuthenticationStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -46,12 +54,19 @@ mixin _$AuthenticationEvent {
     TResult? Function()? $default, {
     TResult? Function(BuildContext context, AuthenticationUserModel user)?
         updateAuthUser,
-    TResult? Function(BuildContext context, String email)? verifyEmail,
-    TResult? Function(BuildContext context, String email)? sendToVerifyEmail,
-    TResult? Function(BuildContext context, String phone)? verifyPhone,
-    TResult? Function(BuildContext context, String email, String password)?
+    TResult? Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)?
+        verifyEmail,
+    TResult? Function(
+            BuildContext context, String email, VoidCallback goToPage)?
+        sendToVerifyEmail,
+    TResult? Function(BuildContext context, String phoneCode)? verifyPhone,
+    TResult? Function(BuildContext context, String phone)? sendToVerifyPhone,
+    TResult? Function(BuildContext context, String email, String password,
+            VoidCallback goToPage)?
         registerUser,
-    TResult? Function(BuildContext context, String email, String password)?
+    TResult? Function(BuildContext context, String email, String password,
+            VoidCallback onDone)?
         login,
     TResult? Function(BuildContext context, String userId)? logout,
     TResult? Function()? loginWithGoogle,
@@ -59,6 +74,8 @@ mixin _$AuthenticationEvent {
     TResult? Function()? loginWithApple,
     TResult? Function(String code)? resetPassword,
     TResult? Function(BuildContext context, String email)? sendToResetPassword,
+    TResult? Function(BuildContext context, AuthenticationStatus status)?
+        setAuthenticationStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -66,12 +83,18 @@ mixin _$AuthenticationEvent {
     TResult Function()? $default, {
     TResult Function(BuildContext context, AuthenticationUserModel user)?
         updateAuthUser,
-    TResult Function(BuildContext context, String email)? verifyEmail,
-    TResult Function(BuildContext context, String email)? sendToVerifyEmail,
-    TResult Function(BuildContext context, String phone)? verifyPhone,
-    TResult Function(BuildContext context, String email, String password)?
+    TResult Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)?
+        verifyEmail,
+    TResult Function(BuildContext context, String email, VoidCallback goToPage)?
+        sendToVerifyEmail,
+    TResult Function(BuildContext context, String phoneCode)? verifyPhone,
+    TResult Function(BuildContext context, String phone)? sendToVerifyPhone,
+    TResult Function(BuildContext context, String email, String password,
+            VoidCallback goToPage)?
         registerUser,
-    TResult Function(BuildContext context, String email, String password)?
+    TResult Function(BuildContext context, String email, String password,
+            VoidCallback onDone)?
         login,
     TResult Function(BuildContext context, String userId)? logout,
     TResult Function()? loginWithGoogle,
@@ -79,6 +102,8 @@ mixin _$AuthenticationEvent {
     TResult Function()? loginWithApple,
     TResult Function(String code)? resetPassword,
     TResult Function(BuildContext context, String email)? sendToResetPassword,
+    TResult Function(BuildContext context, AuthenticationStatus status)?
+        setAuthenticationStatus,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -89,6 +114,7 @@ mixin _$AuthenticationEvent {
     required TResult Function(AuthVerifyEmail value) verifyEmail,
     required TResult Function(AuthSendToVerifyEmail value) sendToVerifyEmail,
     required TResult Function(AuthVerifyPhone value) verifyPhone,
+    required TResult Function(AuthSendToVerifyPhone value) sendToVerifyPhone,
     required TResult Function(AuthRegisterUser value) registerUser,
     required TResult Function(AuthLogin value) login,
     required TResult Function(AuthLogout value) logout,
@@ -98,6 +124,7 @@ mixin _$AuthenticationEvent {
     required TResult Function(AuthResetPassword value) resetPassword,
     required TResult Function(AuthSendToResetPassword value)
         sendToResetPassword,
+    required TResult Function(AuthSetStatus value) setAuthenticationStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -107,6 +134,7 @@ mixin _$AuthenticationEvent {
     TResult? Function(AuthVerifyEmail value)? verifyEmail,
     TResult? Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult? Function(AuthVerifyPhone value)? verifyPhone,
+    TResult? Function(AuthSendToVerifyPhone value)? sendToVerifyPhone,
     TResult? Function(AuthRegisterUser value)? registerUser,
     TResult? Function(AuthLogin value)? login,
     TResult? Function(AuthLogout value)? logout,
@@ -115,6 +143,7 @@ mixin _$AuthenticationEvent {
     TResult? Function(AuthWithApple value)? loginWithApple,
     TResult? Function(AuthResetPassword value)? resetPassword,
     TResult? Function(AuthSendToResetPassword value)? sendToResetPassword,
+    TResult? Function(AuthSetStatus value)? setAuthenticationStatus,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -124,6 +153,7 @@ mixin _$AuthenticationEvent {
     TResult Function(AuthVerifyEmail value)? verifyEmail,
     TResult Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult Function(AuthVerifyPhone value)? verifyPhone,
+    TResult Function(AuthSendToVerifyPhone value)? sendToVerifyPhone,
     TResult Function(AuthRegisterUser value)? registerUser,
     TResult Function(AuthLogin value)? login,
     TResult Function(AuthLogout value)? logout,
@@ -132,6 +162,7 @@ mixin _$AuthenticationEvent {
     TResult Function(AuthWithApple value)? loginWithApple,
     TResult Function(AuthResetPassword value)? resetPassword,
     TResult Function(AuthSendToResetPassword value)? sendToResetPassword,
+    TResult Function(AuthSetStatus value)? setAuthenticationStatus,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -197,15 +228,21 @@ class _$_Authentication implements _Authentication {
     required TResult Function(
             BuildContext context, AuthenticationUserModel user)
         updateAuthUser,
-    required TResult Function(BuildContext context, String email) verifyEmail,
-    required TResult Function(BuildContext context, String email)
+    required TResult Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)
+        verifyEmail,
+    required TResult Function(
+            BuildContext context, String email, VoidCallback goToPage)
         sendToVerifyEmail,
-    required TResult Function(BuildContext context, String phone) verifyPhone,
-    required TResult Function(
-            BuildContext context, String email, String password)
+    required TResult Function(BuildContext context, String phoneCode)
+        verifyPhone,
+    required TResult Function(BuildContext context, String phone)
+        sendToVerifyPhone,
+    required TResult Function(BuildContext context, String email,
+            String password, VoidCallback goToPage)
         registerUser,
-    required TResult Function(
-            BuildContext context, String email, String password)
+    required TResult Function(BuildContext context, String email,
+            String password, VoidCallback onDone)
         login,
     required TResult Function(BuildContext context, String userId) logout,
     required TResult Function() loginWithGoogle,
@@ -214,6 +251,8 @@ class _$_Authentication implements _Authentication {
     required TResult Function(String code) resetPassword,
     required TResult Function(BuildContext context, String email)
         sendToResetPassword,
+    required TResult Function(BuildContext context, AuthenticationStatus status)
+        setAuthenticationStatus,
   }) {
     return $default();
   }
@@ -224,12 +263,19 @@ class _$_Authentication implements _Authentication {
     TResult? Function()? $default, {
     TResult? Function(BuildContext context, AuthenticationUserModel user)?
         updateAuthUser,
-    TResult? Function(BuildContext context, String email)? verifyEmail,
-    TResult? Function(BuildContext context, String email)? sendToVerifyEmail,
-    TResult? Function(BuildContext context, String phone)? verifyPhone,
-    TResult? Function(BuildContext context, String email, String password)?
+    TResult? Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)?
+        verifyEmail,
+    TResult? Function(
+            BuildContext context, String email, VoidCallback goToPage)?
+        sendToVerifyEmail,
+    TResult? Function(BuildContext context, String phoneCode)? verifyPhone,
+    TResult? Function(BuildContext context, String phone)? sendToVerifyPhone,
+    TResult? Function(BuildContext context, String email, String password,
+            VoidCallback goToPage)?
         registerUser,
-    TResult? Function(BuildContext context, String email, String password)?
+    TResult? Function(BuildContext context, String email, String password,
+            VoidCallback onDone)?
         login,
     TResult? Function(BuildContext context, String userId)? logout,
     TResult? Function()? loginWithGoogle,
@@ -237,6 +283,8 @@ class _$_Authentication implements _Authentication {
     TResult? Function()? loginWithApple,
     TResult? Function(String code)? resetPassword,
     TResult? Function(BuildContext context, String email)? sendToResetPassword,
+    TResult? Function(BuildContext context, AuthenticationStatus status)?
+        setAuthenticationStatus,
   }) {
     return $default?.call();
   }
@@ -247,12 +295,18 @@ class _$_Authentication implements _Authentication {
     TResult Function()? $default, {
     TResult Function(BuildContext context, AuthenticationUserModel user)?
         updateAuthUser,
-    TResult Function(BuildContext context, String email)? verifyEmail,
-    TResult Function(BuildContext context, String email)? sendToVerifyEmail,
-    TResult Function(BuildContext context, String phone)? verifyPhone,
-    TResult Function(BuildContext context, String email, String password)?
+    TResult Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)?
+        verifyEmail,
+    TResult Function(BuildContext context, String email, VoidCallback goToPage)?
+        sendToVerifyEmail,
+    TResult Function(BuildContext context, String phoneCode)? verifyPhone,
+    TResult Function(BuildContext context, String phone)? sendToVerifyPhone,
+    TResult Function(BuildContext context, String email, String password,
+            VoidCallback goToPage)?
         registerUser,
-    TResult Function(BuildContext context, String email, String password)?
+    TResult Function(BuildContext context, String email, String password,
+            VoidCallback onDone)?
         login,
     TResult Function(BuildContext context, String userId)? logout,
     TResult Function()? loginWithGoogle,
@@ -260,6 +314,8 @@ class _$_Authentication implements _Authentication {
     TResult Function()? loginWithApple,
     TResult Function(String code)? resetPassword,
     TResult Function(BuildContext context, String email)? sendToResetPassword,
+    TResult Function(BuildContext context, AuthenticationStatus status)?
+        setAuthenticationStatus,
     required TResult orElse(),
   }) {
     if ($default != null) {
@@ -276,6 +332,7 @@ class _$_Authentication implements _Authentication {
     required TResult Function(AuthVerifyEmail value) verifyEmail,
     required TResult Function(AuthSendToVerifyEmail value) sendToVerifyEmail,
     required TResult Function(AuthVerifyPhone value) verifyPhone,
+    required TResult Function(AuthSendToVerifyPhone value) sendToVerifyPhone,
     required TResult Function(AuthRegisterUser value) registerUser,
     required TResult Function(AuthLogin value) login,
     required TResult Function(AuthLogout value) logout,
@@ -285,6 +342,7 @@ class _$_Authentication implements _Authentication {
     required TResult Function(AuthResetPassword value) resetPassword,
     required TResult Function(AuthSendToResetPassword value)
         sendToResetPassword,
+    required TResult Function(AuthSetStatus value) setAuthenticationStatus,
   }) {
     return $default(this);
   }
@@ -297,6 +355,7 @@ class _$_Authentication implements _Authentication {
     TResult? Function(AuthVerifyEmail value)? verifyEmail,
     TResult? Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult? Function(AuthVerifyPhone value)? verifyPhone,
+    TResult? Function(AuthSendToVerifyPhone value)? sendToVerifyPhone,
     TResult? Function(AuthRegisterUser value)? registerUser,
     TResult? Function(AuthLogin value)? login,
     TResult? Function(AuthLogout value)? logout,
@@ -305,6 +364,7 @@ class _$_Authentication implements _Authentication {
     TResult? Function(AuthWithApple value)? loginWithApple,
     TResult? Function(AuthResetPassword value)? resetPassword,
     TResult? Function(AuthSendToResetPassword value)? sendToResetPassword,
+    TResult? Function(AuthSetStatus value)? setAuthenticationStatus,
   }) {
     return $default?.call(this);
   }
@@ -317,6 +377,7 @@ class _$_Authentication implements _Authentication {
     TResult Function(AuthVerifyEmail value)? verifyEmail,
     TResult Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult Function(AuthVerifyPhone value)? verifyPhone,
+    TResult Function(AuthSendToVerifyPhone value)? sendToVerifyPhone,
     TResult Function(AuthRegisterUser value)? registerUser,
     TResult Function(AuthLogin value)? login,
     TResult Function(AuthLogout value)? logout,
@@ -325,6 +386,7 @@ class _$_Authentication implements _Authentication {
     TResult Function(AuthWithApple value)? loginWithApple,
     TResult Function(AuthResetPassword value)? resetPassword,
     TResult Function(AuthSendToResetPassword value)? sendToResetPassword,
+    TResult Function(AuthSetStatus value)? setAuthenticationStatus,
     required TResult orElse(),
   }) {
     if ($default != null) {
@@ -413,15 +475,21 @@ class _$AuthUser implements AuthUser {
     required TResult Function(
             BuildContext context, AuthenticationUserModel user)
         updateAuthUser,
-    required TResult Function(BuildContext context, String email) verifyEmail,
-    required TResult Function(BuildContext context, String email)
+    required TResult Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)
+        verifyEmail,
+    required TResult Function(
+            BuildContext context, String email, VoidCallback goToPage)
         sendToVerifyEmail,
-    required TResult Function(BuildContext context, String phone) verifyPhone,
-    required TResult Function(
-            BuildContext context, String email, String password)
+    required TResult Function(BuildContext context, String phoneCode)
+        verifyPhone,
+    required TResult Function(BuildContext context, String phone)
+        sendToVerifyPhone,
+    required TResult Function(BuildContext context, String email,
+            String password, VoidCallback goToPage)
         registerUser,
-    required TResult Function(
-            BuildContext context, String email, String password)
+    required TResult Function(BuildContext context, String email,
+            String password, VoidCallback onDone)
         login,
     required TResult Function(BuildContext context, String userId) logout,
     required TResult Function() loginWithGoogle,
@@ -430,6 +498,8 @@ class _$AuthUser implements AuthUser {
     required TResult Function(String code) resetPassword,
     required TResult Function(BuildContext context, String email)
         sendToResetPassword,
+    required TResult Function(BuildContext context, AuthenticationStatus status)
+        setAuthenticationStatus,
   }) {
     return updateAuthUser(context, user);
   }
@@ -440,12 +510,19 @@ class _$AuthUser implements AuthUser {
     TResult? Function()? $default, {
     TResult? Function(BuildContext context, AuthenticationUserModel user)?
         updateAuthUser,
-    TResult? Function(BuildContext context, String email)? verifyEmail,
-    TResult? Function(BuildContext context, String email)? sendToVerifyEmail,
-    TResult? Function(BuildContext context, String phone)? verifyPhone,
-    TResult? Function(BuildContext context, String email, String password)?
+    TResult? Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)?
+        verifyEmail,
+    TResult? Function(
+            BuildContext context, String email, VoidCallback goToPage)?
+        sendToVerifyEmail,
+    TResult? Function(BuildContext context, String phoneCode)? verifyPhone,
+    TResult? Function(BuildContext context, String phone)? sendToVerifyPhone,
+    TResult? Function(BuildContext context, String email, String password,
+            VoidCallback goToPage)?
         registerUser,
-    TResult? Function(BuildContext context, String email, String password)?
+    TResult? Function(BuildContext context, String email, String password,
+            VoidCallback onDone)?
         login,
     TResult? Function(BuildContext context, String userId)? logout,
     TResult? Function()? loginWithGoogle,
@@ -453,6 +530,8 @@ class _$AuthUser implements AuthUser {
     TResult? Function()? loginWithApple,
     TResult? Function(String code)? resetPassword,
     TResult? Function(BuildContext context, String email)? sendToResetPassword,
+    TResult? Function(BuildContext context, AuthenticationStatus status)?
+        setAuthenticationStatus,
   }) {
     return updateAuthUser?.call(context, user);
   }
@@ -463,12 +542,18 @@ class _$AuthUser implements AuthUser {
     TResult Function()? $default, {
     TResult Function(BuildContext context, AuthenticationUserModel user)?
         updateAuthUser,
-    TResult Function(BuildContext context, String email)? verifyEmail,
-    TResult Function(BuildContext context, String email)? sendToVerifyEmail,
-    TResult Function(BuildContext context, String phone)? verifyPhone,
-    TResult Function(BuildContext context, String email, String password)?
+    TResult Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)?
+        verifyEmail,
+    TResult Function(BuildContext context, String email, VoidCallback goToPage)?
+        sendToVerifyEmail,
+    TResult Function(BuildContext context, String phoneCode)? verifyPhone,
+    TResult Function(BuildContext context, String phone)? sendToVerifyPhone,
+    TResult Function(BuildContext context, String email, String password,
+            VoidCallback goToPage)?
         registerUser,
-    TResult Function(BuildContext context, String email, String password)?
+    TResult Function(BuildContext context, String email, String password,
+            VoidCallback onDone)?
         login,
     TResult Function(BuildContext context, String userId)? logout,
     TResult Function()? loginWithGoogle,
@@ -476,6 +561,8 @@ class _$AuthUser implements AuthUser {
     TResult Function()? loginWithApple,
     TResult Function(String code)? resetPassword,
     TResult Function(BuildContext context, String email)? sendToResetPassword,
+    TResult Function(BuildContext context, AuthenticationStatus status)?
+        setAuthenticationStatus,
     required TResult orElse(),
   }) {
     if (updateAuthUser != null) {
@@ -492,6 +579,7 @@ class _$AuthUser implements AuthUser {
     required TResult Function(AuthVerifyEmail value) verifyEmail,
     required TResult Function(AuthSendToVerifyEmail value) sendToVerifyEmail,
     required TResult Function(AuthVerifyPhone value) verifyPhone,
+    required TResult Function(AuthSendToVerifyPhone value) sendToVerifyPhone,
     required TResult Function(AuthRegisterUser value) registerUser,
     required TResult Function(AuthLogin value) login,
     required TResult Function(AuthLogout value) logout,
@@ -501,6 +589,7 @@ class _$AuthUser implements AuthUser {
     required TResult Function(AuthResetPassword value) resetPassword,
     required TResult Function(AuthSendToResetPassword value)
         sendToResetPassword,
+    required TResult Function(AuthSetStatus value) setAuthenticationStatus,
   }) {
     return updateAuthUser(this);
   }
@@ -513,6 +602,7 @@ class _$AuthUser implements AuthUser {
     TResult? Function(AuthVerifyEmail value)? verifyEmail,
     TResult? Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult? Function(AuthVerifyPhone value)? verifyPhone,
+    TResult? Function(AuthSendToVerifyPhone value)? sendToVerifyPhone,
     TResult? Function(AuthRegisterUser value)? registerUser,
     TResult? Function(AuthLogin value)? login,
     TResult? Function(AuthLogout value)? logout,
@@ -521,6 +611,7 @@ class _$AuthUser implements AuthUser {
     TResult? Function(AuthWithApple value)? loginWithApple,
     TResult? Function(AuthResetPassword value)? resetPassword,
     TResult? Function(AuthSendToResetPassword value)? sendToResetPassword,
+    TResult? Function(AuthSetStatus value)? setAuthenticationStatus,
   }) {
     return updateAuthUser?.call(this);
   }
@@ -533,6 +624,7 @@ class _$AuthUser implements AuthUser {
     TResult Function(AuthVerifyEmail value)? verifyEmail,
     TResult Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult Function(AuthVerifyPhone value)? verifyPhone,
+    TResult Function(AuthSendToVerifyPhone value)? sendToVerifyPhone,
     TResult Function(AuthRegisterUser value)? registerUser,
     TResult Function(AuthLogin value)? login,
     TResult Function(AuthLogout value)? logout,
@@ -541,6 +633,7 @@ class _$AuthUser implements AuthUser {
     TResult Function(AuthWithApple value)? loginWithApple,
     TResult Function(AuthResetPassword value)? resetPassword,
     TResult Function(AuthSendToResetPassword value)? sendToResetPassword,
+    TResult Function(AuthSetStatus value)? setAuthenticationStatus,
     required TResult orElse(),
   }) {
     if (updateAuthUser != null) {
@@ -568,7 +661,7 @@ abstract class _$$AuthVerifyEmailCopyWith<$Res> {
           _$AuthVerifyEmail value, $Res Function(_$AuthVerifyEmail) then) =
       __$$AuthVerifyEmailCopyWithImpl<$Res>;
   @useResult
-  $Res call({BuildContext context, String email});
+  $Res call({BuildContext context, String emailCode, VoidCallback goToPage});
 }
 
 /// @nodoc
@@ -583,17 +676,22 @@ class __$$AuthVerifyEmailCopyWithImpl<$Res>
   @override
   $Res call({
     Object? context = null,
-    Object? email = null,
+    Object? emailCode = null,
+    Object? goToPage = null,
   }) {
     return _then(_$AuthVerifyEmail(
       null == context
           ? _value.context
           : context // ignore: cast_nullable_to_non_nullable
               as BuildContext,
-      null == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
+      null == emailCode
+          ? _value.emailCode
+          : emailCode // ignore: cast_nullable_to_non_nullable
               as String,
+      null == goToPage
+          ? _value.goToPage
+          : goToPage // ignore: cast_nullable_to_non_nullable
+              as VoidCallback,
     ));
   }
 }
@@ -601,16 +699,18 @@ class __$$AuthVerifyEmailCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AuthVerifyEmail implements AuthVerifyEmail {
-  _$AuthVerifyEmail(this.context, this.email);
+  _$AuthVerifyEmail(this.context, this.emailCode, this.goToPage);
 
   @override
   final BuildContext context;
   @override
-  final String email;
+  final String emailCode;
+  @override
+  final VoidCallback goToPage;
 
   @override
   String toString() {
-    return 'AuthenticationEvent.verifyEmail(context: $context, email: $email)';
+    return 'AuthenticationEvent.verifyEmail(context: $context, emailCode: $emailCode, goToPage: $goToPage)';
   }
 
   @override
@@ -619,11 +719,14 @@ class _$AuthVerifyEmail implements AuthVerifyEmail {
         (other.runtimeType == runtimeType &&
             other is _$AuthVerifyEmail &&
             (identical(other.context, context) || other.context == context) &&
-            (identical(other.email, email) || other.email == email));
+            (identical(other.emailCode, emailCode) ||
+                other.emailCode == emailCode) &&
+            (identical(other.goToPage, goToPage) ||
+                other.goToPage == goToPage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, context, email);
+  int get hashCode => Object.hash(runtimeType, context, emailCode, goToPage);
 
   @JsonKey(ignore: true)
   @override
@@ -638,15 +741,21 @@ class _$AuthVerifyEmail implements AuthVerifyEmail {
     required TResult Function(
             BuildContext context, AuthenticationUserModel user)
         updateAuthUser,
-    required TResult Function(BuildContext context, String email) verifyEmail,
-    required TResult Function(BuildContext context, String email)
+    required TResult Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)
+        verifyEmail,
+    required TResult Function(
+            BuildContext context, String email, VoidCallback goToPage)
         sendToVerifyEmail,
-    required TResult Function(BuildContext context, String phone) verifyPhone,
-    required TResult Function(
-            BuildContext context, String email, String password)
+    required TResult Function(BuildContext context, String phoneCode)
+        verifyPhone,
+    required TResult Function(BuildContext context, String phone)
+        sendToVerifyPhone,
+    required TResult Function(BuildContext context, String email,
+            String password, VoidCallback goToPage)
         registerUser,
-    required TResult Function(
-            BuildContext context, String email, String password)
+    required TResult Function(BuildContext context, String email,
+            String password, VoidCallback onDone)
         login,
     required TResult Function(BuildContext context, String userId) logout,
     required TResult Function() loginWithGoogle,
@@ -655,8 +764,10 @@ class _$AuthVerifyEmail implements AuthVerifyEmail {
     required TResult Function(String code) resetPassword,
     required TResult Function(BuildContext context, String email)
         sendToResetPassword,
+    required TResult Function(BuildContext context, AuthenticationStatus status)
+        setAuthenticationStatus,
   }) {
-    return verifyEmail(context, email);
+    return verifyEmail(context, emailCode, goToPage);
   }
 
   @override
@@ -665,12 +776,19 @@ class _$AuthVerifyEmail implements AuthVerifyEmail {
     TResult? Function()? $default, {
     TResult? Function(BuildContext context, AuthenticationUserModel user)?
         updateAuthUser,
-    TResult? Function(BuildContext context, String email)? verifyEmail,
-    TResult? Function(BuildContext context, String email)? sendToVerifyEmail,
-    TResult? Function(BuildContext context, String phone)? verifyPhone,
-    TResult? Function(BuildContext context, String email, String password)?
+    TResult? Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)?
+        verifyEmail,
+    TResult? Function(
+            BuildContext context, String email, VoidCallback goToPage)?
+        sendToVerifyEmail,
+    TResult? Function(BuildContext context, String phoneCode)? verifyPhone,
+    TResult? Function(BuildContext context, String phone)? sendToVerifyPhone,
+    TResult? Function(BuildContext context, String email, String password,
+            VoidCallback goToPage)?
         registerUser,
-    TResult? Function(BuildContext context, String email, String password)?
+    TResult? Function(BuildContext context, String email, String password,
+            VoidCallback onDone)?
         login,
     TResult? Function(BuildContext context, String userId)? logout,
     TResult? Function()? loginWithGoogle,
@@ -678,8 +796,10 @@ class _$AuthVerifyEmail implements AuthVerifyEmail {
     TResult? Function()? loginWithApple,
     TResult? Function(String code)? resetPassword,
     TResult? Function(BuildContext context, String email)? sendToResetPassword,
+    TResult? Function(BuildContext context, AuthenticationStatus status)?
+        setAuthenticationStatus,
   }) {
-    return verifyEmail?.call(context, email);
+    return verifyEmail?.call(context, emailCode, goToPage);
   }
 
   @override
@@ -688,12 +808,18 @@ class _$AuthVerifyEmail implements AuthVerifyEmail {
     TResult Function()? $default, {
     TResult Function(BuildContext context, AuthenticationUserModel user)?
         updateAuthUser,
-    TResult Function(BuildContext context, String email)? verifyEmail,
-    TResult Function(BuildContext context, String email)? sendToVerifyEmail,
-    TResult Function(BuildContext context, String phone)? verifyPhone,
-    TResult Function(BuildContext context, String email, String password)?
+    TResult Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)?
+        verifyEmail,
+    TResult Function(BuildContext context, String email, VoidCallback goToPage)?
+        sendToVerifyEmail,
+    TResult Function(BuildContext context, String phoneCode)? verifyPhone,
+    TResult Function(BuildContext context, String phone)? sendToVerifyPhone,
+    TResult Function(BuildContext context, String email, String password,
+            VoidCallback goToPage)?
         registerUser,
-    TResult Function(BuildContext context, String email, String password)?
+    TResult Function(BuildContext context, String email, String password,
+            VoidCallback onDone)?
         login,
     TResult Function(BuildContext context, String userId)? logout,
     TResult Function()? loginWithGoogle,
@@ -701,10 +827,12 @@ class _$AuthVerifyEmail implements AuthVerifyEmail {
     TResult Function()? loginWithApple,
     TResult Function(String code)? resetPassword,
     TResult Function(BuildContext context, String email)? sendToResetPassword,
+    TResult Function(BuildContext context, AuthenticationStatus status)?
+        setAuthenticationStatus,
     required TResult orElse(),
   }) {
     if (verifyEmail != null) {
-      return verifyEmail(context, email);
+      return verifyEmail(context, emailCode, goToPage);
     }
     return orElse();
   }
@@ -717,6 +845,7 @@ class _$AuthVerifyEmail implements AuthVerifyEmail {
     required TResult Function(AuthVerifyEmail value) verifyEmail,
     required TResult Function(AuthSendToVerifyEmail value) sendToVerifyEmail,
     required TResult Function(AuthVerifyPhone value) verifyPhone,
+    required TResult Function(AuthSendToVerifyPhone value) sendToVerifyPhone,
     required TResult Function(AuthRegisterUser value) registerUser,
     required TResult Function(AuthLogin value) login,
     required TResult Function(AuthLogout value) logout,
@@ -726,6 +855,7 @@ class _$AuthVerifyEmail implements AuthVerifyEmail {
     required TResult Function(AuthResetPassword value) resetPassword,
     required TResult Function(AuthSendToResetPassword value)
         sendToResetPassword,
+    required TResult Function(AuthSetStatus value) setAuthenticationStatus,
   }) {
     return verifyEmail(this);
   }
@@ -738,6 +868,7 @@ class _$AuthVerifyEmail implements AuthVerifyEmail {
     TResult? Function(AuthVerifyEmail value)? verifyEmail,
     TResult? Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult? Function(AuthVerifyPhone value)? verifyPhone,
+    TResult? Function(AuthSendToVerifyPhone value)? sendToVerifyPhone,
     TResult? Function(AuthRegisterUser value)? registerUser,
     TResult? Function(AuthLogin value)? login,
     TResult? Function(AuthLogout value)? logout,
@@ -746,6 +877,7 @@ class _$AuthVerifyEmail implements AuthVerifyEmail {
     TResult? Function(AuthWithApple value)? loginWithApple,
     TResult? Function(AuthResetPassword value)? resetPassword,
     TResult? Function(AuthSendToResetPassword value)? sendToResetPassword,
+    TResult? Function(AuthSetStatus value)? setAuthenticationStatus,
   }) {
     return verifyEmail?.call(this);
   }
@@ -758,6 +890,7 @@ class _$AuthVerifyEmail implements AuthVerifyEmail {
     TResult Function(AuthVerifyEmail value)? verifyEmail,
     TResult Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult Function(AuthVerifyPhone value)? verifyPhone,
+    TResult Function(AuthSendToVerifyPhone value)? sendToVerifyPhone,
     TResult Function(AuthRegisterUser value)? registerUser,
     TResult Function(AuthLogin value)? login,
     TResult Function(AuthLogout value)? logout,
@@ -766,6 +899,7 @@ class _$AuthVerifyEmail implements AuthVerifyEmail {
     TResult Function(AuthWithApple value)? loginWithApple,
     TResult Function(AuthResetPassword value)? resetPassword,
     TResult Function(AuthSendToResetPassword value)? sendToResetPassword,
+    TResult Function(AuthSetStatus value)? setAuthenticationStatus,
     required TResult orElse(),
   }) {
     if (verifyEmail != null) {
@@ -776,11 +910,12 @@ class _$AuthVerifyEmail implements AuthVerifyEmail {
 }
 
 abstract class AuthVerifyEmail implements AuthenticationEvent {
-  factory AuthVerifyEmail(final BuildContext context, final String email) =
-      _$AuthVerifyEmail;
+  factory AuthVerifyEmail(final BuildContext context, final String emailCode,
+      final VoidCallback goToPage) = _$AuthVerifyEmail;
 
   BuildContext get context;
-  String get email;
+  String get emailCode;
+  VoidCallback get goToPage;
   @JsonKey(ignore: true)
   _$$AuthVerifyEmailCopyWith<_$AuthVerifyEmail> get copyWith =>
       throw _privateConstructorUsedError;
@@ -792,7 +927,7 @@ abstract class _$$AuthSendToVerifyEmailCopyWith<$Res> {
           $Res Function(_$AuthSendToVerifyEmail) then) =
       __$$AuthSendToVerifyEmailCopyWithImpl<$Res>;
   @useResult
-  $Res call({BuildContext context, String email});
+  $Res call({BuildContext context, String email, VoidCallback goToPage});
 }
 
 /// @nodoc
@@ -808,6 +943,7 @@ class __$$AuthSendToVerifyEmailCopyWithImpl<$Res>
   $Res call({
     Object? context = null,
     Object? email = null,
+    Object? goToPage = null,
   }) {
     return _then(_$AuthSendToVerifyEmail(
       null == context
@@ -818,6 +954,10 @@ class __$$AuthSendToVerifyEmailCopyWithImpl<$Res>
           ? _value.email
           : email // ignore: cast_nullable_to_non_nullable
               as String,
+      null == goToPage
+          ? _value.goToPage
+          : goToPage // ignore: cast_nullable_to_non_nullable
+              as VoidCallback,
     ));
   }
 }
@@ -825,16 +965,18 @@ class __$$AuthSendToVerifyEmailCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AuthSendToVerifyEmail implements AuthSendToVerifyEmail {
-  _$AuthSendToVerifyEmail(this.context, this.email);
+  _$AuthSendToVerifyEmail(this.context, this.email, this.goToPage);
 
   @override
   final BuildContext context;
   @override
   final String email;
+  @override
+  final VoidCallback goToPage;
 
   @override
   String toString() {
-    return 'AuthenticationEvent.sendToVerifyEmail(context: $context, email: $email)';
+    return 'AuthenticationEvent.sendToVerifyEmail(context: $context, email: $email, goToPage: $goToPage)';
   }
 
   @override
@@ -843,11 +985,13 @@ class _$AuthSendToVerifyEmail implements AuthSendToVerifyEmail {
         (other.runtimeType == runtimeType &&
             other is _$AuthSendToVerifyEmail &&
             (identical(other.context, context) || other.context == context) &&
-            (identical(other.email, email) || other.email == email));
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.goToPage, goToPage) ||
+                other.goToPage == goToPage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, context, email);
+  int get hashCode => Object.hash(runtimeType, context, email, goToPage);
 
   @JsonKey(ignore: true)
   @override
@@ -863,15 +1007,21 @@ class _$AuthSendToVerifyEmail implements AuthSendToVerifyEmail {
     required TResult Function(
             BuildContext context, AuthenticationUserModel user)
         updateAuthUser,
-    required TResult Function(BuildContext context, String email) verifyEmail,
-    required TResult Function(BuildContext context, String email)
+    required TResult Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)
+        verifyEmail,
+    required TResult Function(
+            BuildContext context, String email, VoidCallback goToPage)
         sendToVerifyEmail,
-    required TResult Function(BuildContext context, String phone) verifyPhone,
-    required TResult Function(
-            BuildContext context, String email, String password)
+    required TResult Function(BuildContext context, String phoneCode)
+        verifyPhone,
+    required TResult Function(BuildContext context, String phone)
+        sendToVerifyPhone,
+    required TResult Function(BuildContext context, String email,
+            String password, VoidCallback goToPage)
         registerUser,
-    required TResult Function(
-            BuildContext context, String email, String password)
+    required TResult Function(BuildContext context, String email,
+            String password, VoidCallback onDone)
         login,
     required TResult Function(BuildContext context, String userId) logout,
     required TResult Function() loginWithGoogle,
@@ -880,8 +1030,10 @@ class _$AuthSendToVerifyEmail implements AuthSendToVerifyEmail {
     required TResult Function(String code) resetPassword,
     required TResult Function(BuildContext context, String email)
         sendToResetPassword,
+    required TResult Function(BuildContext context, AuthenticationStatus status)
+        setAuthenticationStatus,
   }) {
-    return sendToVerifyEmail(context, email);
+    return sendToVerifyEmail(context, email, goToPage);
   }
 
   @override
@@ -890,12 +1042,19 @@ class _$AuthSendToVerifyEmail implements AuthSendToVerifyEmail {
     TResult? Function()? $default, {
     TResult? Function(BuildContext context, AuthenticationUserModel user)?
         updateAuthUser,
-    TResult? Function(BuildContext context, String email)? verifyEmail,
-    TResult? Function(BuildContext context, String email)? sendToVerifyEmail,
-    TResult? Function(BuildContext context, String phone)? verifyPhone,
-    TResult? Function(BuildContext context, String email, String password)?
+    TResult? Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)?
+        verifyEmail,
+    TResult? Function(
+            BuildContext context, String email, VoidCallback goToPage)?
+        sendToVerifyEmail,
+    TResult? Function(BuildContext context, String phoneCode)? verifyPhone,
+    TResult? Function(BuildContext context, String phone)? sendToVerifyPhone,
+    TResult? Function(BuildContext context, String email, String password,
+            VoidCallback goToPage)?
         registerUser,
-    TResult? Function(BuildContext context, String email, String password)?
+    TResult? Function(BuildContext context, String email, String password,
+            VoidCallback onDone)?
         login,
     TResult? Function(BuildContext context, String userId)? logout,
     TResult? Function()? loginWithGoogle,
@@ -903,8 +1062,10 @@ class _$AuthSendToVerifyEmail implements AuthSendToVerifyEmail {
     TResult? Function()? loginWithApple,
     TResult? Function(String code)? resetPassword,
     TResult? Function(BuildContext context, String email)? sendToResetPassword,
+    TResult? Function(BuildContext context, AuthenticationStatus status)?
+        setAuthenticationStatus,
   }) {
-    return sendToVerifyEmail?.call(context, email);
+    return sendToVerifyEmail?.call(context, email, goToPage);
   }
 
   @override
@@ -913,12 +1074,18 @@ class _$AuthSendToVerifyEmail implements AuthSendToVerifyEmail {
     TResult Function()? $default, {
     TResult Function(BuildContext context, AuthenticationUserModel user)?
         updateAuthUser,
-    TResult Function(BuildContext context, String email)? verifyEmail,
-    TResult Function(BuildContext context, String email)? sendToVerifyEmail,
-    TResult Function(BuildContext context, String phone)? verifyPhone,
-    TResult Function(BuildContext context, String email, String password)?
+    TResult Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)?
+        verifyEmail,
+    TResult Function(BuildContext context, String email, VoidCallback goToPage)?
+        sendToVerifyEmail,
+    TResult Function(BuildContext context, String phoneCode)? verifyPhone,
+    TResult Function(BuildContext context, String phone)? sendToVerifyPhone,
+    TResult Function(BuildContext context, String email, String password,
+            VoidCallback goToPage)?
         registerUser,
-    TResult Function(BuildContext context, String email, String password)?
+    TResult Function(BuildContext context, String email, String password,
+            VoidCallback onDone)?
         login,
     TResult Function(BuildContext context, String userId)? logout,
     TResult Function()? loginWithGoogle,
@@ -926,10 +1093,12 @@ class _$AuthSendToVerifyEmail implements AuthSendToVerifyEmail {
     TResult Function()? loginWithApple,
     TResult Function(String code)? resetPassword,
     TResult Function(BuildContext context, String email)? sendToResetPassword,
+    TResult Function(BuildContext context, AuthenticationStatus status)?
+        setAuthenticationStatus,
     required TResult orElse(),
   }) {
     if (sendToVerifyEmail != null) {
-      return sendToVerifyEmail(context, email);
+      return sendToVerifyEmail(context, email, goToPage);
     }
     return orElse();
   }
@@ -942,6 +1111,7 @@ class _$AuthSendToVerifyEmail implements AuthSendToVerifyEmail {
     required TResult Function(AuthVerifyEmail value) verifyEmail,
     required TResult Function(AuthSendToVerifyEmail value) sendToVerifyEmail,
     required TResult Function(AuthVerifyPhone value) verifyPhone,
+    required TResult Function(AuthSendToVerifyPhone value) sendToVerifyPhone,
     required TResult Function(AuthRegisterUser value) registerUser,
     required TResult Function(AuthLogin value) login,
     required TResult Function(AuthLogout value) logout,
@@ -951,6 +1121,7 @@ class _$AuthSendToVerifyEmail implements AuthSendToVerifyEmail {
     required TResult Function(AuthResetPassword value) resetPassword,
     required TResult Function(AuthSendToResetPassword value)
         sendToResetPassword,
+    required TResult Function(AuthSetStatus value) setAuthenticationStatus,
   }) {
     return sendToVerifyEmail(this);
   }
@@ -963,6 +1134,7 @@ class _$AuthSendToVerifyEmail implements AuthSendToVerifyEmail {
     TResult? Function(AuthVerifyEmail value)? verifyEmail,
     TResult? Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult? Function(AuthVerifyPhone value)? verifyPhone,
+    TResult? Function(AuthSendToVerifyPhone value)? sendToVerifyPhone,
     TResult? Function(AuthRegisterUser value)? registerUser,
     TResult? Function(AuthLogin value)? login,
     TResult? Function(AuthLogout value)? logout,
@@ -971,6 +1143,7 @@ class _$AuthSendToVerifyEmail implements AuthSendToVerifyEmail {
     TResult? Function(AuthWithApple value)? loginWithApple,
     TResult? Function(AuthResetPassword value)? resetPassword,
     TResult? Function(AuthSendToResetPassword value)? sendToResetPassword,
+    TResult? Function(AuthSetStatus value)? setAuthenticationStatus,
   }) {
     return sendToVerifyEmail?.call(this);
   }
@@ -983,6 +1156,7 @@ class _$AuthSendToVerifyEmail implements AuthSendToVerifyEmail {
     TResult Function(AuthVerifyEmail value)? verifyEmail,
     TResult Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult Function(AuthVerifyPhone value)? verifyPhone,
+    TResult Function(AuthSendToVerifyPhone value)? sendToVerifyPhone,
     TResult Function(AuthRegisterUser value)? registerUser,
     TResult Function(AuthLogin value)? login,
     TResult Function(AuthLogout value)? logout,
@@ -991,6 +1165,7 @@ class _$AuthSendToVerifyEmail implements AuthSendToVerifyEmail {
     TResult Function(AuthWithApple value)? loginWithApple,
     TResult Function(AuthResetPassword value)? resetPassword,
     TResult Function(AuthSendToResetPassword value)? sendToResetPassword,
+    TResult Function(AuthSetStatus value)? setAuthenticationStatus,
     required TResult orElse(),
   }) {
     if (sendToVerifyEmail != null) {
@@ -1001,11 +1176,12 @@ class _$AuthSendToVerifyEmail implements AuthSendToVerifyEmail {
 }
 
 abstract class AuthSendToVerifyEmail implements AuthenticationEvent {
-  factory AuthSendToVerifyEmail(
-      final BuildContext context, final String email) = _$AuthSendToVerifyEmail;
+  factory AuthSendToVerifyEmail(final BuildContext context, final String email,
+      final VoidCallback goToPage) = _$AuthSendToVerifyEmail;
 
   BuildContext get context;
   String get email;
+  VoidCallback get goToPage;
   @JsonKey(ignore: true)
   _$$AuthSendToVerifyEmailCopyWith<_$AuthSendToVerifyEmail> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1017,7 +1193,7 @@ abstract class _$$AuthVerifyPhoneCopyWith<$Res> {
           _$AuthVerifyPhone value, $Res Function(_$AuthVerifyPhone) then) =
       __$$AuthVerifyPhoneCopyWithImpl<$Res>;
   @useResult
-  $Res call({BuildContext context, String phone});
+  $Res call({BuildContext context, String phoneCode});
 }
 
 /// @nodoc
@@ -1032,16 +1208,16 @@ class __$$AuthVerifyPhoneCopyWithImpl<$Res>
   @override
   $Res call({
     Object? context = null,
-    Object? phone = null,
+    Object? phoneCode = null,
   }) {
     return _then(_$AuthVerifyPhone(
       null == context
           ? _value.context
           : context // ignore: cast_nullable_to_non_nullable
               as BuildContext,
-      null == phone
-          ? _value.phone
-          : phone // ignore: cast_nullable_to_non_nullable
+      null == phoneCode
+          ? _value.phoneCode
+          : phoneCode // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -1050,16 +1226,16 @@ class __$$AuthVerifyPhoneCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AuthVerifyPhone implements AuthVerifyPhone {
-  _$AuthVerifyPhone(this.context, this.phone);
+  _$AuthVerifyPhone(this.context, this.phoneCode);
 
   @override
   final BuildContext context;
   @override
-  final String phone;
+  final String phoneCode;
 
   @override
   String toString() {
-    return 'AuthenticationEvent.verifyPhone(context: $context, phone: $phone)';
+    return 'AuthenticationEvent.verifyPhone(context: $context, phoneCode: $phoneCode)';
   }
 
   @override
@@ -1068,11 +1244,12 @@ class _$AuthVerifyPhone implements AuthVerifyPhone {
         (other.runtimeType == runtimeType &&
             other is _$AuthVerifyPhone &&
             (identical(other.context, context) || other.context == context) &&
-            (identical(other.phone, phone) || other.phone == phone));
+            (identical(other.phoneCode, phoneCode) ||
+                other.phoneCode == phoneCode));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, context, phone);
+  int get hashCode => Object.hash(runtimeType, context, phoneCode);
 
   @JsonKey(ignore: true)
   @override
@@ -1087,15 +1264,21 @@ class _$AuthVerifyPhone implements AuthVerifyPhone {
     required TResult Function(
             BuildContext context, AuthenticationUserModel user)
         updateAuthUser,
-    required TResult Function(BuildContext context, String email) verifyEmail,
-    required TResult Function(BuildContext context, String email)
+    required TResult Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)
+        verifyEmail,
+    required TResult Function(
+            BuildContext context, String email, VoidCallback goToPage)
         sendToVerifyEmail,
-    required TResult Function(BuildContext context, String phone) verifyPhone,
-    required TResult Function(
-            BuildContext context, String email, String password)
+    required TResult Function(BuildContext context, String phoneCode)
+        verifyPhone,
+    required TResult Function(BuildContext context, String phone)
+        sendToVerifyPhone,
+    required TResult Function(BuildContext context, String email,
+            String password, VoidCallback goToPage)
         registerUser,
-    required TResult Function(
-            BuildContext context, String email, String password)
+    required TResult Function(BuildContext context, String email,
+            String password, VoidCallback onDone)
         login,
     required TResult Function(BuildContext context, String userId) logout,
     required TResult Function() loginWithGoogle,
@@ -1104,8 +1287,10 @@ class _$AuthVerifyPhone implements AuthVerifyPhone {
     required TResult Function(String code) resetPassword,
     required TResult Function(BuildContext context, String email)
         sendToResetPassword,
+    required TResult Function(BuildContext context, AuthenticationStatus status)
+        setAuthenticationStatus,
   }) {
-    return verifyPhone(context, phone);
+    return verifyPhone(context, phoneCode);
   }
 
   @override
@@ -1114,12 +1299,19 @@ class _$AuthVerifyPhone implements AuthVerifyPhone {
     TResult? Function()? $default, {
     TResult? Function(BuildContext context, AuthenticationUserModel user)?
         updateAuthUser,
-    TResult? Function(BuildContext context, String email)? verifyEmail,
-    TResult? Function(BuildContext context, String email)? sendToVerifyEmail,
-    TResult? Function(BuildContext context, String phone)? verifyPhone,
-    TResult? Function(BuildContext context, String email, String password)?
+    TResult? Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)?
+        verifyEmail,
+    TResult? Function(
+            BuildContext context, String email, VoidCallback goToPage)?
+        sendToVerifyEmail,
+    TResult? Function(BuildContext context, String phoneCode)? verifyPhone,
+    TResult? Function(BuildContext context, String phone)? sendToVerifyPhone,
+    TResult? Function(BuildContext context, String email, String password,
+            VoidCallback goToPage)?
         registerUser,
-    TResult? Function(BuildContext context, String email, String password)?
+    TResult? Function(BuildContext context, String email, String password,
+            VoidCallback onDone)?
         login,
     TResult? Function(BuildContext context, String userId)? logout,
     TResult? Function()? loginWithGoogle,
@@ -1127,8 +1319,10 @@ class _$AuthVerifyPhone implements AuthVerifyPhone {
     TResult? Function()? loginWithApple,
     TResult? Function(String code)? resetPassword,
     TResult? Function(BuildContext context, String email)? sendToResetPassword,
+    TResult? Function(BuildContext context, AuthenticationStatus status)?
+        setAuthenticationStatus,
   }) {
-    return verifyPhone?.call(context, phone);
+    return verifyPhone?.call(context, phoneCode);
   }
 
   @override
@@ -1137,12 +1331,18 @@ class _$AuthVerifyPhone implements AuthVerifyPhone {
     TResult Function()? $default, {
     TResult Function(BuildContext context, AuthenticationUserModel user)?
         updateAuthUser,
-    TResult Function(BuildContext context, String email)? verifyEmail,
-    TResult Function(BuildContext context, String email)? sendToVerifyEmail,
-    TResult Function(BuildContext context, String phone)? verifyPhone,
-    TResult Function(BuildContext context, String email, String password)?
+    TResult Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)?
+        verifyEmail,
+    TResult Function(BuildContext context, String email, VoidCallback goToPage)?
+        sendToVerifyEmail,
+    TResult Function(BuildContext context, String phoneCode)? verifyPhone,
+    TResult Function(BuildContext context, String phone)? sendToVerifyPhone,
+    TResult Function(BuildContext context, String email, String password,
+            VoidCallback goToPage)?
         registerUser,
-    TResult Function(BuildContext context, String email, String password)?
+    TResult Function(BuildContext context, String email, String password,
+            VoidCallback onDone)?
         login,
     TResult Function(BuildContext context, String userId)? logout,
     TResult Function()? loginWithGoogle,
@@ -1150,10 +1350,12 @@ class _$AuthVerifyPhone implements AuthVerifyPhone {
     TResult Function()? loginWithApple,
     TResult Function(String code)? resetPassword,
     TResult Function(BuildContext context, String email)? sendToResetPassword,
+    TResult Function(BuildContext context, AuthenticationStatus status)?
+        setAuthenticationStatus,
     required TResult orElse(),
   }) {
     if (verifyPhone != null) {
-      return verifyPhone(context, phone);
+      return verifyPhone(context, phoneCode);
     }
     return orElse();
   }
@@ -1166,6 +1368,7 @@ class _$AuthVerifyPhone implements AuthVerifyPhone {
     required TResult Function(AuthVerifyEmail value) verifyEmail,
     required TResult Function(AuthSendToVerifyEmail value) sendToVerifyEmail,
     required TResult Function(AuthVerifyPhone value) verifyPhone,
+    required TResult Function(AuthSendToVerifyPhone value) sendToVerifyPhone,
     required TResult Function(AuthRegisterUser value) registerUser,
     required TResult Function(AuthLogin value) login,
     required TResult Function(AuthLogout value) logout,
@@ -1175,6 +1378,7 @@ class _$AuthVerifyPhone implements AuthVerifyPhone {
     required TResult Function(AuthResetPassword value) resetPassword,
     required TResult Function(AuthSendToResetPassword value)
         sendToResetPassword,
+    required TResult Function(AuthSetStatus value) setAuthenticationStatus,
   }) {
     return verifyPhone(this);
   }
@@ -1187,6 +1391,7 @@ class _$AuthVerifyPhone implements AuthVerifyPhone {
     TResult? Function(AuthVerifyEmail value)? verifyEmail,
     TResult? Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult? Function(AuthVerifyPhone value)? verifyPhone,
+    TResult? Function(AuthSendToVerifyPhone value)? sendToVerifyPhone,
     TResult? Function(AuthRegisterUser value)? registerUser,
     TResult? Function(AuthLogin value)? login,
     TResult? Function(AuthLogout value)? logout,
@@ -1195,6 +1400,7 @@ class _$AuthVerifyPhone implements AuthVerifyPhone {
     TResult? Function(AuthWithApple value)? loginWithApple,
     TResult? Function(AuthResetPassword value)? resetPassword,
     TResult? Function(AuthSendToResetPassword value)? sendToResetPassword,
+    TResult? Function(AuthSetStatus value)? setAuthenticationStatus,
   }) {
     return verifyPhone?.call(this);
   }
@@ -1207,6 +1413,7 @@ class _$AuthVerifyPhone implements AuthVerifyPhone {
     TResult Function(AuthVerifyEmail value)? verifyEmail,
     TResult Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult Function(AuthVerifyPhone value)? verifyPhone,
+    TResult Function(AuthSendToVerifyPhone value)? sendToVerifyPhone,
     TResult Function(AuthRegisterUser value)? registerUser,
     TResult Function(AuthLogin value)? login,
     TResult Function(AuthLogout value)? logout,
@@ -1215,6 +1422,7 @@ class _$AuthVerifyPhone implements AuthVerifyPhone {
     TResult Function(AuthWithApple value)? loginWithApple,
     TResult Function(AuthResetPassword value)? resetPassword,
     TResult Function(AuthSendToResetPassword value)? sendToResetPassword,
+    TResult Function(AuthSetStatus value)? setAuthenticationStatus,
     required TResult orElse(),
   }) {
     if (verifyPhone != null) {
@@ -1225,13 +1433,269 @@ class _$AuthVerifyPhone implements AuthVerifyPhone {
 }
 
 abstract class AuthVerifyPhone implements AuthenticationEvent {
-  factory AuthVerifyPhone(final BuildContext context, final String phone) =
+  factory AuthVerifyPhone(final BuildContext context, final String phoneCode) =
       _$AuthVerifyPhone;
+
+  BuildContext get context;
+  String get phoneCode;
+  @JsonKey(ignore: true)
+  _$$AuthVerifyPhoneCopyWith<_$AuthVerifyPhone> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AuthSendToVerifyPhoneCopyWith<$Res> {
+  factory _$$AuthSendToVerifyPhoneCopyWith(_$AuthSendToVerifyPhone value,
+          $Res Function(_$AuthSendToVerifyPhone) then) =
+      __$$AuthSendToVerifyPhoneCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BuildContext context, String phone});
+}
+
+/// @nodoc
+class __$$AuthSendToVerifyPhoneCopyWithImpl<$Res>
+    extends _$AuthenticationEventCopyWithImpl<$Res, _$AuthSendToVerifyPhone>
+    implements _$$AuthSendToVerifyPhoneCopyWith<$Res> {
+  __$$AuthSendToVerifyPhoneCopyWithImpl(_$AuthSendToVerifyPhone _value,
+      $Res Function(_$AuthSendToVerifyPhone) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? context = null,
+    Object? phone = null,
+  }) {
+    return _then(_$AuthSendToVerifyPhone(
+      null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+      null == phone
+          ? _value.phone
+          : phone // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AuthSendToVerifyPhone implements AuthSendToVerifyPhone {
+  _$AuthSendToVerifyPhone(this.context, this.phone);
+
+  @override
+  final BuildContext context;
+  @override
+  final String phone;
+
+  @override
+  String toString() {
+    return 'AuthenticationEvent.sendToVerifyPhone(context: $context, phone: $phone)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AuthSendToVerifyPhone &&
+            (identical(other.context, context) || other.context == context) &&
+            (identical(other.phone, phone) || other.phone == phone));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, context, phone);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AuthSendToVerifyPhoneCopyWith<_$AuthSendToVerifyPhone> get copyWith =>
+      __$$AuthSendToVerifyPhoneCopyWithImpl<_$AuthSendToVerifyPhone>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function(
+            BuildContext context, AuthenticationUserModel user)
+        updateAuthUser,
+    required TResult Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)
+        verifyEmail,
+    required TResult Function(
+            BuildContext context, String email, VoidCallback goToPage)
+        sendToVerifyEmail,
+    required TResult Function(BuildContext context, String phoneCode)
+        verifyPhone,
+    required TResult Function(BuildContext context, String phone)
+        sendToVerifyPhone,
+    required TResult Function(BuildContext context, String email,
+            String password, VoidCallback goToPage)
+        registerUser,
+    required TResult Function(BuildContext context, String email,
+            String password, VoidCallback onDone)
+        login,
+    required TResult Function(BuildContext context, String userId) logout,
+    required TResult Function() loginWithGoogle,
+    required TResult Function() logintWithFacebook,
+    required TResult Function() loginWithApple,
+    required TResult Function(String code) resetPassword,
+    required TResult Function(BuildContext context, String email)
+        sendToResetPassword,
+    required TResult Function(BuildContext context, AuthenticationStatus status)
+        setAuthenticationStatus,
+  }) {
+    return sendToVerifyPhone(context, phone);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function(BuildContext context, AuthenticationUserModel user)?
+        updateAuthUser,
+    TResult? Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)?
+        verifyEmail,
+    TResult? Function(
+            BuildContext context, String email, VoidCallback goToPage)?
+        sendToVerifyEmail,
+    TResult? Function(BuildContext context, String phoneCode)? verifyPhone,
+    TResult? Function(BuildContext context, String phone)? sendToVerifyPhone,
+    TResult? Function(BuildContext context, String email, String password,
+            VoidCallback goToPage)?
+        registerUser,
+    TResult? Function(BuildContext context, String email, String password,
+            VoidCallback onDone)?
+        login,
+    TResult? Function(BuildContext context, String userId)? logout,
+    TResult? Function()? loginWithGoogle,
+    TResult? Function()? logintWithFacebook,
+    TResult? Function()? loginWithApple,
+    TResult? Function(String code)? resetPassword,
+    TResult? Function(BuildContext context, String email)? sendToResetPassword,
+    TResult? Function(BuildContext context, AuthenticationStatus status)?
+        setAuthenticationStatus,
+  }) {
+    return sendToVerifyPhone?.call(context, phone);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function(BuildContext context, AuthenticationUserModel user)?
+        updateAuthUser,
+    TResult Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)?
+        verifyEmail,
+    TResult Function(BuildContext context, String email, VoidCallback goToPage)?
+        sendToVerifyEmail,
+    TResult Function(BuildContext context, String phoneCode)? verifyPhone,
+    TResult Function(BuildContext context, String phone)? sendToVerifyPhone,
+    TResult Function(BuildContext context, String email, String password,
+            VoidCallback goToPage)?
+        registerUser,
+    TResult Function(BuildContext context, String email, String password,
+            VoidCallback onDone)?
+        login,
+    TResult Function(BuildContext context, String userId)? logout,
+    TResult Function()? loginWithGoogle,
+    TResult Function()? logintWithFacebook,
+    TResult Function()? loginWithApple,
+    TResult Function(String code)? resetPassword,
+    TResult Function(BuildContext context, String email)? sendToResetPassword,
+    TResult Function(BuildContext context, AuthenticationStatus status)?
+        setAuthenticationStatus,
+    required TResult orElse(),
+  }) {
+    if (sendToVerifyPhone != null) {
+      return sendToVerifyPhone(context, phone);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_Authentication value) $default, {
+    required TResult Function(AuthUser value) updateAuthUser,
+    required TResult Function(AuthVerifyEmail value) verifyEmail,
+    required TResult Function(AuthSendToVerifyEmail value) sendToVerifyEmail,
+    required TResult Function(AuthVerifyPhone value) verifyPhone,
+    required TResult Function(AuthSendToVerifyPhone value) sendToVerifyPhone,
+    required TResult Function(AuthRegisterUser value) registerUser,
+    required TResult Function(AuthLogin value) login,
+    required TResult Function(AuthLogout value) logout,
+    required TResult Function(AuthWithGoogle value) loginWithGoogle,
+    required TResult Function(AuthWithFacebook value) logintWithFacebook,
+    required TResult Function(AuthWithApple value) loginWithApple,
+    required TResult Function(AuthResetPassword value) resetPassword,
+    required TResult Function(AuthSendToResetPassword value)
+        sendToResetPassword,
+    required TResult Function(AuthSetStatus value) setAuthenticationStatus,
+  }) {
+    return sendToVerifyPhone(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_Authentication value)? $default, {
+    TResult? Function(AuthUser value)? updateAuthUser,
+    TResult? Function(AuthVerifyEmail value)? verifyEmail,
+    TResult? Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
+    TResult? Function(AuthVerifyPhone value)? verifyPhone,
+    TResult? Function(AuthSendToVerifyPhone value)? sendToVerifyPhone,
+    TResult? Function(AuthRegisterUser value)? registerUser,
+    TResult? Function(AuthLogin value)? login,
+    TResult? Function(AuthLogout value)? logout,
+    TResult? Function(AuthWithGoogle value)? loginWithGoogle,
+    TResult? Function(AuthWithFacebook value)? logintWithFacebook,
+    TResult? Function(AuthWithApple value)? loginWithApple,
+    TResult? Function(AuthResetPassword value)? resetPassword,
+    TResult? Function(AuthSendToResetPassword value)? sendToResetPassword,
+    TResult? Function(AuthSetStatus value)? setAuthenticationStatus,
+  }) {
+    return sendToVerifyPhone?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_Authentication value)? $default, {
+    TResult Function(AuthUser value)? updateAuthUser,
+    TResult Function(AuthVerifyEmail value)? verifyEmail,
+    TResult Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
+    TResult Function(AuthVerifyPhone value)? verifyPhone,
+    TResult Function(AuthSendToVerifyPhone value)? sendToVerifyPhone,
+    TResult Function(AuthRegisterUser value)? registerUser,
+    TResult Function(AuthLogin value)? login,
+    TResult Function(AuthLogout value)? logout,
+    TResult Function(AuthWithGoogle value)? loginWithGoogle,
+    TResult Function(AuthWithFacebook value)? logintWithFacebook,
+    TResult Function(AuthWithApple value)? loginWithApple,
+    TResult Function(AuthResetPassword value)? resetPassword,
+    TResult Function(AuthSendToResetPassword value)? sendToResetPassword,
+    TResult Function(AuthSetStatus value)? setAuthenticationStatus,
+    required TResult orElse(),
+  }) {
+    if (sendToVerifyPhone != null) {
+      return sendToVerifyPhone(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AuthSendToVerifyPhone implements AuthenticationEvent {
+  factory AuthSendToVerifyPhone(
+      final BuildContext context, final String phone) = _$AuthSendToVerifyPhone;
 
   BuildContext get context;
   String get phone;
   @JsonKey(ignore: true)
-  _$$AuthVerifyPhoneCopyWith<_$AuthVerifyPhone> get copyWith =>
+  _$$AuthSendToVerifyPhoneCopyWith<_$AuthSendToVerifyPhone> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1241,7 +1705,11 @@ abstract class _$$AuthRegisterUserCopyWith<$Res> {
           _$AuthRegisterUser value, $Res Function(_$AuthRegisterUser) then) =
       __$$AuthRegisterUserCopyWithImpl<$Res>;
   @useResult
-  $Res call({BuildContext context, String email, String password});
+  $Res call(
+      {BuildContext context,
+      String email,
+      String password,
+      VoidCallback goToPage});
 }
 
 /// @nodoc
@@ -1258,6 +1726,7 @@ class __$$AuthRegisterUserCopyWithImpl<$Res>
     Object? context = null,
     Object? email = null,
     Object? password = null,
+    Object? goToPage = null,
   }) {
     return _then(_$AuthRegisterUser(
       null == context
@@ -1272,6 +1741,10 @@ class __$$AuthRegisterUserCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
+      null == goToPage
+          ? _value.goToPage
+          : goToPage // ignore: cast_nullable_to_non_nullable
+              as VoidCallback,
     ));
   }
 }
@@ -1279,7 +1752,7 @@ class __$$AuthRegisterUserCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AuthRegisterUser implements AuthRegisterUser {
-  _$AuthRegisterUser(this.context, this.email, this.password);
+  _$AuthRegisterUser(this.context, this.email, this.password, this.goToPage);
 
   @override
   final BuildContext context;
@@ -1287,10 +1760,12 @@ class _$AuthRegisterUser implements AuthRegisterUser {
   final String email;
   @override
   final String password;
+  @override
+  final VoidCallback goToPage;
 
   @override
   String toString() {
-    return 'AuthenticationEvent.registerUser(context: $context, email: $email, password: $password)';
+    return 'AuthenticationEvent.registerUser(context: $context, email: $email, password: $password, goToPage: $goToPage)';
   }
 
   @override
@@ -1301,11 +1776,14 @@ class _$AuthRegisterUser implements AuthRegisterUser {
             (identical(other.context, context) || other.context == context) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
-                other.password == password));
+                other.password == password) &&
+            (identical(other.goToPage, goToPage) ||
+                other.goToPage == goToPage));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, context, email, password);
+  int get hashCode =>
+      Object.hash(runtimeType, context, email, password, goToPage);
 
   @JsonKey(ignore: true)
   @override
@@ -1320,15 +1798,21 @@ class _$AuthRegisterUser implements AuthRegisterUser {
     required TResult Function(
             BuildContext context, AuthenticationUserModel user)
         updateAuthUser,
-    required TResult Function(BuildContext context, String email) verifyEmail,
-    required TResult Function(BuildContext context, String email)
+    required TResult Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)
+        verifyEmail,
+    required TResult Function(
+            BuildContext context, String email, VoidCallback goToPage)
         sendToVerifyEmail,
-    required TResult Function(BuildContext context, String phone) verifyPhone,
-    required TResult Function(
-            BuildContext context, String email, String password)
+    required TResult Function(BuildContext context, String phoneCode)
+        verifyPhone,
+    required TResult Function(BuildContext context, String phone)
+        sendToVerifyPhone,
+    required TResult Function(BuildContext context, String email,
+            String password, VoidCallback goToPage)
         registerUser,
-    required TResult Function(
-            BuildContext context, String email, String password)
+    required TResult Function(BuildContext context, String email,
+            String password, VoidCallback onDone)
         login,
     required TResult Function(BuildContext context, String userId) logout,
     required TResult Function() loginWithGoogle,
@@ -1337,8 +1821,10 @@ class _$AuthRegisterUser implements AuthRegisterUser {
     required TResult Function(String code) resetPassword,
     required TResult Function(BuildContext context, String email)
         sendToResetPassword,
+    required TResult Function(BuildContext context, AuthenticationStatus status)
+        setAuthenticationStatus,
   }) {
-    return registerUser(context, email, password);
+    return registerUser(context, email, password, goToPage);
   }
 
   @override
@@ -1347,12 +1833,19 @@ class _$AuthRegisterUser implements AuthRegisterUser {
     TResult? Function()? $default, {
     TResult? Function(BuildContext context, AuthenticationUserModel user)?
         updateAuthUser,
-    TResult? Function(BuildContext context, String email)? verifyEmail,
-    TResult? Function(BuildContext context, String email)? sendToVerifyEmail,
-    TResult? Function(BuildContext context, String phone)? verifyPhone,
-    TResult? Function(BuildContext context, String email, String password)?
+    TResult? Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)?
+        verifyEmail,
+    TResult? Function(
+            BuildContext context, String email, VoidCallback goToPage)?
+        sendToVerifyEmail,
+    TResult? Function(BuildContext context, String phoneCode)? verifyPhone,
+    TResult? Function(BuildContext context, String phone)? sendToVerifyPhone,
+    TResult? Function(BuildContext context, String email, String password,
+            VoidCallback goToPage)?
         registerUser,
-    TResult? Function(BuildContext context, String email, String password)?
+    TResult? Function(BuildContext context, String email, String password,
+            VoidCallback onDone)?
         login,
     TResult? Function(BuildContext context, String userId)? logout,
     TResult? Function()? loginWithGoogle,
@@ -1360,8 +1853,10 @@ class _$AuthRegisterUser implements AuthRegisterUser {
     TResult? Function()? loginWithApple,
     TResult? Function(String code)? resetPassword,
     TResult? Function(BuildContext context, String email)? sendToResetPassword,
+    TResult? Function(BuildContext context, AuthenticationStatus status)?
+        setAuthenticationStatus,
   }) {
-    return registerUser?.call(context, email, password);
+    return registerUser?.call(context, email, password, goToPage);
   }
 
   @override
@@ -1370,12 +1865,18 @@ class _$AuthRegisterUser implements AuthRegisterUser {
     TResult Function()? $default, {
     TResult Function(BuildContext context, AuthenticationUserModel user)?
         updateAuthUser,
-    TResult Function(BuildContext context, String email)? verifyEmail,
-    TResult Function(BuildContext context, String email)? sendToVerifyEmail,
-    TResult Function(BuildContext context, String phone)? verifyPhone,
-    TResult Function(BuildContext context, String email, String password)?
+    TResult Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)?
+        verifyEmail,
+    TResult Function(BuildContext context, String email, VoidCallback goToPage)?
+        sendToVerifyEmail,
+    TResult Function(BuildContext context, String phoneCode)? verifyPhone,
+    TResult Function(BuildContext context, String phone)? sendToVerifyPhone,
+    TResult Function(BuildContext context, String email, String password,
+            VoidCallback goToPage)?
         registerUser,
-    TResult Function(BuildContext context, String email, String password)?
+    TResult Function(BuildContext context, String email, String password,
+            VoidCallback onDone)?
         login,
     TResult Function(BuildContext context, String userId)? logout,
     TResult Function()? loginWithGoogle,
@@ -1383,10 +1884,12 @@ class _$AuthRegisterUser implements AuthRegisterUser {
     TResult Function()? loginWithApple,
     TResult Function(String code)? resetPassword,
     TResult Function(BuildContext context, String email)? sendToResetPassword,
+    TResult Function(BuildContext context, AuthenticationStatus status)?
+        setAuthenticationStatus,
     required TResult orElse(),
   }) {
     if (registerUser != null) {
-      return registerUser(context, email, password);
+      return registerUser(context, email, password, goToPage);
     }
     return orElse();
   }
@@ -1399,6 +1902,7 @@ class _$AuthRegisterUser implements AuthRegisterUser {
     required TResult Function(AuthVerifyEmail value) verifyEmail,
     required TResult Function(AuthSendToVerifyEmail value) sendToVerifyEmail,
     required TResult Function(AuthVerifyPhone value) verifyPhone,
+    required TResult Function(AuthSendToVerifyPhone value) sendToVerifyPhone,
     required TResult Function(AuthRegisterUser value) registerUser,
     required TResult Function(AuthLogin value) login,
     required TResult Function(AuthLogout value) logout,
@@ -1408,6 +1912,7 @@ class _$AuthRegisterUser implements AuthRegisterUser {
     required TResult Function(AuthResetPassword value) resetPassword,
     required TResult Function(AuthSendToResetPassword value)
         sendToResetPassword,
+    required TResult Function(AuthSetStatus value) setAuthenticationStatus,
   }) {
     return registerUser(this);
   }
@@ -1420,6 +1925,7 @@ class _$AuthRegisterUser implements AuthRegisterUser {
     TResult? Function(AuthVerifyEmail value)? verifyEmail,
     TResult? Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult? Function(AuthVerifyPhone value)? verifyPhone,
+    TResult? Function(AuthSendToVerifyPhone value)? sendToVerifyPhone,
     TResult? Function(AuthRegisterUser value)? registerUser,
     TResult? Function(AuthLogin value)? login,
     TResult? Function(AuthLogout value)? logout,
@@ -1428,6 +1934,7 @@ class _$AuthRegisterUser implements AuthRegisterUser {
     TResult? Function(AuthWithApple value)? loginWithApple,
     TResult? Function(AuthResetPassword value)? resetPassword,
     TResult? Function(AuthSendToResetPassword value)? sendToResetPassword,
+    TResult? Function(AuthSetStatus value)? setAuthenticationStatus,
   }) {
     return registerUser?.call(this);
   }
@@ -1440,6 +1947,7 @@ class _$AuthRegisterUser implements AuthRegisterUser {
     TResult Function(AuthVerifyEmail value)? verifyEmail,
     TResult Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult Function(AuthVerifyPhone value)? verifyPhone,
+    TResult Function(AuthSendToVerifyPhone value)? sendToVerifyPhone,
     TResult Function(AuthRegisterUser value)? registerUser,
     TResult Function(AuthLogin value)? login,
     TResult Function(AuthLogout value)? logout,
@@ -1448,6 +1956,7 @@ class _$AuthRegisterUser implements AuthRegisterUser {
     TResult Function(AuthWithApple value)? loginWithApple,
     TResult Function(AuthResetPassword value)? resetPassword,
     TResult Function(AuthSendToResetPassword value)? sendToResetPassword,
+    TResult Function(AuthSetStatus value)? setAuthenticationStatus,
     required TResult orElse(),
   }) {
     if (registerUser != null) {
@@ -1459,11 +1968,12 @@ class _$AuthRegisterUser implements AuthRegisterUser {
 
 abstract class AuthRegisterUser implements AuthenticationEvent {
   factory AuthRegisterUser(final BuildContext context, final String email,
-      final String password) = _$AuthRegisterUser;
+      final String password, final VoidCallback goToPage) = _$AuthRegisterUser;
 
   BuildContext get context;
   String get email;
   String get password;
+  VoidCallback get goToPage;
   @JsonKey(ignore: true)
   _$$AuthRegisterUserCopyWith<_$AuthRegisterUser> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1475,7 +1985,11 @@ abstract class _$$AuthLoginCopyWith<$Res> {
           _$AuthLogin value, $Res Function(_$AuthLogin) then) =
       __$$AuthLoginCopyWithImpl<$Res>;
   @useResult
-  $Res call({BuildContext context, String email, String password});
+  $Res call(
+      {BuildContext context,
+      String email,
+      String password,
+      VoidCallback onDone});
 }
 
 /// @nodoc
@@ -1492,6 +2006,7 @@ class __$$AuthLoginCopyWithImpl<$Res>
     Object? context = null,
     Object? email = null,
     Object? password = null,
+    Object? onDone = null,
   }) {
     return _then(_$AuthLogin(
       null == context
@@ -1506,6 +2021,10 @@ class __$$AuthLoginCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
+      null == onDone
+          ? _value.onDone
+          : onDone // ignore: cast_nullable_to_non_nullable
+              as VoidCallback,
     ));
   }
 }
@@ -1513,7 +2032,7 @@ class __$$AuthLoginCopyWithImpl<$Res>
 /// @nodoc
 
 class _$AuthLogin implements AuthLogin {
-  _$AuthLogin(this.context, this.email, this.password);
+  _$AuthLogin(this.context, this.email, this.password, this.onDone);
 
   @override
   final BuildContext context;
@@ -1521,10 +2040,12 @@ class _$AuthLogin implements AuthLogin {
   final String email;
   @override
   final String password;
+  @override
+  final VoidCallback onDone;
 
   @override
   String toString() {
-    return 'AuthenticationEvent.login(context: $context, email: $email, password: $password)';
+    return 'AuthenticationEvent.login(context: $context, email: $email, password: $password, onDone: $onDone)';
   }
 
   @override
@@ -1535,11 +2056,13 @@ class _$AuthLogin implements AuthLogin {
             (identical(other.context, context) || other.context == context) &&
             (identical(other.email, email) || other.email == email) &&
             (identical(other.password, password) ||
-                other.password == password));
+                other.password == password) &&
+            (identical(other.onDone, onDone) || other.onDone == onDone));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, context, email, password);
+  int get hashCode =>
+      Object.hash(runtimeType, context, email, password, onDone);
 
   @JsonKey(ignore: true)
   @override
@@ -1554,15 +2077,21 @@ class _$AuthLogin implements AuthLogin {
     required TResult Function(
             BuildContext context, AuthenticationUserModel user)
         updateAuthUser,
-    required TResult Function(BuildContext context, String email) verifyEmail,
-    required TResult Function(BuildContext context, String email)
+    required TResult Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)
+        verifyEmail,
+    required TResult Function(
+            BuildContext context, String email, VoidCallback goToPage)
         sendToVerifyEmail,
-    required TResult Function(BuildContext context, String phone) verifyPhone,
-    required TResult Function(
-            BuildContext context, String email, String password)
+    required TResult Function(BuildContext context, String phoneCode)
+        verifyPhone,
+    required TResult Function(BuildContext context, String phone)
+        sendToVerifyPhone,
+    required TResult Function(BuildContext context, String email,
+            String password, VoidCallback goToPage)
         registerUser,
-    required TResult Function(
-            BuildContext context, String email, String password)
+    required TResult Function(BuildContext context, String email,
+            String password, VoidCallback onDone)
         login,
     required TResult Function(BuildContext context, String userId) logout,
     required TResult Function() loginWithGoogle,
@@ -1571,8 +2100,10 @@ class _$AuthLogin implements AuthLogin {
     required TResult Function(String code) resetPassword,
     required TResult Function(BuildContext context, String email)
         sendToResetPassword,
+    required TResult Function(BuildContext context, AuthenticationStatus status)
+        setAuthenticationStatus,
   }) {
-    return login(context, email, password);
+    return login(context, email, password, onDone);
   }
 
   @override
@@ -1581,12 +2112,19 @@ class _$AuthLogin implements AuthLogin {
     TResult? Function()? $default, {
     TResult? Function(BuildContext context, AuthenticationUserModel user)?
         updateAuthUser,
-    TResult? Function(BuildContext context, String email)? verifyEmail,
-    TResult? Function(BuildContext context, String email)? sendToVerifyEmail,
-    TResult? Function(BuildContext context, String phone)? verifyPhone,
-    TResult? Function(BuildContext context, String email, String password)?
+    TResult? Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)?
+        verifyEmail,
+    TResult? Function(
+            BuildContext context, String email, VoidCallback goToPage)?
+        sendToVerifyEmail,
+    TResult? Function(BuildContext context, String phoneCode)? verifyPhone,
+    TResult? Function(BuildContext context, String phone)? sendToVerifyPhone,
+    TResult? Function(BuildContext context, String email, String password,
+            VoidCallback goToPage)?
         registerUser,
-    TResult? Function(BuildContext context, String email, String password)?
+    TResult? Function(BuildContext context, String email, String password,
+            VoidCallback onDone)?
         login,
     TResult? Function(BuildContext context, String userId)? logout,
     TResult? Function()? loginWithGoogle,
@@ -1594,8 +2132,10 @@ class _$AuthLogin implements AuthLogin {
     TResult? Function()? loginWithApple,
     TResult? Function(String code)? resetPassword,
     TResult? Function(BuildContext context, String email)? sendToResetPassword,
+    TResult? Function(BuildContext context, AuthenticationStatus status)?
+        setAuthenticationStatus,
   }) {
-    return login?.call(context, email, password);
+    return login?.call(context, email, password, onDone);
   }
 
   @override
@@ -1604,12 +2144,18 @@ class _$AuthLogin implements AuthLogin {
     TResult Function()? $default, {
     TResult Function(BuildContext context, AuthenticationUserModel user)?
         updateAuthUser,
-    TResult Function(BuildContext context, String email)? verifyEmail,
-    TResult Function(BuildContext context, String email)? sendToVerifyEmail,
-    TResult Function(BuildContext context, String phone)? verifyPhone,
-    TResult Function(BuildContext context, String email, String password)?
+    TResult Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)?
+        verifyEmail,
+    TResult Function(BuildContext context, String email, VoidCallback goToPage)?
+        sendToVerifyEmail,
+    TResult Function(BuildContext context, String phoneCode)? verifyPhone,
+    TResult Function(BuildContext context, String phone)? sendToVerifyPhone,
+    TResult Function(BuildContext context, String email, String password,
+            VoidCallback goToPage)?
         registerUser,
-    TResult Function(BuildContext context, String email, String password)?
+    TResult Function(BuildContext context, String email, String password,
+            VoidCallback onDone)?
         login,
     TResult Function(BuildContext context, String userId)? logout,
     TResult Function()? loginWithGoogle,
@@ -1617,10 +2163,12 @@ class _$AuthLogin implements AuthLogin {
     TResult Function()? loginWithApple,
     TResult Function(String code)? resetPassword,
     TResult Function(BuildContext context, String email)? sendToResetPassword,
+    TResult Function(BuildContext context, AuthenticationStatus status)?
+        setAuthenticationStatus,
     required TResult orElse(),
   }) {
     if (login != null) {
-      return login(context, email, password);
+      return login(context, email, password, onDone);
     }
     return orElse();
   }
@@ -1633,6 +2181,7 @@ class _$AuthLogin implements AuthLogin {
     required TResult Function(AuthVerifyEmail value) verifyEmail,
     required TResult Function(AuthSendToVerifyEmail value) sendToVerifyEmail,
     required TResult Function(AuthVerifyPhone value) verifyPhone,
+    required TResult Function(AuthSendToVerifyPhone value) sendToVerifyPhone,
     required TResult Function(AuthRegisterUser value) registerUser,
     required TResult Function(AuthLogin value) login,
     required TResult Function(AuthLogout value) logout,
@@ -1642,6 +2191,7 @@ class _$AuthLogin implements AuthLogin {
     required TResult Function(AuthResetPassword value) resetPassword,
     required TResult Function(AuthSendToResetPassword value)
         sendToResetPassword,
+    required TResult Function(AuthSetStatus value) setAuthenticationStatus,
   }) {
     return login(this);
   }
@@ -1654,6 +2204,7 @@ class _$AuthLogin implements AuthLogin {
     TResult? Function(AuthVerifyEmail value)? verifyEmail,
     TResult? Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult? Function(AuthVerifyPhone value)? verifyPhone,
+    TResult? Function(AuthSendToVerifyPhone value)? sendToVerifyPhone,
     TResult? Function(AuthRegisterUser value)? registerUser,
     TResult? Function(AuthLogin value)? login,
     TResult? Function(AuthLogout value)? logout,
@@ -1662,6 +2213,7 @@ class _$AuthLogin implements AuthLogin {
     TResult? Function(AuthWithApple value)? loginWithApple,
     TResult? Function(AuthResetPassword value)? resetPassword,
     TResult? Function(AuthSendToResetPassword value)? sendToResetPassword,
+    TResult? Function(AuthSetStatus value)? setAuthenticationStatus,
   }) {
     return login?.call(this);
   }
@@ -1674,6 +2226,7 @@ class _$AuthLogin implements AuthLogin {
     TResult Function(AuthVerifyEmail value)? verifyEmail,
     TResult Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult Function(AuthVerifyPhone value)? verifyPhone,
+    TResult Function(AuthSendToVerifyPhone value)? sendToVerifyPhone,
     TResult Function(AuthRegisterUser value)? registerUser,
     TResult Function(AuthLogin value)? login,
     TResult Function(AuthLogout value)? logout,
@@ -1682,6 +2235,7 @@ class _$AuthLogin implements AuthLogin {
     TResult Function(AuthWithApple value)? loginWithApple,
     TResult Function(AuthResetPassword value)? resetPassword,
     TResult Function(AuthSendToResetPassword value)? sendToResetPassword,
+    TResult Function(AuthSetStatus value)? setAuthenticationStatus,
     required TResult orElse(),
   }) {
     if (login != null) {
@@ -1693,11 +2247,12 @@ class _$AuthLogin implements AuthLogin {
 
 abstract class AuthLogin implements AuthenticationEvent {
   factory AuthLogin(final BuildContext context, final String email,
-      final String password) = _$AuthLogin;
+      final String password, final VoidCallback onDone) = _$AuthLogin;
 
   BuildContext get context;
   String get email;
   String get password;
+  VoidCallback get onDone;
   @JsonKey(ignore: true)
   _$$AuthLoginCopyWith<_$AuthLogin> get copyWith =>
       throw _privateConstructorUsedError;
@@ -1779,15 +2334,21 @@ class _$AuthLogout implements AuthLogout {
     required TResult Function(
             BuildContext context, AuthenticationUserModel user)
         updateAuthUser,
-    required TResult Function(BuildContext context, String email) verifyEmail,
-    required TResult Function(BuildContext context, String email)
+    required TResult Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)
+        verifyEmail,
+    required TResult Function(
+            BuildContext context, String email, VoidCallback goToPage)
         sendToVerifyEmail,
-    required TResult Function(BuildContext context, String phone) verifyPhone,
-    required TResult Function(
-            BuildContext context, String email, String password)
+    required TResult Function(BuildContext context, String phoneCode)
+        verifyPhone,
+    required TResult Function(BuildContext context, String phone)
+        sendToVerifyPhone,
+    required TResult Function(BuildContext context, String email,
+            String password, VoidCallback goToPage)
         registerUser,
-    required TResult Function(
-            BuildContext context, String email, String password)
+    required TResult Function(BuildContext context, String email,
+            String password, VoidCallback onDone)
         login,
     required TResult Function(BuildContext context, String userId) logout,
     required TResult Function() loginWithGoogle,
@@ -1796,6 +2357,8 @@ class _$AuthLogout implements AuthLogout {
     required TResult Function(String code) resetPassword,
     required TResult Function(BuildContext context, String email)
         sendToResetPassword,
+    required TResult Function(BuildContext context, AuthenticationStatus status)
+        setAuthenticationStatus,
   }) {
     return logout(context, userId);
   }
@@ -1806,12 +2369,19 @@ class _$AuthLogout implements AuthLogout {
     TResult? Function()? $default, {
     TResult? Function(BuildContext context, AuthenticationUserModel user)?
         updateAuthUser,
-    TResult? Function(BuildContext context, String email)? verifyEmail,
-    TResult? Function(BuildContext context, String email)? sendToVerifyEmail,
-    TResult? Function(BuildContext context, String phone)? verifyPhone,
-    TResult? Function(BuildContext context, String email, String password)?
+    TResult? Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)?
+        verifyEmail,
+    TResult? Function(
+            BuildContext context, String email, VoidCallback goToPage)?
+        sendToVerifyEmail,
+    TResult? Function(BuildContext context, String phoneCode)? verifyPhone,
+    TResult? Function(BuildContext context, String phone)? sendToVerifyPhone,
+    TResult? Function(BuildContext context, String email, String password,
+            VoidCallback goToPage)?
         registerUser,
-    TResult? Function(BuildContext context, String email, String password)?
+    TResult? Function(BuildContext context, String email, String password,
+            VoidCallback onDone)?
         login,
     TResult? Function(BuildContext context, String userId)? logout,
     TResult? Function()? loginWithGoogle,
@@ -1819,6 +2389,8 @@ class _$AuthLogout implements AuthLogout {
     TResult? Function()? loginWithApple,
     TResult? Function(String code)? resetPassword,
     TResult? Function(BuildContext context, String email)? sendToResetPassword,
+    TResult? Function(BuildContext context, AuthenticationStatus status)?
+        setAuthenticationStatus,
   }) {
     return logout?.call(context, userId);
   }
@@ -1829,12 +2401,18 @@ class _$AuthLogout implements AuthLogout {
     TResult Function()? $default, {
     TResult Function(BuildContext context, AuthenticationUserModel user)?
         updateAuthUser,
-    TResult Function(BuildContext context, String email)? verifyEmail,
-    TResult Function(BuildContext context, String email)? sendToVerifyEmail,
-    TResult Function(BuildContext context, String phone)? verifyPhone,
-    TResult Function(BuildContext context, String email, String password)?
+    TResult Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)?
+        verifyEmail,
+    TResult Function(BuildContext context, String email, VoidCallback goToPage)?
+        sendToVerifyEmail,
+    TResult Function(BuildContext context, String phoneCode)? verifyPhone,
+    TResult Function(BuildContext context, String phone)? sendToVerifyPhone,
+    TResult Function(BuildContext context, String email, String password,
+            VoidCallback goToPage)?
         registerUser,
-    TResult Function(BuildContext context, String email, String password)?
+    TResult Function(BuildContext context, String email, String password,
+            VoidCallback onDone)?
         login,
     TResult Function(BuildContext context, String userId)? logout,
     TResult Function()? loginWithGoogle,
@@ -1842,6 +2420,8 @@ class _$AuthLogout implements AuthLogout {
     TResult Function()? loginWithApple,
     TResult Function(String code)? resetPassword,
     TResult Function(BuildContext context, String email)? sendToResetPassword,
+    TResult Function(BuildContext context, AuthenticationStatus status)?
+        setAuthenticationStatus,
     required TResult orElse(),
   }) {
     if (logout != null) {
@@ -1858,6 +2438,7 @@ class _$AuthLogout implements AuthLogout {
     required TResult Function(AuthVerifyEmail value) verifyEmail,
     required TResult Function(AuthSendToVerifyEmail value) sendToVerifyEmail,
     required TResult Function(AuthVerifyPhone value) verifyPhone,
+    required TResult Function(AuthSendToVerifyPhone value) sendToVerifyPhone,
     required TResult Function(AuthRegisterUser value) registerUser,
     required TResult Function(AuthLogin value) login,
     required TResult Function(AuthLogout value) logout,
@@ -1867,6 +2448,7 @@ class _$AuthLogout implements AuthLogout {
     required TResult Function(AuthResetPassword value) resetPassword,
     required TResult Function(AuthSendToResetPassword value)
         sendToResetPassword,
+    required TResult Function(AuthSetStatus value) setAuthenticationStatus,
   }) {
     return logout(this);
   }
@@ -1879,6 +2461,7 @@ class _$AuthLogout implements AuthLogout {
     TResult? Function(AuthVerifyEmail value)? verifyEmail,
     TResult? Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult? Function(AuthVerifyPhone value)? verifyPhone,
+    TResult? Function(AuthSendToVerifyPhone value)? sendToVerifyPhone,
     TResult? Function(AuthRegisterUser value)? registerUser,
     TResult? Function(AuthLogin value)? login,
     TResult? Function(AuthLogout value)? logout,
@@ -1887,6 +2470,7 @@ class _$AuthLogout implements AuthLogout {
     TResult? Function(AuthWithApple value)? loginWithApple,
     TResult? Function(AuthResetPassword value)? resetPassword,
     TResult? Function(AuthSendToResetPassword value)? sendToResetPassword,
+    TResult? Function(AuthSetStatus value)? setAuthenticationStatus,
   }) {
     return logout?.call(this);
   }
@@ -1899,6 +2483,7 @@ class _$AuthLogout implements AuthLogout {
     TResult Function(AuthVerifyEmail value)? verifyEmail,
     TResult Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult Function(AuthVerifyPhone value)? verifyPhone,
+    TResult Function(AuthSendToVerifyPhone value)? sendToVerifyPhone,
     TResult Function(AuthRegisterUser value)? registerUser,
     TResult Function(AuthLogin value)? login,
     TResult Function(AuthLogout value)? logout,
@@ -1907,6 +2492,7 @@ class _$AuthLogout implements AuthLogout {
     TResult Function(AuthWithApple value)? loginWithApple,
     TResult Function(AuthResetPassword value)? resetPassword,
     TResult Function(AuthSendToResetPassword value)? sendToResetPassword,
+    TResult Function(AuthSetStatus value)? setAuthenticationStatus,
     required TResult orElse(),
   }) {
     if (logout != null) {
@@ -1969,15 +2555,21 @@ class _$AuthWithGoogle implements AuthWithGoogle {
     required TResult Function(
             BuildContext context, AuthenticationUserModel user)
         updateAuthUser,
-    required TResult Function(BuildContext context, String email) verifyEmail,
-    required TResult Function(BuildContext context, String email)
+    required TResult Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)
+        verifyEmail,
+    required TResult Function(
+            BuildContext context, String email, VoidCallback goToPage)
         sendToVerifyEmail,
-    required TResult Function(BuildContext context, String phone) verifyPhone,
-    required TResult Function(
-            BuildContext context, String email, String password)
+    required TResult Function(BuildContext context, String phoneCode)
+        verifyPhone,
+    required TResult Function(BuildContext context, String phone)
+        sendToVerifyPhone,
+    required TResult Function(BuildContext context, String email,
+            String password, VoidCallback goToPage)
         registerUser,
-    required TResult Function(
-            BuildContext context, String email, String password)
+    required TResult Function(BuildContext context, String email,
+            String password, VoidCallback onDone)
         login,
     required TResult Function(BuildContext context, String userId) logout,
     required TResult Function() loginWithGoogle,
@@ -1986,6 +2578,8 @@ class _$AuthWithGoogle implements AuthWithGoogle {
     required TResult Function(String code) resetPassword,
     required TResult Function(BuildContext context, String email)
         sendToResetPassword,
+    required TResult Function(BuildContext context, AuthenticationStatus status)
+        setAuthenticationStatus,
   }) {
     return loginWithGoogle();
   }
@@ -1996,12 +2590,19 @@ class _$AuthWithGoogle implements AuthWithGoogle {
     TResult? Function()? $default, {
     TResult? Function(BuildContext context, AuthenticationUserModel user)?
         updateAuthUser,
-    TResult? Function(BuildContext context, String email)? verifyEmail,
-    TResult? Function(BuildContext context, String email)? sendToVerifyEmail,
-    TResult? Function(BuildContext context, String phone)? verifyPhone,
-    TResult? Function(BuildContext context, String email, String password)?
+    TResult? Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)?
+        verifyEmail,
+    TResult? Function(
+            BuildContext context, String email, VoidCallback goToPage)?
+        sendToVerifyEmail,
+    TResult? Function(BuildContext context, String phoneCode)? verifyPhone,
+    TResult? Function(BuildContext context, String phone)? sendToVerifyPhone,
+    TResult? Function(BuildContext context, String email, String password,
+            VoidCallback goToPage)?
         registerUser,
-    TResult? Function(BuildContext context, String email, String password)?
+    TResult? Function(BuildContext context, String email, String password,
+            VoidCallback onDone)?
         login,
     TResult? Function(BuildContext context, String userId)? logout,
     TResult? Function()? loginWithGoogle,
@@ -2009,6 +2610,8 @@ class _$AuthWithGoogle implements AuthWithGoogle {
     TResult? Function()? loginWithApple,
     TResult? Function(String code)? resetPassword,
     TResult? Function(BuildContext context, String email)? sendToResetPassword,
+    TResult? Function(BuildContext context, AuthenticationStatus status)?
+        setAuthenticationStatus,
   }) {
     return loginWithGoogle?.call();
   }
@@ -2019,12 +2622,18 @@ class _$AuthWithGoogle implements AuthWithGoogle {
     TResult Function()? $default, {
     TResult Function(BuildContext context, AuthenticationUserModel user)?
         updateAuthUser,
-    TResult Function(BuildContext context, String email)? verifyEmail,
-    TResult Function(BuildContext context, String email)? sendToVerifyEmail,
-    TResult Function(BuildContext context, String phone)? verifyPhone,
-    TResult Function(BuildContext context, String email, String password)?
+    TResult Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)?
+        verifyEmail,
+    TResult Function(BuildContext context, String email, VoidCallback goToPage)?
+        sendToVerifyEmail,
+    TResult Function(BuildContext context, String phoneCode)? verifyPhone,
+    TResult Function(BuildContext context, String phone)? sendToVerifyPhone,
+    TResult Function(BuildContext context, String email, String password,
+            VoidCallback goToPage)?
         registerUser,
-    TResult Function(BuildContext context, String email, String password)?
+    TResult Function(BuildContext context, String email, String password,
+            VoidCallback onDone)?
         login,
     TResult Function(BuildContext context, String userId)? logout,
     TResult Function()? loginWithGoogle,
@@ -2032,6 +2641,8 @@ class _$AuthWithGoogle implements AuthWithGoogle {
     TResult Function()? loginWithApple,
     TResult Function(String code)? resetPassword,
     TResult Function(BuildContext context, String email)? sendToResetPassword,
+    TResult Function(BuildContext context, AuthenticationStatus status)?
+        setAuthenticationStatus,
     required TResult orElse(),
   }) {
     if (loginWithGoogle != null) {
@@ -2048,6 +2659,7 @@ class _$AuthWithGoogle implements AuthWithGoogle {
     required TResult Function(AuthVerifyEmail value) verifyEmail,
     required TResult Function(AuthSendToVerifyEmail value) sendToVerifyEmail,
     required TResult Function(AuthVerifyPhone value) verifyPhone,
+    required TResult Function(AuthSendToVerifyPhone value) sendToVerifyPhone,
     required TResult Function(AuthRegisterUser value) registerUser,
     required TResult Function(AuthLogin value) login,
     required TResult Function(AuthLogout value) logout,
@@ -2057,6 +2669,7 @@ class _$AuthWithGoogle implements AuthWithGoogle {
     required TResult Function(AuthResetPassword value) resetPassword,
     required TResult Function(AuthSendToResetPassword value)
         sendToResetPassword,
+    required TResult Function(AuthSetStatus value) setAuthenticationStatus,
   }) {
     return loginWithGoogle(this);
   }
@@ -2069,6 +2682,7 @@ class _$AuthWithGoogle implements AuthWithGoogle {
     TResult? Function(AuthVerifyEmail value)? verifyEmail,
     TResult? Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult? Function(AuthVerifyPhone value)? verifyPhone,
+    TResult? Function(AuthSendToVerifyPhone value)? sendToVerifyPhone,
     TResult? Function(AuthRegisterUser value)? registerUser,
     TResult? Function(AuthLogin value)? login,
     TResult? Function(AuthLogout value)? logout,
@@ -2077,6 +2691,7 @@ class _$AuthWithGoogle implements AuthWithGoogle {
     TResult? Function(AuthWithApple value)? loginWithApple,
     TResult? Function(AuthResetPassword value)? resetPassword,
     TResult? Function(AuthSendToResetPassword value)? sendToResetPassword,
+    TResult? Function(AuthSetStatus value)? setAuthenticationStatus,
   }) {
     return loginWithGoogle?.call(this);
   }
@@ -2089,6 +2704,7 @@ class _$AuthWithGoogle implements AuthWithGoogle {
     TResult Function(AuthVerifyEmail value)? verifyEmail,
     TResult Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult Function(AuthVerifyPhone value)? verifyPhone,
+    TResult Function(AuthSendToVerifyPhone value)? sendToVerifyPhone,
     TResult Function(AuthRegisterUser value)? registerUser,
     TResult Function(AuthLogin value)? login,
     TResult Function(AuthLogout value)? logout,
@@ -2097,6 +2713,7 @@ class _$AuthWithGoogle implements AuthWithGoogle {
     TResult Function(AuthWithApple value)? loginWithApple,
     TResult Function(AuthResetPassword value)? resetPassword,
     TResult Function(AuthSendToResetPassword value)? sendToResetPassword,
+    TResult Function(AuthSetStatus value)? setAuthenticationStatus,
     required TResult orElse(),
   }) {
     if (loginWithGoogle != null) {
@@ -2152,15 +2769,21 @@ class _$AuthWithFacebook implements AuthWithFacebook {
     required TResult Function(
             BuildContext context, AuthenticationUserModel user)
         updateAuthUser,
-    required TResult Function(BuildContext context, String email) verifyEmail,
-    required TResult Function(BuildContext context, String email)
+    required TResult Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)
+        verifyEmail,
+    required TResult Function(
+            BuildContext context, String email, VoidCallback goToPage)
         sendToVerifyEmail,
-    required TResult Function(BuildContext context, String phone) verifyPhone,
-    required TResult Function(
-            BuildContext context, String email, String password)
+    required TResult Function(BuildContext context, String phoneCode)
+        verifyPhone,
+    required TResult Function(BuildContext context, String phone)
+        sendToVerifyPhone,
+    required TResult Function(BuildContext context, String email,
+            String password, VoidCallback goToPage)
         registerUser,
-    required TResult Function(
-            BuildContext context, String email, String password)
+    required TResult Function(BuildContext context, String email,
+            String password, VoidCallback onDone)
         login,
     required TResult Function(BuildContext context, String userId) logout,
     required TResult Function() loginWithGoogle,
@@ -2169,6 +2792,8 @@ class _$AuthWithFacebook implements AuthWithFacebook {
     required TResult Function(String code) resetPassword,
     required TResult Function(BuildContext context, String email)
         sendToResetPassword,
+    required TResult Function(BuildContext context, AuthenticationStatus status)
+        setAuthenticationStatus,
   }) {
     return logintWithFacebook();
   }
@@ -2179,12 +2804,19 @@ class _$AuthWithFacebook implements AuthWithFacebook {
     TResult? Function()? $default, {
     TResult? Function(BuildContext context, AuthenticationUserModel user)?
         updateAuthUser,
-    TResult? Function(BuildContext context, String email)? verifyEmail,
-    TResult? Function(BuildContext context, String email)? sendToVerifyEmail,
-    TResult? Function(BuildContext context, String phone)? verifyPhone,
-    TResult? Function(BuildContext context, String email, String password)?
+    TResult? Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)?
+        verifyEmail,
+    TResult? Function(
+            BuildContext context, String email, VoidCallback goToPage)?
+        sendToVerifyEmail,
+    TResult? Function(BuildContext context, String phoneCode)? verifyPhone,
+    TResult? Function(BuildContext context, String phone)? sendToVerifyPhone,
+    TResult? Function(BuildContext context, String email, String password,
+            VoidCallback goToPage)?
         registerUser,
-    TResult? Function(BuildContext context, String email, String password)?
+    TResult? Function(BuildContext context, String email, String password,
+            VoidCallback onDone)?
         login,
     TResult? Function(BuildContext context, String userId)? logout,
     TResult? Function()? loginWithGoogle,
@@ -2192,6 +2824,8 @@ class _$AuthWithFacebook implements AuthWithFacebook {
     TResult? Function()? loginWithApple,
     TResult? Function(String code)? resetPassword,
     TResult? Function(BuildContext context, String email)? sendToResetPassword,
+    TResult? Function(BuildContext context, AuthenticationStatus status)?
+        setAuthenticationStatus,
   }) {
     return logintWithFacebook?.call();
   }
@@ -2202,12 +2836,18 @@ class _$AuthWithFacebook implements AuthWithFacebook {
     TResult Function()? $default, {
     TResult Function(BuildContext context, AuthenticationUserModel user)?
         updateAuthUser,
-    TResult Function(BuildContext context, String email)? verifyEmail,
-    TResult Function(BuildContext context, String email)? sendToVerifyEmail,
-    TResult Function(BuildContext context, String phone)? verifyPhone,
-    TResult Function(BuildContext context, String email, String password)?
+    TResult Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)?
+        verifyEmail,
+    TResult Function(BuildContext context, String email, VoidCallback goToPage)?
+        sendToVerifyEmail,
+    TResult Function(BuildContext context, String phoneCode)? verifyPhone,
+    TResult Function(BuildContext context, String phone)? sendToVerifyPhone,
+    TResult Function(BuildContext context, String email, String password,
+            VoidCallback goToPage)?
         registerUser,
-    TResult Function(BuildContext context, String email, String password)?
+    TResult Function(BuildContext context, String email, String password,
+            VoidCallback onDone)?
         login,
     TResult Function(BuildContext context, String userId)? logout,
     TResult Function()? loginWithGoogle,
@@ -2215,6 +2855,8 @@ class _$AuthWithFacebook implements AuthWithFacebook {
     TResult Function()? loginWithApple,
     TResult Function(String code)? resetPassword,
     TResult Function(BuildContext context, String email)? sendToResetPassword,
+    TResult Function(BuildContext context, AuthenticationStatus status)?
+        setAuthenticationStatus,
     required TResult orElse(),
   }) {
     if (logintWithFacebook != null) {
@@ -2231,6 +2873,7 @@ class _$AuthWithFacebook implements AuthWithFacebook {
     required TResult Function(AuthVerifyEmail value) verifyEmail,
     required TResult Function(AuthSendToVerifyEmail value) sendToVerifyEmail,
     required TResult Function(AuthVerifyPhone value) verifyPhone,
+    required TResult Function(AuthSendToVerifyPhone value) sendToVerifyPhone,
     required TResult Function(AuthRegisterUser value) registerUser,
     required TResult Function(AuthLogin value) login,
     required TResult Function(AuthLogout value) logout,
@@ -2240,6 +2883,7 @@ class _$AuthWithFacebook implements AuthWithFacebook {
     required TResult Function(AuthResetPassword value) resetPassword,
     required TResult Function(AuthSendToResetPassword value)
         sendToResetPassword,
+    required TResult Function(AuthSetStatus value) setAuthenticationStatus,
   }) {
     return logintWithFacebook(this);
   }
@@ -2252,6 +2896,7 @@ class _$AuthWithFacebook implements AuthWithFacebook {
     TResult? Function(AuthVerifyEmail value)? verifyEmail,
     TResult? Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult? Function(AuthVerifyPhone value)? verifyPhone,
+    TResult? Function(AuthSendToVerifyPhone value)? sendToVerifyPhone,
     TResult? Function(AuthRegisterUser value)? registerUser,
     TResult? Function(AuthLogin value)? login,
     TResult? Function(AuthLogout value)? logout,
@@ -2260,6 +2905,7 @@ class _$AuthWithFacebook implements AuthWithFacebook {
     TResult? Function(AuthWithApple value)? loginWithApple,
     TResult? Function(AuthResetPassword value)? resetPassword,
     TResult? Function(AuthSendToResetPassword value)? sendToResetPassword,
+    TResult? Function(AuthSetStatus value)? setAuthenticationStatus,
   }) {
     return logintWithFacebook?.call(this);
   }
@@ -2272,6 +2918,7 @@ class _$AuthWithFacebook implements AuthWithFacebook {
     TResult Function(AuthVerifyEmail value)? verifyEmail,
     TResult Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult Function(AuthVerifyPhone value)? verifyPhone,
+    TResult Function(AuthSendToVerifyPhone value)? sendToVerifyPhone,
     TResult Function(AuthRegisterUser value)? registerUser,
     TResult Function(AuthLogin value)? login,
     TResult Function(AuthLogout value)? logout,
@@ -2280,6 +2927,7 @@ class _$AuthWithFacebook implements AuthWithFacebook {
     TResult Function(AuthWithApple value)? loginWithApple,
     TResult Function(AuthResetPassword value)? resetPassword,
     TResult Function(AuthSendToResetPassword value)? sendToResetPassword,
+    TResult Function(AuthSetStatus value)? setAuthenticationStatus,
     required TResult orElse(),
   }) {
     if (logintWithFacebook != null) {
@@ -2335,15 +2983,21 @@ class _$AuthWithApple implements AuthWithApple {
     required TResult Function(
             BuildContext context, AuthenticationUserModel user)
         updateAuthUser,
-    required TResult Function(BuildContext context, String email) verifyEmail,
-    required TResult Function(BuildContext context, String email)
+    required TResult Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)
+        verifyEmail,
+    required TResult Function(
+            BuildContext context, String email, VoidCallback goToPage)
         sendToVerifyEmail,
-    required TResult Function(BuildContext context, String phone) verifyPhone,
-    required TResult Function(
-            BuildContext context, String email, String password)
+    required TResult Function(BuildContext context, String phoneCode)
+        verifyPhone,
+    required TResult Function(BuildContext context, String phone)
+        sendToVerifyPhone,
+    required TResult Function(BuildContext context, String email,
+            String password, VoidCallback goToPage)
         registerUser,
-    required TResult Function(
-            BuildContext context, String email, String password)
+    required TResult Function(BuildContext context, String email,
+            String password, VoidCallback onDone)
         login,
     required TResult Function(BuildContext context, String userId) logout,
     required TResult Function() loginWithGoogle,
@@ -2352,6 +3006,8 @@ class _$AuthWithApple implements AuthWithApple {
     required TResult Function(String code) resetPassword,
     required TResult Function(BuildContext context, String email)
         sendToResetPassword,
+    required TResult Function(BuildContext context, AuthenticationStatus status)
+        setAuthenticationStatus,
   }) {
     return loginWithApple();
   }
@@ -2362,12 +3018,19 @@ class _$AuthWithApple implements AuthWithApple {
     TResult? Function()? $default, {
     TResult? Function(BuildContext context, AuthenticationUserModel user)?
         updateAuthUser,
-    TResult? Function(BuildContext context, String email)? verifyEmail,
-    TResult? Function(BuildContext context, String email)? sendToVerifyEmail,
-    TResult? Function(BuildContext context, String phone)? verifyPhone,
-    TResult? Function(BuildContext context, String email, String password)?
+    TResult? Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)?
+        verifyEmail,
+    TResult? Function(
+            BuildContext context, String email, VoidCallback goToPage)?
+        sendToVerifyEmail,
+    TResult? Function(BuildContext context, String phoneCode)? verifyPhone,
+    TResult? Function(BuildContext context, String phone)? sendToVerifyPhone,
+    TResult? Function(BuildContext context, String email, String password,
+            VoidCallback goToPage)?
         registerUser,
-    TResult? Function(BuildContext context, String email, String password)?
+    TResult? Function(BuildContext context, String email, String password,
+            VoidCallback onDone)?
         login,
     TResult? Function(BuildContext context, String userId)? logout,
     TResult? Function()? loginWithGoogle,
@@ -2375,6 +3038,8 @@ class _$AuthWithApple implements AuthWithApple {
     TResult? Function()? loginWithApple,
     TResult? Function(String code)? resetPassword,
     TResult? Function(BuildContext context, String email)? sendToResetPassword,
+    TResult? Function(BuildContext context, AuthenticationStatus status)?
+        setAuthenticationStatus,
   }) {
     return loginWithApple?.call();
   }
@@ -2385,12 +3050,18 @@ class _$AuthWithApple implements AuthWithApple {
     TResult Function()? $default, {
     TResult Function(BuildContext context, AuthenticationUserModel user)?
         updateAuthUser,
-    TResult Function(BuildContext context, String email)? verifyEmail,
-    TResult Function(BuildContext context, String email)? sendToVerifyEmail,
-    TResult Function(BuildContext context, String phone)? verifyPhone,
-    TResult Function(BuildContext context, String email, String password)?
+    TResult Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)?
+        verifyEmail,
+    TResult Function(BuildContext context, String email, VoidCallback goToPage)?
+        sendToVerifyEmail,
+    TResult Function(BuildContext context, String phoneCode)? verifyPhone,
+    TResult Function(BuildContext context, String phone)? sendToVerifyPhone,
+    TResult Function(BuildContext context, String email, String password,
+            VoidCallback goToPage)?
         registerUser,
-    TResult Function(BuildContext context, String email, String password)?
+    TResult Function(BuildContext context, String email, String password,
+            VoidCallback onDone)?
         login,
     TResult Function(BuildContext context, String userId)? logout,
     TResult Function()? loginWithGoogle,
@@ -2398,6 +3069,8 @@ class _$AuthWithApple implements AuthWithApple {
     TResult Function()? loginWithApple,
     TResult Function(String code)? resetPassword,
     TResult Function(BuildContext context, String email)? sendToResetPassword,
+    TResult Function(BuildContext context, AuthenticationStatus status)?
+        setAuthenticationStatus,
     required TResult orElse(),
   }) {
     if (loginWithApple != null) {
@@ -2414,6 +3087,7 @@ class _$AuthWithApple implements AuthWithApple {
     required TResult Function(AuthVerifyEmail value) verifyEmail,
     required TResult Function(AuthSendToVerifyEmail value) sendToVerifyEmail,
     required TResult Function(AuthVerifyPhone value) verifyPhone,
+    required TResult Function(AuthSendToVerifyPhone value) sendToVerifyPhone,
     required TResult Function(AuthRegisterUser value) registerUser,
     required TResult Function(AuthLogin value) login,
     required TResult Function(AuthLogout value) logout,
@@ -2423,6 +3097,7 @@ class _$AuthWithApple implements AuthWithApple {
     required TResult Function(AuthResetPassword value) resetPassword,
     required TResult Function(AuthSendToResetPassword value)
         sendToResetPassword,
+    required TResult Function(AuthSetStatus value) setAuthenticationStatus,
   }) {
     return loginWithApple(this);
   }
@@ -2435,6 +3110,7 @@ class _$AuthWithApple implements AuthWithApple {
     TResult? Function(AuthVerifyEmail value)? verifyEmail,
     TResult? Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult? Function(AuthVerifyPhone value)? verifyPhone,
+    TResult? Function(AuthSendToVerifyPhone value)? sendToVerifyPhone,
     TResult? Function(AuthRegisterUser value)? registerUser,
     TResult? Function(AuthLogin value)? login,
     TResult? Function(AuthLogout value)? logout,
@@ -2443,6 +3119,7 @@ class _$AuthWithApple implements AuthWithApple {
     TResult? Function(AuthWithApple value)? loginWithApple,
     TResult? Function(AuthResetPassword value)? resetPassword,
     TResult? Function(AuthSendToResetPassword value)? sendToResetPassword,
+    TResult? Function(AuthSetStatus value)? setAuthenticationStatus,
   }) {
     return loginWithApple?.call(this);
   }
@@ -2455,6 +3132,7 @@ class _$AuthWithApple implements AuthWithApple {
     TResult Function(AuthVerifyEmail value)? verifyEmail,
     TResult Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult Function(AuthVerifyPhone value)? verifyPhone,
+    TResult Function(AuthSendToVerifyPhone value)? sendToVerifyPhone,
     TResult Function(AuthRegisterUser value)? registerUser,
     TResult Function(AuthLogin value)? login,
     TResult Function(AuthLogout value)? logout,
@@ -2463,6 +3141,7 @@ class _$AuthWithApple implements AuthWithApple {
     TResult Function(AuthWithApple value)? loginWithApple,
     TResult Function(AuthResetPassword value)? resetPassword,
     TResult Function(AuthSendToResetPassword value)? sendToResetPassword,
+    TResult Function(AuthSetStatus value)? setAuthenticationStatus,
     required TResult orElse(),
   }) {
     if (loginWithApple != null) {
@@ -2544,15 +3223,21 @@ class _$AuthResetPassword implements AuthResetPassword {
     required TResult Function(
             BuildContext context, AuthenticationUserModel user)
         updateAuthUser,
-    required TResult Function(BuildContext context, String email) verifyEmail,
-    required TResult Function(BuildContext context, String email)
+    required TResult Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)
+        verifyEmail,
+    required TResult Function(
+            BuildContext context, String email, VoidCallback goToPage)
         sendToVerifyEmail,
-    required TResult Function(BuildContext context, String phone) verifyPhone,
-    required TResult Function(
-            BuildContext context, String email, String password)
+    required TResult Function(BuildContext context, String phoneCode)
+        verifyPhone,
+    required TResult Function(BuildContext context, String phone)
+        sendToVerifyPhone,
+    required TResult Function(BuildContext context, String email,
+            String password, VoidCallback goToPage)
         registerUser,
-    required TResult Function(
-            BuildContext context, String email, String password)
+    required TResult Function(BuildContext context, String email,
+            String password, VoidCallback onDone)
         login,
     required TResult Function(BuildContext context, String userId) logout,
     required TResult Function() loginWithGoogle,
@@ -2561,6 +3246,8 @@ class _$AuthResetPassword implements AuthResetPassword {
     required TResult Function(String code) resetPassword,
     required TResult Function(BuildContext context, String email)
         sendToResetPassword,
+    required TResult Function(BuildContext context, AuthenticationStatus status)
+        setAuthenticationStatus,
   }) {
     return resetPassword(code);
   }
@@ -2571,12 +3258,19 @@ class _$AuthResetPassword implements AuthResetPassword {
     TResult? Function()? $default, {
     TResult? Function(BuildContext context, AuthenticationUserModel user)?
         updateAuthUser,
-    TResult? Function(BuildContext context, String email)? verifyEmail,
-    TResult? Function(BuildContext context, String email)? sendToVerifyEmail,
-    TResult? Function(BuildContext context, String phone)? verifyPhone,
-    TResult? Function(BuildContext context, String email, String password)?
+    TResult? Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)?
+        verifyEmail,
+    TResult? Function(
+            BuildContext context, String email, VoidCallback goToPage)?
+        sendToVerifyEmail,
+    TResult? Function(BuildContext context, String phoneCode)? verifyPhone,
+    TResult? Function(BuildContext context, String phone)? sendToVerifyPhone,
+    TResult? Function(BuildContext context, String email, String password,
+            VoidCallback goToPage)?
         registerUser,
-    TResult? Function(BuildContext context, String email, String password)?
+    TResult? Function(BuildContext context, String email, String password,
+            VoidCallback onDone)?
         login,
     TResult? Function(BuildContext context, String userId)? logout,
     TResult? Function()? loginWithGoogle,
@@ -2584,6 +3278,8 @@ class _$AuthResetPassword implements AuthResetPassword {
     TResult? Function()? loginWithApple,
     TResult? Function(String code)? resetPassword,
     TResult? Function(BuildContext context, String email)? sendToResetPassword,
+    TResult? Function(BuildContext context, AuthenticationStatus status)?
+        setAuthenticationStatus,
   }) {
     return resetPassword?.call(code);
   }
@@ -2594,12 +3290,18 @@ class _$AuthResetPassword implements AuthResetPassword {
     TResult Function()? $default, {
     TResult Function(BuildContext context, AuthenticationUserModel user)?
         updateAuthUser,
-    TResult Function(BuildContext context, String email)? verifyEmail,
-    TResult Function(BuildContext context, String email)? sendToVerifyEmail,
-    TResult Function(BuildContext context, String phone)? verifyPhone,
-    TResult Function(BuildContext context, String email, String password)?
+    TResult Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)?
+        verifyEmail,
+    TResult Function(BuildContext context, String email, VoidCallback goToPage)?
+        sendToVerifyEmail,
+    TResult Function(BuildContext context, String phoneCode)? verifyPhone,
+    TResult Function(BuildContext context, String phone)? sendToVerifyPhone,
+    TResult Function(BuildContext context, String email, String password,
+            VoidCallback goToPage)?
         registerUser,
-    TResult Function(BuildContext context, String email, String password)?
+    TResult Function(BuildContext context, String email, String password,
+            VoidCallback onDone)?
         login,
     TResult Function(BuildContext context, String userId)? logout,
     TResult Function()? loginWithGoogle,
@@ -2607,6 +3309,8 @@ class _$AuthResetPassword implements AuthResetPassword {
     TResult Function()? loginWithApple,
     TResult Function(String code)? resetPassword,
     TResult Function(BuildContext context, String email)? sendToResetPassword,
+    TResult Function(BuildContext context, AuthenticationStatus status)?
+        setAuthenticationStatus,
     required TResult orElse(),
   }) {
     if (resetPassword != null) {
@@ -2623,6 +3327,7 @@ class _$AuthResetPassword implements AuthResetPassword {
     required TResult Function(AuthVerifyEmail value) verifyEmail,
     required TResult Function(AuthSendToVerifyEmail value) sendToVerifyEmail,
     required TResult Function(AuthVerifyPhone value) verifyPhone,
+    required TResult Function(AuthSendToVerifyPhone value) sendToVerifyPhone,
     required TResult Function(AuthRegisterUser value) registerUser,
     required TResult Function(AuthLogin value) login,
     required TResult Function(AuthLogout value) logout,
@@ -2632,6 +3337,7 @@ class _$AuthResetPassword implements AuthResetPassword {
     required TResult Function(AuthResetPassword value) resetPassword,
     required TResult Function(AuthSendToResetPassword value)
         sendToResetPassword,
+    required TResult Function(AuthSetStatus value) setAuthenticationStatus,
   }) {
     return resetPassword(this);
   }
@@ -2644,6 +3350,7 @@ class _$AuthResetPassword implements AuthResetPassword {
     TResult? Function(AuthVerifyEmail value)? verifyEmail,
     TResult? Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult? Function(AuthVerifyPhone value)? verifyPhone,
+    TResult? Function(AuthSendToVerifyPhone value)? sendToVerifyPhone,
     TResult? Function(AuthRegisterUser value)? registerUser,
     TResult? Function(AuthLogin value)? login,
     TResult? Function(AuthLogout value)? logout,
@@ -2652,6 +3359,7 @@ class _$AuthResetPassword implements AuthResetPassword {
     TResult? Function(AuthWithApple value)? loginWithApple,
     TResult? Function(AuthResetPassword value)? resetPassword,
     TResult? Function(AuthSendToResetPassword value)? sendToResetPassword,
+    TResult? Function(AuthSetStatus value)? setAuthenticationStatus,
   }) {
     return resetPassword?.call(this);
   }
@@ -2664,6 +3372,7 @@ class _$AuthResetPassword implements AuthResetPassword {
     TResult Function(AuthVerifyEmail value)? verifyEmail,
     TResult Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult Function(AuthVerifyPhone value)? verifyPhone,
+    TResult Function(AuthSendToVerifyPhone value)? sendToVerifyPhone,
     TResult Function(AuthRegisterUser value)? registerUser,
     TResult Function(AuthLogin value)? login,
     TResult Function(AuthLogout value)? logout,
@@ -2672,6 +3381,7 @@ class _$AuthResetPassword implements AuthResetPassword {
     TResult Function(AuthWithApple value)? loginWithApple,
     TResult Function(AuthResetPassword value)? resetPassword,
     TResult Function(AuthSendToResetPassword value)? sendToResetPassword,
+    TResult Function(AuthSetStatus value)? setAuthenticationStatus,
     required TResult orElse(),
   }) {
     if (resetPassword != null) {
@@ -2767,15 +3477,21 @@ class _$AuthSendToResetPassword implements AuthSendToResetPassword {
     required TResult Function(
             BuildContext context, AuthenticationUserModel user)
         updateAuthUser,
-    required TResult Function(BuildContext context, String email) verifyEmail,
-    required TResult Function(BuildContext context, String email)
+    required TResult Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)
+        verifyEmail,
+    required TResult Function(
+            BuildContext context, String email, VoidCallback goToPage)
         sendToVerifyEmail,
-    required TResult Function(BuildContext context, String phone) verifyPhone,
-    required TResult Function(
-            BuildContext context, String email, String password)
+    required TResult Function(BuildContext context, String phoneCode)
+        verifyPhone,
+    required TResult Function(BuildContext context, String phone)
+        sendToVerifyPhone,
+    required TResult Function(BuildContext context, String email,
+            String password, VoidCallback goToPage)
         registerUser,
-    required TResult Function(
-            BuildContext context, String email, String password)
+    required TResult Function(BuildContext context, String email,
+            String password, VoidCallback onDone)
         login,
     required TResult Function(BuildContext context, String userId) logout,
     required TResult Function() loginWithGoogle,
@@ -2784,6 +3500,8 @@ class _$AuthSendToResetPassword implements AuthSendToResetPassword {
     required TResult Function(String code) resetPassword,
     required TResult Function(BuildContext context, String email)
         sendToResetPassword,
+    required TResult Function(BuildContext context, AuthenticationStatus status)
+        setAuthenticationStatus,
   }) {
     return sendToResetPassword(context, email);
   }
@@ -2794,12 +3512,19 @@ class _$AuthSendToResetPassword implements AuthSendToResetPassword {
     TResult? Function()? $default, {
     TResult? Function(BuildContext context, AuthenticationUserModel user)?
         updateAuthUser,
-    TResult? Function(BuildContext context, String email)? verifyEmail,
-    TResult? Function(BuildContext context, String email)? sendToVerifyEmail,
-    TResult? Function(BuildContext context, String phone)? verifyPhone,
-    TResult? Function(BuildContext context, String email, String password)?
+    TResult? Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)?
+        verifyEmail,
+    TResult? Function(
+            BuildContext context, String email, VoidCallback goToPage)?
+        sendToVerifyEmail,
+    TResult? Function(BuildContext context, String phoneCode)? verifyPhone,
+    TResult? Function(BuildContext context, String phone)? sendToVerifyPhone,
+    TResult? Function(BuildContext context, String email, String password,
+            VoidCallback goToPage)?
         registerUser,
-    TResult? Function(BuildContext context, String email, String password)?
+    TResult? Function(BuildContext context, String email, String password,
+            VoidCallback onDone)?
         login,
     TResult? Function(BuildContext context, String userId)? logout,
     TResult? Function()? loginWithGoogle,
@@ -2807,6 +3532,8 @@ class _$AuthSendToResetPassword implements AuthSendToResetPassword {
     TResult? Function()? loginWithApple,
     TResult? Function(String code)? resetPassword,
     TResult? Function(BuildContext context, String email)? sendToResetPassword,
+    TResult? Function(BuildContext context, AuthenticationStatus status)?
+        setAuthenticationStatus,
   }) {
     return sendToResetPassword?.call(context, email);
   }
@@ -2817,12 +3544,18 @@ class _$AuthSendToResetPassword implements AuthSendToResetPassword {
     TResult Function()? $default, {
     TResult Function(BuildContext context, AuthenticationUserModel user)?
         updateAuthUser,
-    TResult Function(BuildContext context, String email)? verifyEmail,
-    TResult Function(BuildContext context, String email)? sendToVerifyEmail,
-    TResult Function(BuildContext context, String phone)? verifyPhone,
-    TResult Function(BuildContext context, String email, String password)?
+    TResult Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)?
+        verifyEmail,
+    TResult Function(BuildContext context, String email, VoidCallback goToPage)?
+        sendToVerifyEmail,
+    TResult Function(BuildContext context, String phoneCode)? verifyPhone,
+    TResult Function(BuildContext context, String phone)? sendToVerifyPhone,
+    TResult Function(BuildContext context, String email, String password,
+            VoidCallback goToPage)?
         registerUser,
-    TResult Function(BuildContext context, String email, String password)?
+    TResult Function(BuildContext context, String email, String password,
+            VoidCallback onDone)?
         login,
     TResult Function(BuildContext context, String userId)? logout,
     TResult Function()? loginWithGoogle,
@@ -2830,6 +3563,8 @@ class _$AuthSendToResetPassword implements AuthSendToResetPassword {
     TResult Function()? loginWithApple,
     TResult Function(String code)? resetPassword,
     TResult Function(BuildContext context, String email)? sendToResetPassword,
+    TResult Function(BuildContext context, AuthenticationStatus status)?
+        setAuthenticationStatus,
     required TResult orElse(),
   }) {
     if (sendToResetPassword != null) {
@@ -2846,6 +3581,7 @@ class _$AuthSendToResetPassword implements AuthSendToResetPassword {
     required TResult Function(AuthVerifyEmail value) verifyEmail,
     required TResult Function(AuthSendToVerifyEmail value) sendToVerifyEmail,
     required TResult Function(AuthVerifyPhone value) verifyPhone,
+    required TResult Function(AuthSendToVerifyPhone value) sendToVerifyPhone,
     required TResult Function(AuthRegisterUser value) registerUser,
     required TResult Function(AuthLogin value) login,
     required TResult Function(AuthLogout value) logout,
@@ -2855,6 +3591,7 @@ class _$AuthSendToResetPassword implements AuthSendToResetPassword {
     required TResult Function(AuthResetPassword value) resetPassword,
     required TResult Function(AuthSendToResetPassword value)
         sendToResetPassword,
+    required TResult Function(AuthSetStatus value) setAuthenticationStatus,
   }) {
     return sendToResetPassword(this);
   }
@@ -2867,6 +3604,7 @@ class _$AuthSendToResetPassword implements AuthSendToResetPassword {
     TResult? Function(AuthVerifyEmail value)? verifyEmail,
     TResult? Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult? Function(AuthVerifyPhone value)? verifyPhone,
+    TResult? Function(AuthSendToVerifyPhone value)? sendToVerifyPhone,
     TResult? Function(AuthRegisterUser value)? registerUser,
     TResult? Function(AuthLogin value)? login,
     TResult? Function(AuthLogout value)? logout,
@@ -2875,6 +3613,7 @@ class _$AuthSendToResetPassword implements AuthSendToResetPassword {
     TResult? Function(AuthWithApple value)? loginWithApple,
     TResult? Function(AuthResetPassword value)? resetPassword,
     TResult? Function(AuthSendToResetPassword value)? sendToResetPassword,
+    TResult? Function(AuthSetStatus value)? setAuthenticationStatus,
   }) {
     return sendToResetPassword?.call(this);
   }
@@ -2887,6 +3626,7 @@ class _$AuthSendToResetPassword implements AuthSendToResetPassword {
     TResult Function(AuthVerifyEmail value)? verifyEmail,
     TResult Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
     TResult Function(AuthVerifyPhone value)? verifyPhone,
+    TResult Function(AuthSendToVerifyPhone value)? sendToVerifyPhone,
     TResult Function(AuthRegisterUser value)? registerUser,
     TResult Function(AuthLogin value)? login,
     TResult Function(AuthLogout value)? logout,
@@ -2895,6 +3635,7 @@ class _$AuthSendToResetPassword implements AuthSendToResetPassword {
     TResult Function(AuthWithApple value)? loginWithApple,
     TResult Function(AuthResetPassword value)? resetPassword,
     TResult Function(AuthSendToResetPassword value)? sendToResetPassword,
+    TResult Function(AuthSetStatus value)? setAuthenticationStatus,
     required TResult orElse(),
   }) {
     if (sendToResetPassword != null) {
@@ -2913,5 +3654,261 @@ abstract class AuthSendToResetPassword implements AuthenticationEvent {
   String get email;
   @JsonKey(ignore: true)
   _$$AuthSendToResetPasswordCopyWith<_$AuthSendToResetPassword> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$AuthSetStatusCopyWith<$Res> {
+  factory _$$AuthSetStatusCopyWith(
+          _$AuthSetStatus value, $Res Function(_$AuthSetStatus) then) =
+      __$$AuthSetStatusCopyWithImpl<$Res>;
+  @useResult
+  $Res call({BuildContext context, AuthenticationStatus status});
+}
+
+/// @nodoc
+class __$$AuthSetStatusCopyWithImpl<$Res>
+    extends _$AuthenticationEventCopyWithImpl<$Res, _$AuthSetStatus>
+    implements _$$AuthSetStatusCopyWith<$Res> {
+  __$$AuthSetStatusCopyWithImpl(
+      _$AuthSetStatus _value, $Res Function(_$AuthSetStatus) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? context = null,
+    Object? status = null,
+  }) {
+    return _then(_$AuthSetStatus(
+      null == context
+          ? _value.context
+          : context // ignore: cast_nullable_to_non_nullable
+              as BuildContext,
+      null == status
+          ? _value.status
+          : status // ignore: cast_nullable_to_non_nullable
+              as AuthenticationStatus,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$AuthSetStatus implements AuthSetStatus {
+  _$AuthSetStatus(this.context, this.status);
+
+  @override
+  final BuildContext context;
+  @override
+  final AuthenticationStatus status;
+
+  @override
+  String toString() {
+    return 'AuthenticationEvent.setAuthenticationStatus(context: $context, status: $status)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$AuthSetStatus &&
+            (identical(other.context, context) || other.context == context) &&
+            (identical(other.status, status) || other.status == status));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, context, status);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AuthSetStatusCopyWith<_$AuthSetStatus> get copyWith =>
+      __$$AuthSetStatusCopyWithImpl<_$AuthSetStatus>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>(
+    TResult Function() $default, {
+    required TResult Function(
+            BuildContext context, AuthenticationUserModel user)
+        updateAuthUser,
+    required TResult Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)
+        verifyEmail,
+    required TResult Function(
+            BuildContext context, String email, VoidCallback goToPage)
+        sendToVerifyEmail,
+    required TResult Function(BuildContext context, String phoneCode)
+        verifyPhone,
+    required TResult Function(BuildContext context, String phone)
+        sendToVerifyPhone,
+    required TResult Function(BuildContext context, String email,
+            String password, VoidCallback goToPage)
+        registerUser,
+    required TResult Function(BuildContext context, String email,
+            String password, VoidCallback onDone)
+        login,
+    required TResult Function(BuildContext context, String userId) logout,
+    required TResult Function() loginWithGoogle,
+    required TResult Function() logintWithFacebook,
+    required TResult Function() loginWithApple,
+    required TResult Function(String code) resetPassword,
+    required TResult Function(BuildContext context, String email)
+        sendToResetPassword,
+    required TResult Function(BuildContext context, AuthenticationStatus status)
+        setAuthenticationStatus,
+  }) {
+    return setAuthenticationStatus(context, status);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>(
+    TResult? Function()? $default, {
+    TResult? Function(BuildContext context, AuthenticationUserModel user)?
+        updateAuthUser,
+    TResult? Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)?
+        verifyEmail,
+    TResult? Function(
+            BuildContext context, String email, VoidCallback goToPage)?
+        sendToVerifyEmail,
+    TResult? Function(BuildContext context, String phoneCode)? verifyPhone,
+    TResult? Function(BuildContext context, String phone)? sendToVerifyPhone,
+    TResult? Function(BuildContext context, String email, String password,
+            VoidCallback goToPage)?
+        registerUser,
+    TResult? Function(BuildContext context, String email, String password,
+            VoidCallback onDone)?
+        login,
+    TResult? Function(BuildContext context, String userId)? logout,
+    TResult? Function()? loginWithGoogle,
+    TResult? Function()? logintWithFacebook,
+    TResult? Function()? loginWithApple,
+    TResult? Function(String code)? resetPassword,
+    TResult? Function(BuildContext context, String email)? sendToResetPassword,
+    TResult? Function(BuildContext context, AuthenticationStatus status)?
+        setAuthenticationStatus,
+  }) {
+    return setAuthenticationStatus?.call(context, status);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>(
+    TResult Function()? $default, {
+    TResult Function(BuildContext context, AuthenticationUserModel user)?
+        updateAuthUser,
+    TResult Function(
+            BuildContext context, String emailCode, VoidCallback goToPage)?
+        verifyEmail,
+    TResult Function(BuildContext context, String email, VoidCallback goToPage)?
+        sendToVerifyEmail,
+    TResult Function(BuildContext context, String phoneCode)? verifyPhone,
+    TResult Function(BuildContext context, String phone)? sendToVerifyPhone,
+    TResult Function(BuildContext context, String email, String password,
+            VoidCallback goToPage)?
+        registerUser,
+    TResult Function(BuildContext context, String email, String password,
+            VoidCallback onDone)?
+        login,
+    TResult Function(BuildContext context, String userId)? logout,
+    TResult Function()? loginWithGoogle,
+    TResult Function()? logintWithFacebook,
+    TResult Function()? loginWithApple,
+    TResult Function(String code)? resetPassword,
+    TResult Function(BuildContext context, String email)? sendToResetPassword,
+    TResult Function(BuildContext context, AuthenticationStatus status)?
+        setAuthenticationStatus,
+    required TResult orElse(),
+  }) {
+    if (setAuthenticationStatus != null) {
+      return setAuthenticationStatus(context, status);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>(
+    TResult Function(_Authentication value) $default, {
+    required TResult Function(AuthUser value) updateAuthUser,
+    required TResult Function(AuthVerifyEmail value) verifyEmail,
+    required TResult Function(AuthSendToVerifyEmail value) sendToVerifyEmail,
+    required TResult Function(AuthVerifyPhone value) verifyPhone,
+    required TResult Function(AuthSendToVerifyPhone value) sendToVerifyPhone,
+    required TResult Function(AuthRegisterUser value) registerUser,
+    required TResult Function(AuthLogin value) login,
+    required TResult Function(AuthLogout value) logout,
+    required TResult Function(AuthWithGoogle value) loginWithGoogle,
+    required TResult Function(AuthWithFacebook value) logintWithFacebook,
+    required TResult Function(AuthWithApple value) loginWithApple,
+    required TResult Function(AuthResetPassword value) resetPassword,
+    required TResult Function(AuthSendToResetPassword value)
+        sendToResetPassword,
+    required TResult Function(AuthSetStatus value) setAuthenticationStatus,
+  }) {
+    return setAuthenticationStatus(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>(
+    TResult? Function(_Authentication value)? $default, {
+    TResult? Function(AuthUser value)? updateAuthUser,
+    TResult? Function(AuthVerifyEmail value)? verifyEmail,
+    TResult? Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
+    TResult? Function(AuthVerifyPhone value)? verifyPhone,
+    TResult? Function(AuthSendToVerifyPhone value)? sendToVerifyPhone,
+    TResult? Function(AuthRegisterUser value)? registerUser,
+    TResult? Function(AuthLogin value)? login,
+    TResult? Function(AuthLogout value)? logout,
+    TResult? Function(AuthWithGoogle value)? loginWithGoogle,
+    TResult? Function(AuthWithFacebook value)? logintWithFacebook,
+    TResult? Function(AuthWithApple value)? loginWithApple,
+    TResult? Function(AuthResetPassword value)? resetPassword,
+    TResult? Function(AuthSendToResetPassword value)? sendToResetPassword,
+    TResult? Function(AuthSetStatus value)? setAuthenticationStatus,
+  }) {
+    return setAuthenticationStatus?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>(
+    TResult Function(_Authentication value)? $default, {
+    TResult Function(AuthUser value)? updateAuthUser,
+    TResult Function(AuthVerifyEmail value)? verifyEmail,
+    TResult Function(AuthSendToVerifyEmail value)? sendToVerifyEmail,
+    TResult Function(AuthVerifyPhone value)? verifyPhone,
+    TResult Function(AuthSendToVerifyPhone value)? sendToVerifyPhone,
+    TResult Function(AuthRegisterUser value)? registerUser,
+    TResult Function(AuthLogin value)? login,
+    TResult Function(AuthLogout value)? logout,
+    TResult Function(AuthWithGoogle value)? loginWithGoogle,
+    TResult Function(AuthWithFacebook value)? logintWithFacebook,
+    TResult Function(AuthWithApple value)? loginWithApple,
+    TResult Function(AuthResetPassword value)? resetPassword,
+    TResult Function(AuthSendToResetPassword value)? sendToResetPassword,
+    TResult Function(AuthSetStatus value)? setAuthenticationStatus,
+    required TResult orElse(),
+  }) {
+    if (setAuthenticationStatus != null) {
+      return setAuthenticationStatus(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class AuthSetStatus implements AuthenticationEvent {
+  factory AuthSetStatus(
+          final BuildContext context, final AuthenticationStatus status) =
+      _$AuthSetStatus;
+
+  BuildContext get context;
+  AuthenticationStatus get status;
+  @JsonKey(ignore: true)
+  _$$AuthSetStatusCopyWith<_$AuthSetStatus> get copyWith =>
       throw _privateConstructorUsedError;
 }

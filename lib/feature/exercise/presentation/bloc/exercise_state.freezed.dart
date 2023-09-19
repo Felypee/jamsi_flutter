@@ -17,7 +17,7 @@ final _privateConstructorUsedError = UnsupportedError(
 /// @nodoc
 mixin _$ExerciseState {
   dynamic get exerciseStatus => throw _privateConstructorUsedError;
-  List<ExerciseModel> get exerciseList => throw _privateConstructorUsedError;
+  List<WordActivity> get exerciseList => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $ExerciseStateCopyWith<ExerciseState> get copyWith =>
@@ -30,7 +30,7 @@ abstract class $ExerciseStateCopyWith<$Res> {
           ExerciseState value, $Res Function(ExerciseState) then) =
       _$ExerciseStateCopyWithImpl<$Res, ExerciseState>;
   @useResult
-  $Res call({dynamic exerciseStatus, List<ExerciseModel> exerciseList});
+  $Res call({dynamic exerciseStatus, List<WordActivity> exerciseList});
 }
 
 /// @nodoc
@@ -57,7 +57,7 @@ class _$ExerciseStateCopyWithImpl<$Res, $Val extends ExerciseState>
       exerciseList: null == exerciseList
           ? _value.exerciseList
           : exerciseList // ignore: cast_nullable_to_non_nullable
-              as List<ExerciseModel>,
+              as List<WordActivity>,
     ) as $Val);
   }
 }
@@ -70,7 +70,7 @@ abstract class _$$_ExerciseStateCopyWith<$Res>
       __$$_ExerciseStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({dynamic exerciseStatus, List<ExerciseModel> exerciseList});
+  $Res call({dynamic exerciseStatus, List<WordActivity> exerciseList});
 }
 
 /// @nodoc
@@ -93,7 +93,7 @@ class __$$_ExerciseStateCopyWithImpl<$Res>
       exerciseList: null == exerciseList
           ? _value._exerciseList
           : exerciseList // ignore: cast_nullable_to_non_nullable
-              as List<ExerciseModel>,
+              as List<WordActivity>,
     ));
   }
 }
@@ -103,16 +103,16 @@ class __$$_ExerciseStateCopyWithImpl<$Res>
 class _$_ExerciseState implements _ExerciseState {
   const _$_ExerciseState(
       {this.exerciseStatus = ExerciseStatus.initial,
-      final List<ExerciseModel> exerciseList = const []})
+      final List<WordActivity> exerciseList = const []})
       : _exerciseList = exerciseList;
 
   @override
   @JsonKey()
   final dynamic exerciseStatus;
-  final List<ExerciseModel> _exerciseList;
+  final List<WordActivity> _exerciseList;
   @override
   @JsonKey()
-  List<ExerciseModel> get exerciseList {
+  List<WordActivity> get exerciseList {
     if (_exerciseList is EqualUnmodifiableListView) return _exerciseList;
     // ignore: implicit_dynamic_type
     return EqualUnmodifiableListView(_exerciseList);
@@ -150,12 +150,12 @@ class _$_ExerciseState implements _ExerciseState {
 abstract class _ExerciseState implements ExerciseState {
   const factory _ExerciseState(
       {final dynamic exerciseStatus,
-      final List<ExerciseModel> exerciseList}) = _$_ExerciseState;
+      final List<WordActivity> exerciseList}) = _$_ExerciseState;
 
   @override
   dynamic get exerciseStatus;
   @override
-  List<ExerciseModel> get exerciseList;
+  List<WordActivity> get exerciseList;
   @override
   @JsonKey(ignore: true)
   _$$_ExerciseStateCopyWith<_$_ExerciseState> get copyWith =>

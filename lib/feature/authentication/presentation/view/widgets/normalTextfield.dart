@@ -4,10 +4,8 @@ import 'package:form_builder_validators/form_builder_validators.dart';
 
 class NormalTextfield extends StatelessWidget {
   final String name;
-  const NormalTextfield({
-    super.key,
-    required this.name,
-  });
+  final bool? autoFocus;
+  const NormalTextfield({super.key, required this.name, this.autoFocus});
 
   @override
   Widget build(BuildContext context) {
@@ -15,6 +13,7 @@ class NormalTextfield extends StatelessWidget {
     return FormBuilderTextField(
       keyboardType: TextInputType.text,
       name: name,
+      autofocus: autoFocus ?? false,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       style: Theme.of(context).textTheme.bodyMedium,
       decoration: InputDecoration(
